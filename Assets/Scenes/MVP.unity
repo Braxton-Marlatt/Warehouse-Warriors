@@ -346,7 +346,7 @@ MonoBehaviour:
   moveSpeed: 10
   dashSpeed: 35
   dashCooldown: 1
-  knockbackSpeed: 8
+  knockbackForce: 20
   knockbackDuration: 0.2
 --- !u!114 &546861336
 MonoBehaviour:
