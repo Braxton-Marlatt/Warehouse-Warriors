@@ -4,7 +4,6 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 5; //Start health, initialized to your current health
     private int health;
-
     public float invincibilityDuration = 2f; 
     private float invincibilityTimer = 0f; //Tracks DeltaTime between getting hurt and invincibilityDuration
     private bool isInvincible = false;
@@ -31,7 +30,6 @@ public class PlayerHealth : MonoBehaviour
             isInvincible = true;
             invincibilityTimer = invincibilityDuration;
         }
-        
         UpdateHealthUI();
     }
 

@@ -12,7 +12,6 @@ public class EnemyMovement : MonoBehaviour
     public Node currentNode;
     public int enemyType = 0; // 0 = melee, 1 = ranged
     public int disengageDistance = 3; // for ranged
-    public int fireRate = 5; // for ranged
     public List<Node> path = new List<Node>();
 
     public enum StateMachine{
@@ -44,13 +43,8 @@ public class EnemyMovement : MonoBehaviour
             path.Clear();
         }
         CreatePath();
-        if (Vector2.Distance(transform.position, player.position) < 1f) HurtPlayer();
     } 
 
-    private void HurtPlayer(){
-        Vector2 direction = ((Vector2)player.position - (Vector2)transform.position).normalized;
-        player.GetComponent<PlayerHealth>().Hurt(damageAmount, direction);
-    }
     void Flee(){
         if (path.Count == 0){
             path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.FindFurthestNode(player.position));
@@ -67,7 +61,6 @@ public class EnemyMovement : MonoBehaviour
             path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.AllNodes()[Random.Range(0, AStarManager.instance.AllNodes().Length)]);
         }
     }
-
     public void CreatePath(){
         if (path.Count > 0){
             int x = 0;

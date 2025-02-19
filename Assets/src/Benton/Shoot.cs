@@ -7,10 +7,16 @@ public class Shooter : MonoBehaviour
     public float bulletSpeed = 10f;  // Speed of the projectile
 
     // Method to shoot a projectile toward a specified target position
-    public virtual GameObject Shoot(Vector3 targetPosition)
+    public virtual GameObject Shoot(Vector2 targetPosition)
     {
+        if (bulletPrefab == null || firePoint == null)
+        {
+            Debug.LogError("BulletPrefab or FirePoint is not assigned!");
+            return null;
+        }
         // Calculate direction from the fire point to the target position
-        Vector3 direction = (targetPosition - firePoint.position).normalized;
+        Vector2 firePoint2D = firePoint.position;
+        Vector2 direction = (targetPosition - firePoint2D).normalized;
 
         // Instantiate the bullet and set its velocity
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);

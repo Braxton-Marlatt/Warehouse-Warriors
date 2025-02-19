@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerShooter : Shooter
 {
-    public int bulletDamage = 10; // Damage dealt by the player's bullets
+    public int bulletDamage = 1; // Damage dealt by the player's bullets
 
     void Update()
     {
@@ -10,16 +10,14 @@ public class PlayerShooter : Shooter
         if (Input.GetMouseButtonDown(0)) // Left mouse button
         {
             // Get mouse position in world space
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0; // Ensure Z is 0 for 2D games
-
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // Call the Shoot method from the base class
             Shoot(mousePos);
         }
     }
 
     // Override Shoot to assign damage to the bullet
-    public override GameObject Shoot(Vector3 targetPosition)
+    public override GameObject Shoot(Vector2 targetPosition)
     {
         GameObject bullet = base.Shoot(targetPosition); // Get the bullet from the parent class
 

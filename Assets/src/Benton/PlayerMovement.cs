@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             Knockback(collision.transform.position);
+            GetComponent<PlayerHealth>().Hurt();
         }
     }
 
