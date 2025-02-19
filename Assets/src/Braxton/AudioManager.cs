@@ -4,7 +4,9 @@ public class AudioManager : MonoBehaviour
 {
 
     [Header("Sound Effects")]
+    [SerializeField] private GameObject _player;
     [SerializeField] private AudioSource _playerShoot;
+    [SerializeField] private AudioSource _playerHit;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,5 +25,10 @@ public class AudioManager : MonoBehaviour
     public void PlayPlayerShoot()
     {
         _playerShoot.Play();
+    }
+    public void PlayPlayerHit()
+    {
+        if(_player)
+        _playerHit.Play();
     }
 }
