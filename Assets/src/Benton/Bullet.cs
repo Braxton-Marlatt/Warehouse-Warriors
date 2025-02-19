@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if the bullet hits an enemy
+        // Check if the bullet hits an target
         if (collision.CompareTag(targetTag))
         {
             // Health health = collision.GetComponent<Health>();
