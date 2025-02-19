@@ -71,13 +71,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Knockback(Vector3 enemyPosition)
+    public void Knockback(Vector2 knockbackDirection)
     {
-        if (isKnockedBack) return; // Prevent overlapping knockbacks
-
         isKnockedBack = true;
-        Vector2 knockbackDirection = (transform.position - enemyPosition).normalized;
-
         rb.linearVelocity = knockbackDirection * knockbackForce;
 
         Invoke(nameof(EndKnockback), knockbackDuration);
