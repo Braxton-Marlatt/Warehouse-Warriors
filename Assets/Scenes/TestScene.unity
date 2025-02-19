@@ -1329,7 +1329,7 @@ GameObject:
   - component: {fileID: 605276412}
   - component: {fileID: 605276411}
   m_Layer: 0
-  m_Name: AStarmanager
+  m_Name: AStarManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4405,6 +4405,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1499972418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499972405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3ea250999bd4f529300afbc4b4adfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1759393494}
+  moveSpeed: 3
+  damageAmount: 1
+  currentState: 1
+  currentNode: {fileID: 2678212}
+  enemyType: 1
+  disengageDistance: 3
+  path: []
 --- !u!114 &1543439419 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7281693974249731844, guid: cc4f0821e24389d44a7553eae758cab8, type: 3}
@@ -4951,7 +4971,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1759393497
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5029,7 +5049,7 @@ MonoBehaviour:
   moveSpeed: 5
   dashSpeed: 12
   dashCooldown: 1
-  knockbackForce: 10
+  knockbackForce: 5
   knockbackDuration: 0.2
 --- !u!114 &1759393500
 MonoBehaviour:
@@ -5798,6 +5818,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 2093305194}
     m_Modifications:
     - target: {fileID: 1314037899087710650, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314037899087710650, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314037899087710650, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -5818,6 +5846,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2487359136613517767, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
+      propertyPath: currentNode
+      value: 
+      objectReference: {fileID: 2678212}
+    - target: {fileID: 2487359136613517767, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
@@ -5825,9 +5857,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6120952646091799354, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 9145425211539552621, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.43
+      value: 1.49
       objectReference: {fileID: 0}
     - target: {fileID: 9145425211539552621, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5865,8 +5901,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2191166896332448628, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5876,6 +5911,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6120952646091799354, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1499972414}
+    - targetCorrespondingSourceObject: {fileID: 6120952646091799354, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1499972418}
   m_SourcePrefab: {fileID: 100100000, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
 --- !u!1001 &5040600233481116414
 PrefabInstance:
@@ -5891,7 +5929,7 @@ PrefabInstance:
       objectReference: {fileID: 1759393494}
     - target: {fileID: 2381682129880217711, guid: aa001d12a338a904598cafb9f2649bf0, type: 3}
       propertyPath: moveSpeed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2381682129880217711, guid: aa001d12a338a904598cafb9f2649bf0, type: 3}
       propertyPath: currentNode
@@ -5900,6 +5938,18 @@ PrefabInstance:
     - target: {fileID: 4176541216569968611, guid: aa001d12a338a904598cafb9f2649bf0, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176541216569968611, guid: aa001d12a338a904598cafb9f2649bf0, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942554825735901688, guid: aa001d12a338a904598cafb9f2649bf0, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942554825735901688, guid: aa001d12a338a904598cafb9f2649bf0, type: 3}
+      propertyPath: m_Size.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5942554825735901688, guid: aa001d12a338a904598cafb9f2649bf0, type: 3}
       propertyPath: m_IsTrigger
