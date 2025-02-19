@@ -26,18 +26,13 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0){ //Check for no health
             GameOver();
         }else{ //gives the player breif invinciblility on hit
-            if (knockbackDirection.HasValue) Knockback(knockbackDirection.Value);
+            PlayerMovement movement = GetComponent<PlayerMovement>();
+            if (knockbackDirection.HasValue) movement.Knockback(knockbackDirection.Value);
             isInvincible = true;
             invincibilityTimer = invincibilityDuration;
         }
         
         UpdateHealthUI();
-    }
-    private void Knockback(Vector2 direction){
-        PlayerMovement movement = GetComponent<PlayerMovement>();
-        if (movement != null){
-            movement.ApplyKnockback(direction);
-        }
     }
 
     void UpdateInvincibilityTimer(){
@@ -50,10 +45,10 @@ public class PlayerHealth : MonoBehaviour
     }
 
     //public library methods. Called on by anything 
-    public int getHealth(){
+    public int GetHealth(){
         return health;
     }
-    public void setHealth(int health){
+    public void SetHealth(int health){
         if(health <= 0){
             this.health = 0;
             GameOver();

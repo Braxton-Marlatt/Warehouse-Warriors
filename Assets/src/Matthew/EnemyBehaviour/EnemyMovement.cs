@@ -12,11 +12,12 @@ public class EnemyMovement : MonoBehaviour
     public Node currentNode;
     public int enemyType = 0; // 0 = melee, 1 = ranged
     public int disengageDistance = 3; // for ranged
+    public int fireRate = 5; // for ranged
     public List<Node> path = new List<Node>();
 
     public enum StateMachine{
         Engage, //Chase down
-        Evade, //Strafe Side to Side
+        Evade, //Move Randomly
         Flee //Run away
     }
 
@@ -35,15 +36,12 @@ public class EnemyMovement : MonoBehaviour
         if(enemyType == 0 && currentState != StateMachine.Engage){
             currentState = StateMachine.Engage;
             path.Clear();
-            Debug.Log("CHARGE");
         }else if(enemyType == 1 && currentState != StateMachine.Flee && Vector2.Distance(transform.position, player.position) <= disengageDistance){
             currentState = StateMachine.Flee;
             path.Clear();
-            Debug.Log("FLEE");
         }else if(enemyType == 1 && currentState != StateMachine.Evade && Vector2.Distance(transform.position, player.position) > disengageDistance){
             currentState = StateMachine.Evade;
             path.Clear();
-            Debug.Log("DODGE");
         }
         CreatePath();
         if (Vector2.Distance(transform.position, player.position) < 1f) HurtPlayer();
@@ -78,8 +76,6 @@ public class EnemyMovement : MonoBehaviour
                 currentNode = path[x];
                 path.RemoveAt(x);
             }
-        }else{
-            Debug.Log("nope");
         }
     }
 }
