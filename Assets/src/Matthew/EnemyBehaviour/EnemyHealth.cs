@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int health = 10;
+    public int health = 5;
     public void Hurt(int damage=1){
         health -= damage;
         if (health <= 0){

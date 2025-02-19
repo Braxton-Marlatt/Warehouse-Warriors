@@ -18,13 +18,15 @@ public class PlayerHealth : MonoBehaviour
         UpdateInvincibilityTimer();
     }
 
-    public void Hurt(int damage = 1){
+    public void Hurt(int damage = 1, Vector2? knockbackDirection = null){
         if (isInvincible || health <=0) return;
         health--;
 
         if (health <= 0){ //Check for no health
             GameOver();
         }else{ //gives the player breif invinciblility on hit
+            PlayerMovement movement = GetComponent<PlayerMovement>();
+            if (knockbackDirection.HasValue) movement.Knockback(knockbackDirection.Value);
             isInvincible = true;
             invincibilityTimer = invincibilityDuration;
         }
@@ -51,6 +53,8 @@ public class PlayerHealth : MonoBehaviour
         }
         this.health = health;
     }
+
+
     //temp methods to test health depletion
     void GameOver(){
         Debug.Log("Game Over");

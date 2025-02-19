@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 9145425211539552621}
   - component: {fileID: 2769020140945090297}
   - component: {fileID: 1314037899087710650}
-  - component: {fileID: 2191166896332448628}
   - component: {fileID: 2487359136613517767}
   m_Layer: 2
   m_Name: EnemyRanged
@@ -168,26 +167,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
---- !u!114 &2191166896332448628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6120952646091799354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3ea250999bd4f529300afbc4b4adfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  moveSpeed: 4
-  damageAmount: 1
-  currentState: 2
-  currentNode: {fileID: 0}
-  enemyType: 1
-  disengageDistance: 6
-  path: []
 --- !u!114 &2487359136613517767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,9 +179,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c8030304cc25445ba69f1c4063ca68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  moveSpeed: 3
+  damageAmount: 1
+  currentState: 0
+  currentNode: {fileID: 0}
+  enemyType: 0
+  disengageDistance: 3
+  path: []
   fireRate: 1
   stopOnAim: 0
-  player: {fileID: 0}
   firePoint: {fileID: 2741439199012359322}
   bulletPrefab: {fileID: 4079753271633463667, guid: c5313e6ce5066ed448806e4119be79e7, type: 3}
   bulletDamage: 1

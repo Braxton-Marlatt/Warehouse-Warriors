@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Ranged : EnemyMovement
+public class Ranged : MonoBehaviour
 {
     public float fireRate = 3f;
-    public bool stopOnAim = false;
+    public Transform player;
     public Transform firePoint; 
     public GameObject bulletPrefab;
     public int bulletDamage= 1;

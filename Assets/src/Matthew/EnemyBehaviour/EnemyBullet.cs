@@ -8,8 +8,19 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         // Check if the bullet hits an enemy
-        if (collision.CompareTag(targetTag) || collision.CompareTag(obstacleTag)){
+        if (collision.CompareTag(targetTag)){
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+            if (playerHealth != null){
+                Vector2 direction = ((Vector2)collision.transform.position - (Vector2)transform.position).normalized;
+                playerHealth.Hurt(damage, direction);
+            }
+            Destroy(gameObject);
+        }
+
+        // Destroy the bullet if it hits an obstacle
+        if (collision.CompareTag(obstacleTag)){
             Destroy(gameObject);
         }
     }
