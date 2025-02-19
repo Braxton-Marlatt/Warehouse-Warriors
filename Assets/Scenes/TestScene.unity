@@ -4423,7 +4423,7 @@ MonoBehaviour:
   currentState: 1
   currentNode: {fileID: 2678212}
   enemyType: 1
-  disengageDistance: 3
+  disengageDistance: 5
   path: []
 --- !u!114 &1543439419 stripped
 MonoBehaviour:
@@ -5049,7 +5049,7 @@ MonoBehaviour:
   moveSpeed: 5
   dashSpeed: 12
   dashCooldown: 1
-  knockbackForce: 5
+  knockbackForce: 8
   knockbackDuration: 0.2
 --- !u!114 &1759393500
 MonoBehaviour:
