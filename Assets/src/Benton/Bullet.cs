@@ -10,10 +10,10 @@ public class Bullet : MonoBehaviour
         // Check if the bullet hits an target
         if (collision.CompareTag(targetTag))
         {
-            // Health health = collision.GetComponent<Health>();
+            // EnemyHealth health = collision.GetComponent<EnemyHealth>();
             // if (health != null)
             // {
-            //     health.TakeDamage(damage); // Deal damage to the enemy
+            //     //health.TakeDamage(damage); // Deal damage to the enemy
             // }
 
             Destroy(gameObject); // Destroy the bullet after hitting the target
