@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyMovement : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public Transform player; // Reference to the player
     public float moveSpeed = 3f;
@@ -14,6 +14,8 @@ public class EnemyMovement : MonoBehaviour
     public int disengageDistance = 3; // for ranged
     public List<Node> path = new List<Node>();
 
+    public bool is_spawned = false;
+
     public enum StateMachine{
         Engage, //Chase down
         Evade, //Move Randomly
@@ -21,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     private void Update(){
+        if(!is_spawned) return;
         switch (currentState){
             case StateMachine.Engage: 
                 Engage(); 
@@ -70,5 +73,9 @@ public class EnemyMovement : MonoBehaviour
                 path.RemoveAt(x);
             }
         }
+    }
+
+    public void Spawn(){
+        is_spawned = false;
     }
 }
