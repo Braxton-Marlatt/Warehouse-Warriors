@@ -72,15 +72,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Knockback(Vector2 enemyPosition)
+    public void Knockback(Vector2 knockbackDirection)
     {
         isKnockedBack = true;
-
-        // Calculate direction away from the enemy
-        Vector2 direction = (rb.position - enemyPosition).normalized;
-
-        // Apply knockback force in the correct direction
-        rb.linearVelocity = direction * knockbackForce;
+        rb.linearVelocity = knockbackDirection * knockbackForce;
 
         Invoke(nameof(EndKnockback), knockbackDuration);
     }
