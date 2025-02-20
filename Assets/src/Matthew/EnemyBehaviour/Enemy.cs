@@ -1,0 +1,89 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+
+public class Enemy : MonoBehaviour
+{
+   public Transform player; // Reference to the player
+   public float moveSpeed = 3f;
+   public int damageAmount = 1;
+   public StateMachine currentState;
+   public Node currentNode;
+   public int enemyType = 0; // 0 = melee, 1 = ranged
+   public int disengageDistance = 3; // for ranged
+   public List<Node> path = new List<Node>();
+
+
+   public bool is_spawned = false;
+
+
+   public enum StateMachine{
+       Engage, //Chase down
+       Evade, //Move Randomly
+       Flee //Run away
+   }
+
+
+   private void Update(){
+       if(!is_spawned) return;
+       switch (currentState){
+           case StateMachine.Engage:
+               Engage();
+               break;
+           case StateMachine.Flee:
+               Flee();
+               break;
+           case StateMachine.Evade:
+               Evade();
+               break;
+       }
+       if(enemyType == 0 && currentState != StateMachine.Engage){
+           currentState = StateMachine.Engage;
+           path.Clear();
+       }else if(enemyType == 1 && currentState != StateMachine.Flee && Vector2.Distance(transform.position, player.position) <= disengageDistance){
+           currentState = StateMachine.Flee;
+           path.Clear();
+       }else if(enemyType == 1 && currentState != StateMachine.Evade && Vector2.Distance(transform.position, player.position) > disengageDistance){
+           currentState = StateMachine.Evade;
+           path.Clear();
+       }
+       CreatePath();
+   }
+
+
+   void Flee(){
+       if (path.Count == 0){
+           path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.FindFurthestNode(player.position));
+       }
+   }
+   void Engage(){
+       if (path.Count == 0){
+           path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.FindNearestNode(player.position));
+       }
+   }
+
+
+   void Evade(){ //rn random movement
+       if(path.Count == 0){
+           path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.AllNodes()[Random.Range(0, AStarManager.instance.AllNodes().Length)]);
+       }
+   }
+   public void CreatePath(){
+       if (path.Count > 0){
+           int x = 0;
+           transform.position = Vector3.MoveTowards(transform.position, new Vector3(path[x].transform.position.x, path[x].transform.position.y, -2), moveSpeed * Time.deltaTime);
+           if (Vector2.Distance(transform.position, path[x].transform.position) < 0.1f){
+               currentNode = path[x];
+               path.RemoveAt(x);
+           }
+       }
+   }
+
+
+   public void Spawn(){
+       is_spawned = false;
+   }
+}
+

@@ -52,6 +52,9 @@ TagManager:
   - name: Walls
     uniqueID: 4227401625
     locked: 0
+  - name: Doors
+    uniqueID: 598034395
+    locked: 0
   - name: Projectiles
     uniqueID: 1923497349
     locked: 0
@@ -60,6 +63,12 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1813529441
+    locked: 0
+  - name: UI1
+    uniqueID: 333043293
+    locked: 0
+  - name: UI2
+    uniqueID: 3717340213
     locked: 0
   m_RenderingLayers:
   - Default
