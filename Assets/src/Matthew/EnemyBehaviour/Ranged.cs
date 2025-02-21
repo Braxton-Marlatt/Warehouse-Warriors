@@ -27,6 +27,5 @@ public class Ranged : MonoBehaviour
             Vector2 direction = (player.position - firePoint.position).normalized;
             rb.linearVelocity = direction * bulletSpeed;
         }else Debug.LogWarning("Bullet prefab needs a Rigidbody2D component!");
-        
     }
 }
