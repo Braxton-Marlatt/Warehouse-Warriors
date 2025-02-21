@@ -75,10 +75,11 @@ public class AStarManager : MonoBehaviour{
         return null;
     }
 
-    public Node FindNearestNode(Vector2 pos){
+    //Finds the closest connected node to a point. This instructions is repeated for adaptability
+    public Node FindNearestNode(Node currentNode, Vector2 pos){
         Node foundNode = null;
         float minDistance = float.MaxValue;
-        foreach (Node node in FindObjectsByType<Node>(FindObjectsInactive.Exclude, FindObjectsSortMode.None)){
+        foreach (Node node in currentNode.connections){
             float currentDistance = Vector2.Distance(pos, node.transform.position);
             if(currentDistance < minDistance){
                 minDistance = currentDistance;
@@ -88,10 +89,11 @@ public class AStarManager : MonoBehaviour{
         return foundNode;
     }
 
-    public Node FindFurthestNode(Vector2 pos){
+    //Finds the furthest connected node to a point. This instructions is repeated for adaptability
+    public Node FindFurthestNode(Node currentNode,Vector2 pos){
         Node foundNode = null;
         float maxDistance = default;
-        foreach (Node node in FindObjectsByType<Node>(FindObjectsInactive.Exclude, FindObjectsSortMode.None)){
+        foreach (Node node in currentNode.connections){
             float currentDistance = Vector2.Distance(pos, node.transform.position);
             if(currentDistance > maxDistance){
                 maxDistance = currentDistance;
@@ -100,6 +102,7 @@ public class AStarManager : MonoBehaviour{
         }
         return foundNode;
     }
+
 
     public Node[] AllNodes()
     {

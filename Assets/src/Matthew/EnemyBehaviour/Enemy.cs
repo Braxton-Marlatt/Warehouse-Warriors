@@ -51,21 +51,26 @@ public class Enemy : MonoBehaviour
 
     void Flee(){
         if (path.Count == 0){
-            path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.FindFurthestNode(player.position));
+            path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.FindFurthestNode(currentNode,player.position));
         }
     }
     void Engage(){
         if (path.Count == 0){
-            path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.FindNearestNode(player.position));
+            path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.FindNearestNode(currentNode,player.position));
         }
     }
     
     
-    void Evade(){ //rn random movement
+    void Evade(){ 
         if(path.Count == 0){
-            path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.AllNodes()[Random.Range(0, AStarManager.instance.AllNodes().Length)]);
+            System.Random rand = new System.Random(); // Use fully qualified name
+            int randomNumber = rand.Next(0, 2); // Generates either 0 or 1
+            if(randomNumber == 0) Flee();
+            else Engage();
         }
+        //path = AStarManager.instance.GeneratePath(currentNode, AStarManager.instance.AllNodes()[Random.Range(0, AStarManager.instance.AllNodes().Length)]);
     }
+    
     public void CreatePath(){
         if (path.Count > 0){
             int x = 0;
