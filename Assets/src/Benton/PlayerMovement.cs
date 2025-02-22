@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
 
-
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -35,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
             Dash();
         }
 
-        if (Input.GetMouseButtonDown(1)) // Right-click
+        // On right-click, flip the sprite (and its children, if needed) based on mouse position relative to the player.
+        if (Input.GetMouseButtonDown(1))
         {
             FlipSprite();
         }
@@ -45,10 +45,27 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = Vector2.zero;
 
-        if (Input.GetKey(KeyCode.W)) moveDirection.y += 1;
-        if (Input.GetKey(KeyCode.S)) moveDirection.y -= 1;
-        if (Input.GetKey(KeyCode.D)) moveDirection.x += 1;
-        if (Input.GetKey(KeyCode.A)) moveDirection.x -= 1;
+        if (Input.GetKey(KeyCode.W))
+            moveDirection.y += 1;
+        if (Input.GetKey(KeyCode.S))
+            moveDirection.y -= 1;
+
+        // When pressing D, add rightward movement and flip to face right.
+        if (Input.GetKey(KeyCode.D))
+        {
+            moveDirection.x += 1;
+            Vector3 newScale = transform.localScale;
+            newScale.x = -Mathf.Abs(newScale.x); // Negative to face right.
+            transform.localScale = newScale;
+        }
+        // When pressing A, add leftward movement and flip to face left.
+        if (Input.GetKey(KeyCode.A))
+        {
+            moveDirection.x -= 1;
+            Vector3 newScale = transform.localScale;
+            newScale.x = Mathf.Abs(newScale.x); // Positive to face left (default).
+            transform.localScale = newScale;
+        }
 
         moveDirection.Normalize();
 
@@ -84,10 +101,10 @@ public class PlayerMovement : MonoBehaviour
     {
         isKnockedBack = true;
 
-        // Calculate direction away from the enemy
+        // Calculate direction away from the enemy.
         Vector2 direction = (rb.position - enemyPosition).normalized;
 
-        // Apply knockback force in the correct direction
+        // Apply knockback force in the correct direction.
         rb.linearVelocity = direction * knockbackForce;
 
         Invoke(nameof(EndKnockback), knockbackDuration);
@@ -99,11 +116,13 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
     }
 
+    // Flips the sprite based on the mouse click's position relative to the player.
     void FlipSprite()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 newScale = transform.localScale;
 
+        // If the mouse is to the right of the player, face right (flipX negative); otherwise, face left.
         if (mousePos.x > transform.position.x)
         {
             newScale.x = -Mathf.Abs(newScale.x);
