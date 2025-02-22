@@ -2633,7 +2633,7 @@ MonoBehaviour:
   cameraReference: {fileID: 1101542707}
   panSpeed: 5
   cameraLocation: {fileID: 42974875}
-  northRoom: {fileID: 0}
+  northRoom: {fileID: 1485572153}
   southRoom: {fileID: 0}
   eastRoom: {fileID: 0}
   westRoom: {fileID: 1243978637}
@@ -8099,9 +8099,9 @@ MonoBehaviour:
   panSpeed: 5
   cameraLocation: {fileID: 915973351}
   northRoom: {fileID: 0}
-  southRoom: {fileID: 0}
+  southRoom: {fileID: 586852632}
   eastRoom: {fileID: 0}
-  westRoom: {fileID: 1243978637}
+  westRoom: {fileID: 0}
   northSpawn: {fileID: 992896152}
   southSpawn: {fileID: 1214404330}
   eastSpawn: {fileID: 1287704126}
