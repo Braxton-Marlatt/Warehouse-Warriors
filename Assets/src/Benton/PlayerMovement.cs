@@ -13,9 +13,12 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing;
     private bool isKnockedBack;
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>(); // Get Rigidbody2D reference
         rb.gravityScale = 0; // Disable gravity to avoid unwanted movement
     }
@@ -30,6 +33,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextDashTime && moveDirection != Vector2.zero)
         {
             Dash();
+        }
+
+        if (Input.GetMouseButtonDown(1)) // Right-click
+        {
+            FlipSprite();
         }
     }
 
@@ -89,5 +97,22 @@ public class PlayerMovement : MonoBehaviour
     {
         isKnockedBack = false;
         rb.linearVelocity = Vector2.zero;
+    }
+
+    void FlipSprite()
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 newScale = transform.localScale;
+
+        if (mousePos.x > transform.position.x)
+        {
+            newScale.x = -Mathf.Abs(newScale.x);
+        }
+        else
+        {
+            newScale.x = Mathf.Abs(newScale.x);
+        }
+
+        transform.localScale = newScale;
     }
 }
