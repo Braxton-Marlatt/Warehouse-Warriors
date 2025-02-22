@@ -3,16 +3,22 @@ using UnityEngine;
 public class PlayerShooter : Shooter
 {
     public int bulletDamage = 1; // Damage dealt by the player's bullets
+    public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second)
+    private float nextFireTime = 0f; // Time when the player can shoot next
+    private int ammo = 35;
 
     void Update()
     {
-        // Handle input for shooting
-        if (Input.GetMouseButtonDown(0)) // Left mouse button
+        // Handle input for shooting with a fixed fire rate
+        if (Input.GetMouseButton(0) && Time.time >= nextFireTime && ammo > 0) // Left mouse button held
         {
+            nextFireTime = Time.time + fireRate; // Set the next allowed fire time
+            
             // Get mouse position in world space
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // Call the Shoot method from the base class
             Shoot(mousePos);
+            ammo--;
         }
     }
 
@@ -33,4 +39,10 @@ public class PlayerShooter : Shooter
 
         return bullet; // Return the modified bullet (optional)
     } 
+
+    public void AddAmmo()
+    {
+        ammo += 15;
+    }
+
 }
