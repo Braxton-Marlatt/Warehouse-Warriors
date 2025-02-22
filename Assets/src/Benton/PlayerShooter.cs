@@ -5,7 +5,7 @@ public class PlayerShooter : Shooter
     public int bulletDamage = 1; // Damage dealt by the player's bullets
     public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second)
     private float nextFireTime = 0f; // Time when the player can shoot next
-    private int ammo = 35;
+    [SerializeField] private int ammo = 35;
 
     void Update()
     {
@@ -40,9 +40,9 @@ public class PlayerShooter : Shooter
         return bullet; // Return the modified bullet (optional)
     } 
 
-    public void AddAmmo()
+    public void AddAmmo(int amount=10)
     {
-        ammo += 15;
+        ammo +=amount;
     }
 
 }
