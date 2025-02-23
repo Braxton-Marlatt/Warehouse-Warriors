@@ -32,6 +32,17 @@ public class DirectionTest
     }
 
     [Test]
+    public void PlayerStartsWithZeroVelocity()
+    {
+        Assert.NotNull(playerMovement, "playerMovement is null");
+        Assert.NotNull(playerMovement.GetComponent<Rigidbody2D>(), "Rigidbody2D is missing");
+
+        // Rigidbody should have zero velocity at start
+        Assert.AreEqual(Vector2.zero, playerMovement.GetComponent<Rigidbody2D>().linearVelocity);
+    }
+
+
+    [Test]
     public void NorthDirectionTest()
     {
         // Ensure playerMovement is not null
@@ -74,6 +85,18 @@ public class DirectionTest
         Assert.AreEqual(new Vector2(-1, 0), playerMovement.moveDirection);
     }
 
-  
-        
+    [Test]
+    public void Dash_IncreasesVelocity()
+    {
+        playerMovement.moveDirection = new Vector2(1, 0); // Move right
+        float initialSpeed = playerMovement.moveSpeed;
+
+        playerMovement.Dash(); // Trigger dash
+
+        float expectedSpeed = playerMovement.dashSpeed;
+        float actualSpeed = playerMovement.GetComponent<Rigidbody2D>().linearVelocity.magnitude;
+
+        Assert.AreEqual(expectedSpeed, actualSpeed, 0.1f);
+    }
+
 }
