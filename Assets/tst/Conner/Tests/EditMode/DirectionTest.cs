@@ -56,7 +56,6 @@ public class DirectionTest
         Assert.AreEqual(new Vector2(0, -1), playerMovement.moveDirection);
     }
 
-
     [Test]
     public void EastDirectionTest()
     {
@@ -74,4 +73,7 @@ public class DirectionTest
         playerMovement.MovePlayer();
         Assert.AreEqual(new Vector2(-1, 0), playerMovement.moveDirection);
     }
+
+  
+        
 }
