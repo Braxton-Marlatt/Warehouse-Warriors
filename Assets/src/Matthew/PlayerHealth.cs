@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -62,5 +63,10 @@ public class PlayerHealth : MonoBehaviour
     }
     void UpdateHealthUI(){
         Debug.Log("Health" + health);
+    }
+
+    internal void Heal(int healAmount)
+    {
+        throw new NotImplementedException();
     }
 }
