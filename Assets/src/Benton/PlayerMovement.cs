@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float knockbackForce = 8f;
     public float knockbackDuration = 0.2f;
 
-    private Vector2 moveDirection;
+    public Vector2 moveDirection;
     private float nextDashTime;
     private bool isDashing;
     private bool isKnockedBack;
@@ -35,15 +35,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovePlayer()
     {
-        moveDirection = Vector2.zero;
+        if (Application.isPlaying)
+        {
+            moveDirection = Vector2.zero;
 
-        if (Input.GetKey(KeyCode.W)) moveDirection.y += 1;
-        if (Input.GetKey(KeyCode.S)) moveDirection.y -= 1;
-        if (Input.GetKey(KeyCode.D)) moveDirection.x += 1;
-        if (Input.GetKey(KeyCode.A)) moveDirection.x -= 1;
+            if (Input.GetKey(KeyCode.W)) moveDirection.y += 1;
+            if (Input.GetKey(KeyCode.S)) moveDirection.y -= 1;
+            if (Input.GetKey(KeyCode.D)) moveDirection.x += 1;
+            if (Input.GetKey(KeyCode.A)) moveDirection.x -= 1;
 
-        moveDirection.Normalize();
-
+            moveDirection.Normalize();
+        }
         if (!isDashing)
         {
             rb.linearVelocity = moveDirection * moveSpeed;
