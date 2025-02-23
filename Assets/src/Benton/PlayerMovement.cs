@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    void Dash()
+    public void Dash()
     {
         isDashing = true;
         nextDashTime = Time.time + dashCooldown;
