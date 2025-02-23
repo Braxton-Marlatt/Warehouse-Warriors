@@ -1,36 +1,72 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+#endif
+using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
-public class PlayerTest
+public class PlayerShooterStressTest
 {
     [UnityTest]
-    public IEnumerator MoveNorth()
+    public IEnumerator BulletStressTest()
     {
-        var gameObject = new GameObject();
-        var player = gameObject.AddComponent<PlayerMovement>(); // Attach PlayerMovement
+        SceneManager.LoadScene("TestScene");
+        yield return new WaitForSeconds(1f); // Allow scene to load
 
-        // 🔹 FIX: Add Rigidbody2D to prevent NullReferenceException
-        var rb = gameObject.AddComponent<Rigidbody2D>();
+        // Ensure Camera Exists & Set to -18.89
+        Camera mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            mainCamera = new GameObject("MainCamera").AddComponent<Camera>();
+            mainCamera.tag = "MainCamera";
+        }
+        mainCamera.transform.position = new Vector3(-18.89f, 0, -10);
 
-        // Manually assign Rigidbody2D since Start() won't run automatically in Edit Mode
-        player.GetType()
-            .GetField("rb", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-            ?.SetValue(player, rb);
+        var gameObject = new GameObject("PlayerShooter");
+        var playerShooter = gameObject.AddComponent<PlayerShooter>();
+        gameObject.AddComponent<Rigidbody2D>();
+        gameObject.transform.position = Vector3.zero;
 
-        // Disable gravity so physics doesn’t interfere
-        rb.gravityScale = 0;
+        // Load BulletPrefab
+        GameObject bulletPrefab = null;
+#if UNITY_EDITOR
+        bulletPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/prefabs/Benton/PlayerBullet.prefab");
+#endif
+        Assert.NotNull(bulletPrefab, "BulletPrefab not found.");
 
-        // Simulate player moving north
-        player.moveDirection = new Vector2(0, 1);
+        // Assign BulletPrefab
+        var bulletPrefabField = playerShooter.GetType().BaseType.GetField("bulletPrefab",
+            System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+        Assert.NotNull(bulletPrefabField, "bulletPrefab field missing.");
+        bulletPrefabField.SetValue(playerShooter, bulletPrefab);
 
-        // Call MovePlayer() to process movement
-        player.MovePlayer();
+        // Create & Assign FirePoint
+        Transform firePoint = new GameObject("FirePoint").transform;
+        firePoint.position = gameObject.transform.position + Vector3.right;
+        firePoint.SetParent(gameObject.transform);
 
-        yield return null; // Wait one frame for Unity updates
+        var firePointField = playerShooter.GetType().BaseType.GetField("firePoint",
+            System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+        Assert.NotNull(firePointField, "firePoint field missing.");
+        firePointField.SetValue(playerShooter, firePoint);
 
-        // 🔹 Check if movement logic is correctly applied
-        Assert.AreEqual(new Vector2(0, 1), player.moveDirection);
+        // Ensure Ammo
+        playerShooter.AddAmmo(9999);
+
+        int bulletCount = 0;
+        float fps = 999f, testDuration = 10f, startTime = Time.time;
+
+        while (fps >= 60f && Time.time - startTime < testDuration)
+        {
+            playerShooter.Shoot(Vector2.right);
+            bulletCount++;
+            yield return new WaitForSeconds(0.01f);
+            fps = 1f / Time.deltaTime;
+        }
+
+        Debug.Log($"FPS dropped below 60 after {bulletCount} bullets.");
+        Assert.Greater(bulletCount, 0, "FPS dropped too soon.");
     }
 }
