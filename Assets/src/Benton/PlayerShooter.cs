@@ -3,22 +3,27 @@ using UnityEngine;
 public class PlayerShooter : Shooter
 {
     public int bulletDamage = 1; // Damage dealt by the player's bullets
-    public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second)
+    public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second) 
     private float nextFireTime = 0f; // Time when the player can shoot next
-    [SerializeField] private int ammo = 35;
+
+    [SerializeField] private int ammo = 35; 
 
     void Update()
     {
+
+        // Full auto: Removed fire rate restriction by commenting out NextFireTime
+
         // Handle input for shooting with a fixed fire rate
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime && ammo > 0) // Left mouse button held
         {
-            nextFireTime = Time.time + fireRate; // Set the next allowed fire time
+            //comment out for test
+            nextFireTime = Time.time + fireRate; // Set the next allowed fire time // 
             
             // Get mouse position in world space
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // Call the Shoot method from the base class
             Shoot(mousePos);
-            ammo--;
+            ammo--; //Comment out for Test
         }
     }
 
@@ -40,7 +45,7 @@ public class PlayerShooter : Shooter
         return bullet; // Return the modified bullet (optional)
     } 
 
-    public void AddAmmo(int amount=10)
+    public void AddAmmo(int amount=10) //was 10
     {
         ammo +=amount;
     }
