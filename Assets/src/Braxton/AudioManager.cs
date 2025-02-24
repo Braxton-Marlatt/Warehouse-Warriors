@@ -17,5 +17,8 @@ public class AudioManager : MonoBehaviour
     {
         _meleeSound.Play();
     }
-
+    public void PlayPlayerHit()
+    {
+        _playerHit.Play();
+    }
 }

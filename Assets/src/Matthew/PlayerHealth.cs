@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public float invincibilityDuration = 2f; 
     private float invincibilityTimer = 0f; //Tracks DeltaTime between getting hurt and invincibilityDuration
     private bool isInvincible = false;
+    [SerializeField] public AudioManager audioManager;
 
     void Start(){
         health = maxHealth;
@@ -30,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
             if (knockbackDirection.HasValue) movement.Knockback(knockbackDirection.Value);
             isInvincible = true;
             invincibilityTimer = invincibilityDuration;
+            audioManager.PlayPlayerHit();
         }
         UpdateHealthUI();
     }
