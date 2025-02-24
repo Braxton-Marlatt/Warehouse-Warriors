@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3856793675996893393}
   - component: {fileID: 8181566116377899933}
   - component: {fileID: -4279800397208734921}
+  - component: {fileID: -654766740295683208}
   m_Layer: 0
   m_Name: heartPrefab
   m_TagString: Heart
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.9268, y: -0.9366, z: 0}
-  m_LocalScale: {x: 2.5533118, y: 2.7354424, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -133,7 +134,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.23, y: 0.2}
+  m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
 --- !u!114 &-4279800397208734921
 MonoBehaviour:
@@ -148,3 +149,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 1
+--- !u!50 &-654766740295683208
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650937825202876778}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

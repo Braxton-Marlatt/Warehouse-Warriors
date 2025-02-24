@@ -4,7 +4,7 @@ public class HeartPickup : MonoBehaviour
 {
     public int healAmount = 1;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -13,9 +13,8 @@ public class HeartPickup : MonoBehaviour
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
 
             if (playerHealth != null)
-            {
-                int newHealth = Mathf.Min(playerHealth.maxHealth, playerHealth.GetHealth() + healAmount);
-                playerHealth.SetHealth(newHealth);
+            { 
+                playerHealth.Heal();
 
                 Debug.Log("Player healed by " + healAmount + " HP!");
             }
