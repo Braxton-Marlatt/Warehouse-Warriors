@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,10 @@ public class changeScene : MonoBehaviour
 
     public void quitGame()
     {
-        Application.Quit();
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+    Application.Quit();
+#endif
     }
 }
