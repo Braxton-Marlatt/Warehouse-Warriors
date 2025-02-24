@@ -1122,6 +1122,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3ea250999bd4f529300afbc4b4adfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  moveSpeed: 3
+  damageAmount: 1
+  currentState: 0
+  currentNode: {fileID: 0}
+  enemyType: 0
+  disengageDistance: 3
+  path: []
+  is_spawned: 0
 --- !u!50 &254123018
 Rigidbody2D:
   serializedVersion: 5
@@ -8349,6 +8358,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3ea250999bd4f529300afbc4b4adfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  moveSpeed: 3
+  damageAmount: 1
+  currentState: 0
+  currentNode: {fileID: 0}
+  enemyType: 0
+  disengageDistance: 3
+  path: []
+  is_spawned: 0
 --- !u!1 &1508936923
 GameObject:
   m_ObjectHideFlags: 0
