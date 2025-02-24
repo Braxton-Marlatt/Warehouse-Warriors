@@ -14,7 +14,7 @@ public class HeartPickup : MonoBehaviour
 
             if (playerHealth != null)
             {
-                int newHealth = Mathf.Min(playerHealth.maxHealth, playerHealth.GetHealth() + healAmount);
+                int newHealth = (playerHealth.GetHealth() + healAmount);
                 playerHealth.SetHealth(newHealth);
 
                 Debug.Log("Player healed by " + healAmount + " HP!");
