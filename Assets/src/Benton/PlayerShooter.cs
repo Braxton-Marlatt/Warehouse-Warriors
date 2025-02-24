@@ -27,34 +27,6 @@ public class PlayerShooter : Shooter
         }
     }
 
-    // Override Shoot to assign damage to the bullet
-    //public override GameObject Shoot(Vector2 targetPosition)
-    //{
-    //    GameObject bullet = base.Shoot(targetPosition); // Get the bullet from the parent class
-
-    //    // Assign damage to the bullet
-    //    if (bullet != null)
-    //    {
-    //        Bullet bulletScript = bullet.GetComponent<Bullet>();
-    //        if (bulletScript != null)
-    //        {
-    //            bulletScript.damage = bulletDamage;
-    //        }
-    //    }
-
-    //    return bullet; // Return the modified bullet (optional)
-    //} 
-
-    //public void AddAmmo(int amount=10) //was 10
-    //{
-    //    ammo +=amount;
-    //}
-
-
-
-
-    //Delete this or something
-
     public override GameObject Shoot(Vector2 targetPosition)
     {
         if (ammo <= 0) return null; // Prevent shooting if no ammo
