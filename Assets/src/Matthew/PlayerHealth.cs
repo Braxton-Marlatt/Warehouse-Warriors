@@ -52,9 +52,12 @@ public class PlayerHealth : MonoBehaviour
             this.health = 0;
             GameOver();
         }
+        if(health > maxHealth) health = maxHealth;
         this.health = health;
     }
-
+    public void Heal(int amount =1){
+        SetHealth(GetHealth() + amount);    
+    }
 
     //temp methods to test health depletion
     void GameOver(){
@@ -65,8 +68,5 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Health" + health);
     }
 
-    internal void Heal(int healAmount)
-    {
-        throw new NotImplementedException();
-    }
+    
 }
