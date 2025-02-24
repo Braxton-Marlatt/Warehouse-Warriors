@@ -13,9 +13,8 @@ public class HeartPickup : MonoBehaviour
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
 
             if (playerHealth != null)
-            {
-                int newHealth = (playerHealth.GetHealth() + healAmount);
-                playerHealth.SetHealth(newHealth);
+            { 
+                playerHealth.Heal();
 
                 Debug.Log("Player healed by " + healAmount + " HP!");
             }
