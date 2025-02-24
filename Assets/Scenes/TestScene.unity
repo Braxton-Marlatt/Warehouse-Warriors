@@ -10168,6 +10168,7 @@ GameObject:
   - component: {fileID: 1759393499}
   - component: {fileID: 1759393498}
   - component: {fileID: 1759393500}
+  - component: {fileID: 1759393501}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -10370,6 +10371,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   invincibilityDuration: 2
+--- !u!114 &1759393501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759393492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c7b68b143291349a9fb4b029951164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 1759393500}
+  hearts:
+  - {fileID: 1690242856}
+  - {fileID: 452163713}
+  - {fileID: 747040876}
+  - {fileID: 2066024974}
+  - {fileID: 1489292995}
+  - {fileID: 452298461}
+  - {fileID: 867993877}
+  - {fileID: 1093426634}
+  - {fileID: 1614043390}
+  - {fileID: 2141899080}
+  - {fileID: 2005974594}
+  - {fileID: 1748574212}
+  fullHeart: {fileID: 21300000, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
+  emptyHeart: {fileID: 21300002, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
 --- !u!114 &1775749650 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7281693974249731844, guid: cc4f0821e24389d44a7553eae758cab8, type: 3}
