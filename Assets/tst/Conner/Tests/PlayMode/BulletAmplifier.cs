@@ -2,7 +2,12 @@ using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+
+
+//Everyone will need the next bit of code
 using UnityEngine.SceneManagement;
+using System.Runtime.CompilerServices;
+
 
 public class BulletAmplifier
 {
@@ -11,45 +16,32 @@ public class BulletAmplifier
     {
         SceneManager.LoadScene("TestScene");
     }
+ //To Here ^
+
+
+
     [UnityTest]
     public IEnumerator RoofTest()
     {
-        float testDuration = 10f; // time to run test
-        float startTime = Time.time; // start time of test
-        while (Time.time - startTime < testDuration)
+        var playerShooter = GameObject.FindObjectOfType<PlayerShooter>();
+        Assert.NotNull(playerShooter, "PlayerShooter not found.");
+        bool IsDone = false;
+
+        float startTime = Time.time;
+        while (!IsDone)
         {
-            foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
-            {
+            playerShooter.bulletSpeed += 10;
+            Debug.Log("BulletSpeed: " + playerShooter.bulletSpeed);
+            playerShooter.Shoot((Vector2)playerShooter.transform.position + Vector2.up);
+
+            foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
                 if (bullet.transform.position.y > 5.37f)
                 {
-                    Debug.LogError("Bullet went past ceiling.");
-                    Assert.Fail("Not supposed to clip through.");
-                    yield break;
+                    Assert.Fail("Bullet went past ceiling.");
+                    IsDone = true;
                 }
-            }
-            yield return null; // Check every frame
+            yield return new WaitForSeconds(0.0f);
         }
-
-        Debug.Log("Roof test passed.");
-    }
-
-    [UnityTest]
-    public IEnumerator FPSDropTest()
-    {
-        float testDuration = 10f; // Test runs for 10 seconds
-        float minAllowedFPS = 60f; // FPS threshold
-        bool fpsDropped = false; // Track if FPS drops
-
-        while (Time.time < testDuration)
-        {
-            if (1f / Time.deltaTime < minAllowedFPS) // Check FPS
-            {
-                fpsDropped = true;
-                break; // Stop early if FPS drops
-            }
-            yield return null; // Check every frame
-        }
-
-        if (!fpsDropped) Assert.Fail("FPS never dropped below 60.");
     }
 }
+

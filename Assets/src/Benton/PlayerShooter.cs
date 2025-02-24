@@ -7,7 +7,7 @@ public class PlayerShooter : Shooter
     private float nextFireTime = 0f; // Time when the player can shoot next
 
     [SerializeField] private int ammo = 35; 
-
+   public int getAmmo() { return ammo; }
     void Update()
     {
 
@@ -23,7 +23,7 @@ public class PlayerShooter : Shooter
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // Call the Shoot method from the base class
             Shoot(mousePos);
-            ammo--; //Comment out for Test
+           ammo--; //Comment out for Play test
         }
     }
 
