@@ -5906,6 +5906,7 @@ MonoBehaviour:
   attackStartOffset: {x: 0, y: 0, z: 0}
   attackEndOffset: {x: 0, y: -0.15, z: 0}
   damage: 1
+  audioManager: {fileID: 1541856540}
 --- !u!1 &1093426632
 GameObject:
   m_ObjectHideFlags: 0
@@ -10338,6 +10339,7 @@ MonoBehaviour:
   bulletSpeed: 10
   bulletDamage: 10
   fireRate: 0.2
+  audioManager: {fileID: 1541856540}
   ammo: 35
 --- !u!114 &1759393499
 MonoBehaviour:

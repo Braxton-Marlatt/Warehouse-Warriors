@@ -5,7 +5,7 @@ public class PlayerShooter : Shooter
     public int bulletDamage = 1; // Damage dealt by the player's bullets
     public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second) 
     private float nextFireTime = 0f; // Time when the player can shoot next
-
+    [SerializeField]public AudioManager audioManager;
     [SerializeField] private int ammo = 35;
     public int getAmmo() { return ammo; }
     void Update()
@@ -24,6 +24,8 @@ public class PlayerShooter : Shooter
             // Call the Shoot method from the base class
             Shoot(mousePos);
             ammo--; //Comment out for Play test
+            audioManager.PlayPlayerShoot();
+
         }
     }
 
