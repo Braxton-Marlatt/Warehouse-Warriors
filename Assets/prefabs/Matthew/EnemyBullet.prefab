@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -7516489903432600964}
   - component: {fileID: 5921633653407168472}
   - component: {fileID: 30751806452876744}
-  - component: {fileID: 1316066249590872811}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -78,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1923497349
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -179,21 +178,3 @@ MonoBehaviour:
   damage: 1
   targetTag: Player
   obstacleTag: Walls
---- !u!114 &1316066249590872811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4079753271633463667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade77dc6a9fee2e4292a15dcf6f7f8e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  targetTag: Player
-  obstacleTag: Walls
-  enemyTag: Enemy
-  enemyHit: {fileID: 0}
-  playerHit: {fileID: 0}
