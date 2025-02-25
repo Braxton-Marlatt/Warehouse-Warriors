@@ -19,6 +19,8 @@ public class UpdMelee : MonoBehaviour
     private Collider2D weaponCollider;
     private SpriteRenderer spriteRenderer;
 
+    public bool bigBake = false;
+
 
     private void Awake()
     {
@@ -39,6 +41,11 @@ public class UpdMelee : MonoBehaviour
         // Trigger the attack when the right mouse button is pressed
         if (Input.GetMouseButtonDown(1) && !isAttacking)
         {
+            if (bigBake && transform.localScale == Vector3.one)
+            {
+                transform.localScale *= 3f;
+            }
+
             spriteRenderer.enabled = true;
             weaponCollider.enabled = true;
             TriggerAttack();
