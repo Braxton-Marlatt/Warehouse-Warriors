@@ -44,6 +44,10 @@ public class UpdMelee : MonoBehaviour
             if (bigBake && transform.localScale == Vector3.one)
             {
                 transform.localScale *= 3f;
+                if (weaponCollider is BoxCollider2D boxCollider)
+                {
+                    boxCollider.size *= 3f;
+                }
             }
 
             spriteRenderer.enabled = true;

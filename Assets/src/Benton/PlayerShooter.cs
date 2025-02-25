@@ -75,6 +75,11 @@ public class PlayerShooter : Shooter
             if (bigCookie)
                 {
                     bullet.transform.localScale *= 2f;
+                    CircleCollider2D collider = bullet.GetComponent<CircleCollider2D>();
+                    if (collider != null)
+                    {
+                        collider.radius *= 2f;
+                    }
                 }
             }
         }
