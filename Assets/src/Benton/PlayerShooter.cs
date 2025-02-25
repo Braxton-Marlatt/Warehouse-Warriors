@@ -10,6 +10,7 @@ public class PlayerShooter : Shooter
     public int getAmmo() { return ammo; }
     void Update()
     {
+        if (Time.timeScale == 0) return; // Prevent shooting when the game is paused // Conner added this line
 
         // Full auto: Removed fire rate restriction by commenting out NextFireTime
 

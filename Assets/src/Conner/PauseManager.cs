@@ -1,17 +1,21 @@
+using UnityEditor;
 using UnityEngine;
+using System.Collections;
+
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
 
     public GameObject pauseMenu;
-    public bool isPaused;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public static bool isPaused;
+
+
     void Start()
     {
         pauseMenu.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
       if (Input.GetKeyDown(KeyCode.Escape))
@@ -40,18 +44,28 @@ public class PauseManager : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0.0f;
         isPaused = true;
+        StartCoroutine(PreventImmediateInput());
     }
 
-    
+    private IEnumerator PreventImmediateInput()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+    }
+
 
     public void quitGame()
     {
-        Application.Quit();
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+    Application.Quit();
+#endif    
     }
 
     public void mainMenu()
     {
-        // Load the main menu scene
-        // SceneManager.LoadScene(0);
+        Time.timeScale = 1.0f; // Ensure time resumes when switching scenes
+        isPaused = false; // Reset the pause state
+        SceneManager.LoadScene(0); // Load the main menu scene
     }
 }
