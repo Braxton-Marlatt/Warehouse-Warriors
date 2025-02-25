@@ -1269,9 +1269,9 @@ MonoBehaviour:
   player: {fileID: 1759393494}
   moveSpeed: 3
   damageAmount: 1
-  currentState: 0
+  currentState: 2
   currentNode: {fileID: 3536247}
-  enemyType: 0
+  enemyType: 1
   disengageDistance: 3
   path: []
   is_spawned: 0
@@ -9524,9 +9524,9 @@ MonoBehaviour:
   player: {fileID: 1759393494}
   moveSpeed: 3
   damageAmount: 1
-  currentState: 0
+  currentState: 2
   currentNode: {fileID: 2678212}
-  enemyType: 0
+  enemyType: 1
   disengageDistance: 3
   path: []
   is_spawned: 0
@@ -11049,7 +11049,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 529609817}
-  isPaused: 0
 --- !u!114 &1775749650 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7281693974249731844, guid: cc4f0821e24389d44a7553eae758cab8, type: 3}
