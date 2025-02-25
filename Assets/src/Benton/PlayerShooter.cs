@@ -11,6 +11,7 @@ public class PlayerShooter : Shooter
 
     // For shooting types
      public bool tripleShot = false;
+     public bool bigCookie = false;
 
 
     public int getAmmo() { return ammo; }
@@ -70,6 +71,11 @@ public class PlayerShooter : Shooter
             if (bulletScript != null)
             {
                 bulletScript.damage = bulletDamage;
+
+            if (bigCookie)
+                {
+                    bullet.transform.localScale *= 2f;
+                }
             }
         }
 
