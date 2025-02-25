@@ -3,10 +3,16 @@ using UnityEngine;
 public class PlayerShooter : Shooter
 {
     public int bulletDamage = 1; // Damage dealt by the player's bullets
-    public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second) 
+    public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second)
+    
     private float nextFireTime = 0f; // Time when the player can shoot next
     [SerializeField] public AudioManager audioManager;
     [SerializeField] private int ammo = 35;
+
+    // For shooting types
+     public bool tripleShot = false;
+
+
     public int getAmmo() { return ammo; }
     void Update()
     {
@@ -22,13 +28,34 @@ public class PlayerShooter : Shooter
 
             // Get mouse position in world space
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            // Call the Shoot method from the base class
-            Shoot(mousePos);
-            ammo--; //Comment out for Play test
-            audioManager.PlayPlayerShoot();
 
+            if(tripleShot && ammo >= 3){
+               FireTripleShot(mousePos);    
+            }else{
+                // Call the Shoot method from the base class
+                Shoot(mousePos);
+                ammo--; //Comment out for Play test
+                audioManager.PlayPlayerShoot();
+            }
         }
     }
+
+       private void FireTripleShot(Vector2 targetPosition)
+    {
+        float spreadAngle = 15f; // Angle spread for the triple shot
+
+        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+        Vector2 leftDir = Quaternion.Euler(0, 0, spreadAngle) * direction;
+        Vector2 rightDir = Quaternion.Euler(0, 0, -spreadAngle) * direction;
+
+        Shoot(targetPosition); // Center shot
+        Shoot((Vector2)transform.position + leftDir * 10f); // Left shot
+        Shoot((Vector2)transform.position + rightDir * 10f); // Right shot
+
+        ammo -= 3;
+        audioManager.PlayPlayerShoot();
+    }
+
 
     public override GameObject Shoot(Vector2 targetPosition)
     {
