@@ -2,19 +2,19 @@ using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-
-// Everyone will need the next bit of code
 using UnityEngine.SceneManagement;
 using System.Runtime.CompilerServices;
 
 public class BulletAmplifier
 {
+
+// Everyone will need the next bit of code
     [OneTimeSetUp]
     public void LoadScene()
     {
         SceneManager.LoadScene("TestScene");
     }
-    // To Here ^
+// To Here ^
 
     [UnityTest]
     public IEnumerator RoofTest()

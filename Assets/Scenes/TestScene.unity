@@ -6268,6 +6268,7 @@ MonoBehaviour:
   attackEndOffset: {x: 0, y: -0.15, z: 0}
   damage: 1
   audioManager: {fileID: 1541856540}
+  bigBake: 0
 --- !u!1 &1093426632
 GameObject:
   m_ObjectHideFlags: 0
@@ -10975,6 +10976,8 @@ MonoBehaviour:
   fireRate: 0.2
   audioManager: {fileID: 1541856540}
   ammo: 35
+  tripleShot: 0
+  bigCookie: 0
 --- !u!114 &1759393499
 MonoBehaviour:
   m_ObjectHideFlags: 0
