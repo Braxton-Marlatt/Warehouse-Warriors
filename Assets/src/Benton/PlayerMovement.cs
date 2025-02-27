@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
 
+    public bool fastDash = false;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -83,6 +85,14 @@ public class PlayerMovement : MonoBehaviour
     {
         isDashing = true;
         nextDashTime = Time.time + dashCooldown;
+        if (fastDash)
+        {
+            dashSpeed = 20f;
+        }
+        else
+        {
+            dashSpeed = 12f;
+        }
         rb.linearVelocity = moveDirection * dashSpeed;
         Invoke(nameof(EndDash), 0.1f);
     }
