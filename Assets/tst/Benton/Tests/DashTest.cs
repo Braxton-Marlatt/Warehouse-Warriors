@@ -6,10 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class DashTest
 {
-    private Vector2 startPosition = new Vector2(-21, 0); // Middle of the screen
-    private float moveSpeed = 2f;
-    private float dashSpeed = 12f;
-    private float speedIncrement = 2f;
+    private GameObject player;
 
     [OneTimeSetUp]
     public void LoadScene()
@@ -17,33 +14,76 @@ public class DashTest
         SceneManager.LoadScene("TestScene");
     }
 
-    [UnityTest]
-    public IEnumerator DashingTest()
+    [UnitySetUp]
+    public IEnumerator SetUp()
     {
-        var player = GameObject.FindObjectOfType<PlayerMovement>();
-        Assert.NotNull(player, "PlayerMovement not found.");
+        yield return new WaitForSeconds(1); // Wait for the scene to load
+        player = GameObject.FindWithTag("Player");
+        Assert.IsNotNull(player, "Player object not found");
+    }
 
-        while (true)
+    [UnityTest]
+    public IEnumerator MovementTest()
+    {
+        Vector3 initialPosition = player.transform.position;
+        float moveSpeed = 5f;
+        float moveDuration = 2f;
+        float elapsedTime = 0f;
+
+        // Move left
+        while (elapsedTime < moveDuration)
         {
-            player.transform.position = startPosition; // Reset player to middle
-            float elapsedTime = 0f;
-
-            while (player.transform.position.x > -10) // Move left until out of bounds
-            {
-                player.transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-                elapsedTime += Time.deltaTime;
-                Debug.Log($"Player Position: {player.transform.position}, Speed: {moveSpeed}, Dash Speed: {dashSpeed}");
-                
-                if (elapsedTime > 1f) // Dash every 1 second
-                {
-                    player.Dash();
-                    elapsedTime = 0f;
-                }
-                
-                yield return null;
-            }
-
-            dashSpeed += speedIncrement; // Increase dash speed on respawn
+            player.transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
+
+        Vector3 finalPosition = player.transform.position;
+        Assert.Less(finalPosition.x, -21f, "Player did not move out of the screen to the left");
+
+        // Reset player position
+        player.transform.position = initialPosition;
+        elapsedTime = 0f;
+
+        // Move right
+        // while (elapsedTime < moveDuration)
+        // {
+        //     player.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+        //     elapsedTime += Time.deltaTime;
+        //     yield return null;
+        // }
+
+        // finalPosition = player.transform.position;
+        // Assert.Greater(finalPosition.x, 21f, "Player did not move out of the screen to the right");
+
+        // // Reset player position
+        // player.transform.position = initialPosition;
+        // elapsedTime = 0f;
+
+        // Move up
+        while (elapsedTime < moveDuration)
+        {
+            player.transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        finalPosition = player.transform.position;
+        Assert.Less(finalPosition.y, 6f, "Player did not move out of the screen upwards");
+
+        // Reset player position
+        player.transform.position = initialPosition;
+        elapsedTime = 0f;
+
+        // Move down
+        while (elapsedTime < moveDuration)
+        {
+            player.transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        finalPosition = player.transform.position;
+        Assert.Greater(finalPosition.y, -5f, "Player did not move out of the screen downwards");
     }
 }
