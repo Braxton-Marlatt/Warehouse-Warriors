@@ -41,7 +41,7 @@ public class PlayerShooter : Shooter
         }
     }
 
-       private void FireTripleShot(Vector2 targetPosition)
+       public void FireTripleShot(Vector2 targetPosition)
     {
         float spreadAngle = 15f; // Angle spread for the triple shot
 
