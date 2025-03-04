@@ -41,7 +41,7 @@ public class PlayerShooter : Shooter
         }
     }
 
-       private void FireTripleShot(Vector2 targetPosition)
+       public void FireTripleShot(Vector2 targetPosition)
     {
         float spreadAngle = 15f; // Angle spread for the triple shot
 
@@ -75,16 +75,9 @@ public class PlayerShooter : Shooter
             if (bigCookie)
                 {
                     bullet.transform.localScale *= 2f;
-                    CircleCollider2D collider = bullet.GetComponent<CircleCollider2D>();
-                    if (collider != null)
-                    {
-                        collider.radius *= 2f;
-                    }
                 }
             }
         }
-
-        ammo--; // Now ammo will always decrement when Shoot() is called
         return bullet;
     }
 

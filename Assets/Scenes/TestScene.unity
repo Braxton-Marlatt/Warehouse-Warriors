@@ -993,6 +993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 217925850}
   - component: {fileID: 217925851}
+  - component: {fileID: 217925852}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1028,6 +1029,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartPrefab: {fileID: 1650937825202876778, guid: 780ffeb3e38a8cb448d88848152a93db, type: 3}
+--- !u!114 &217925852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217925849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5270e6cb660f34b36a503346f20a9cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshairTexture: {fileID: 2800000, guid: 1f19cc829322044af8100af746df0949, type: 3}
 --- !u!1 &219168696
 GameObject:
   m_ObjectHideFlags: 0
@@ -10996,6 +11010,7 @@ MonoBehaviour:
   knockbackForce: 8
   knockbackDuration: 0.2
   moveDirection: {x: 0, y: 0}
+  fastDash: 0
 --- !u!114 &1759393500
 MonoBehaviour:
   m_ObjectHideFlags: 0
