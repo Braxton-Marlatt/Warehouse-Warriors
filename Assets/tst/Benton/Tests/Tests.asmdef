@@ -1,5 +1,5 @@
 {
-    "name": "VideoStressTest",
+    "name": "Tests",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",

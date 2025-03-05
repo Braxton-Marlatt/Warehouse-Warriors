@@ -3,44 +3,39 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.SceneManagement;
-using System.Runtime.CompilerServices;
 
-public class BulletAmplifier
+public class BulletBoundary
 {
-
-// Everyone will need the next bit of code
     [OneTimeSetUp]
     public void LoadScene()
     {
         SceneManager.LoadScene("TestScene");
     }
-// To Here ^
 
     [UnityTest]
-    public IEnumerator RoofTest()
+    public IEnumerator RandomDirection()
     {
-        var playerShooter = GameObject.FindObjectOfType<PlayerShooter>();
+        var playerShooter = GameObject.FindFirstObjectByType<PlayerShooter>();
         Assert.NotNull(playerShooter, "PlayerShooter not found."); // Load Player in the Scene
 
-
-        bool IsDone = false;
-
         float startTime = Time.time;
-        while (!IsDone)
+        for (int i = 0; i < 100; i++)
         {
-            playerShooter.bulletSpeed += 15;
             float fps = 1.0f / Time.deltaTime; // Calculate FPS
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
-            playerShooter.Shoot((Vector2)playerShooter.transform.position + Vector2.up);
+            // Generate a random direction
+            Vector2 randomDirection = Random.insideUnitCircle.normalized;
+            playerShooter.Shoot((Vector2)playerShooter.transform.position + randomDirection);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
-                if (bullet.transform.position.y > 5.37f)
+            {
+                if (bullet.transform.position.y > 6f || bullet.transform.position.y < -5f || bullet.transform.position.x > -11f || bullet.transform.position.x < -28f)
                 {
                     Assert.Fail("Bullet went past ceiling.");
-                    IsDone = true;
                 }
-            yield return null;
+            }
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
