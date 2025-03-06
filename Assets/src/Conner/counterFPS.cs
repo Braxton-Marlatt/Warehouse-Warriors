@@ -22,7 +22,7 @@ public class counterFPS : MonoBehaviour
     }
 
     private void OnGUI()
-    { GUI.Label(new Rect(10, 10, 300, 100), "FPS: " + (1.0f / deltaTime).ToString("F2"), style);
+    { GUI.Label(new Rect(10, 500, 50, 50), "FPS: " + (1.0f / deltaTime).ToString("F2"), style);
 
 
     }
