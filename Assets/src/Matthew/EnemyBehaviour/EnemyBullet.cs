@@ -14,7 +14,7 @@ public class EnemyBullet : MonoBehaviour
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             if (playerHealth != null){
                 Vector2 direction = ((Vector2)collision.transform.position - (Vector2)transform.position).normalized;
-                playerHealth.Hurt(damage, direction);
+                playerHealth.Hurt(damage);
             }
             Destroy(gameObject);
         }

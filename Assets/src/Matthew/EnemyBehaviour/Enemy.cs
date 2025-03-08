@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public Transform player; // Reference to the player
     public float moveSpeed = 3f;
     public int damageAmount = 1;
-    public StateMachine currentState;
+    public StateMachine currentState = StateMachine.Evade;
     public Node currentNode;
     public int enemyType = 0; // 0 = melee, 1 = ranged
     public int disengageDistance = 3; // for ranged
@@ -21,9 +21,9 @@ public class Enemy : MonoBehaviour
         Evade, //Move Randomly
         Flee //Run away
     }
-    
-    
-    private void Update(){
+
+
+    protected virtual void Update(){
         if(!is_spawned) return;
         switch (currentState){
             case StateMachine.Engage:

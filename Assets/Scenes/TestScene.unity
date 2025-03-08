@@ -1268,27 +1268,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6120952646091799354, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
   m_PrefabInstance: {fileID: 784396010}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &254123017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254123016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3ea250999bd4f529300afbc4b4adfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1759393494}
-  moveSpeed: 3
-  damageAmount: 1
-  currentState: 2
-  currentNode: {fileID: 3536247}
-  enemyType: 1
-  disengageDistance: 3
-  path: []
-  is_spawned: 0
 --- !u!50 &254123018
 Rigidbody2D:
   serializedVersion: 5
@@ -3033,7 +3012,7 @@ MonoBehaviour:
   westSpawn: {fileID: 452376569}
   enemies:
   - {fileID: 5040600233481116415}
-  - {fileID: 1499972418}
+  - {fileID: 0}
   hasComplete: 0
 --- !u!1 &597687358
 GameObject:
@@ -4449,7 +4428,7 @@ PrefabInstance:
     - target: {fileID: 2487359136613517767, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
       propertyPath: currentNode
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3536247}
     - target: {fileID: 2487359136613517767, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
       propertyPath: currentState
       value: 1
@@ -4512,9 +4491,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6120952646091799354, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 254123018}
-    - targetCorrespondingSourceObject: {fileID: 6120952646091799354, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 254123017}
   m_SourcePrefab: {fileID: 100100000, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
 --- !u!1 &790736695
 GameObject:
@@ -9366,7 +9342,7 @@ MonoBehaviour:
   westSpawn: {fileID: 528919394}
   enemies:
   - {fileID: 2012956978}
-  - {fileID: 254123017}
+  - {fileID: 0}
   hasComplete: 0
 --- !u!4 &1485572154
 Transform:
@@ -9524,27 +9500,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1499972418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499972405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3ea250999bd4f529300afbc4b4adfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1759393494}
-  moveSpeed: 3
-  damageAmount: 1
-  currentState: 2
-  currentNode: {fileID: 2678212}
-  enemyType: 1
-  disengageDistance: 3
-  path: []
-  is_spawned: 0
 --- !u!1 &1508936923
 GameObject:
   m_ObjectHideFlags: 0
@@ -13545,9 +13500,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6120952646091799354, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1499972414}
-    - targetCorrespondingSourceObject: {fileID: 6120952646091799354, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1499972418}
   m_SourcePrefab: {fileID: 100100000, guid: 6955e3c0040d2bc4f828594aebb8cfe1, type: 3}
 --- !u!1001 &5040600233481116414
 PrefabInstance:

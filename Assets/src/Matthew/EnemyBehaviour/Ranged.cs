@@ -1,15 +1,18 @@
 using UnityEngine;
 
-public class Ranged : MonoBehaviour
+public class Ranged : Enemy
 {
     public float fireRate = 3f;
-    public Transform player;
     public Transform firePoint; 
     public GameObject bulletPrefab;
     public int bulletDamage= 1;
     public float bulletSpeed = 5f;
     private float nextFireTime = 0f;
-    private void Update(){
+    //private bool isShooting = false;
+
+    protected override void Update(){
+        base.Update();
+        if (!is_spawned) return;
         if (player == null || firePoint == null || bulletPrefab == null){
             Debug.LogError("Player, Fire Point, or Bullet Prefab not assigned in the Inspector!");
             return;
@@ -28,4 +31,7 @@ public class Ranged : MonoBehaviour
             rb.linearVelocity = direction * bulletSpeed;
         }else Debug.LogWarning("Bullet prefab needs a Rigidbody2D component!");
     }
+    //public override void CreatePath(){
+    //    if (!isShooting) base.CreatePath();
+    //}
 }
