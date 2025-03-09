@@ -11,20 +11,21 @@ public class Enemy : MonoBehaviour
     public int damageAmount = 1;
     public StateMachine currentState = StateMachine.Evade;
     public Node currentNode;
-    public int enemyType = 0; // 0 = melee, 1 = ranged
+    public int enemyType = 0; // 0 = melee, 1 = ranged, 2 = turret
     public int disengageDistance = 3; // for ranged
     public List<Node> path = new List<Node>();
-    public bool is_spawned = false;
+    public bool isSpawned = false;
 
     public enum StateMachine{
         Engage, //Chase down
         Evade, //Move Randomly
-        Flee //Run away
+        Flee, //Run away
+        Freeze //Do nothing
     }
 
 
     protected virtual void Update(){
-        if(!is_spawned) return;
+        if(!isSpawned) return;
         switch (currentState){
             case StateMachine.Engage:
                 Engage();
@@ -34,6 +35,8 @@ public class Enemy : MonoBehaviour
                 break;
             case StateMachine.Evade:
                 Evade();
+                break;
+            case StateMachine.Freeze: // Do nothing
                 break;
         }
         if(enemyType == 0 && currentState != StateMachine.Engage){
@@ -45,6 +48,10 @@ public class Enemy : MonoBehaviour
         }else if(enemyType == 1 && currentState != StateMachine.Evade && Vector2.Distance(transform.position, player.position) > disengageDistance){
             currentState = StateMachine.Evade;
             path.Clear();
+        }else if (enemyType == 2 && currentState != StateMachine.Freeze){
+            currentState = StateMachine.Freeze;
+            path.Clear();
+            return;
         }
         CreatePath();
     }
@@ -82,7 +89,7 @@ public class Enemy : MonoBehaviour
         }
     }
     public void Spawn(){
-        is_spawned = true;
+        isSpawned = true;
     }
 }
 

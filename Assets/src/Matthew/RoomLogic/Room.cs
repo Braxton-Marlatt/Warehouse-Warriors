@@ -51,7 +51,13 @@ public class Room : MonoBehaviour
             e.Spawn();
         }
     }
-    public int GetEnemiesLeft() { return enemies.Count; }
+    public int GetEnemiesLeft() { //gets # of enemies left besides turrets
+        int turretCount = 0;
+        foreach(Enemy e in enemies){
+            if (e is Turret) turretCount++;
+        }
+        return enemies.Count - turretCount;
+    }
     public void HandleEnemyDeath(EnemyHealth enemyHealth, Enemy enemy){ 
         Debug.Log("Enemy Killed");
         RemoveEnemy(enemy);

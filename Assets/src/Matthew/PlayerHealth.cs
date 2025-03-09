@@ -5,7 +5,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 5; //Start health, initialized to your current health
     private int health;
-    public float invincibilityDuration = 2f; 
+    public float invincibilityDuration = 1.5f; 
     private float invincibilityTimer = 0f; //Tracks DeltaTime between getting hurt and invincibilityDuration
     private bool isInvincible = false;
     [SerializeField] public AudioManager audioManager;
@@ -34,6 +34,11 @@ public class PlayerHealth : MonoBehaviour
             audioManager.PlayPlayerHit();
         }
         UpdateHealthUI();
+    }
+
+    //interaction with a pitfall. the player gets hurt and spawns at the closest node
+    public void Fall(){
+        
     }
 
     void UpdateInvincibilityTimer(){

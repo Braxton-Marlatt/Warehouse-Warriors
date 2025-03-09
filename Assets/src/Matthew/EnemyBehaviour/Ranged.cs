@@ -12,7 +12,7 @@ public class Ranged : Enemy
 
     protected override void Update(){
         base.Update();
-        if (!is_spawned) return;
+        if (!isSpawned) return;
         if (player == null || firePoint == null || bulletPrefab == null){
             Debug.LogError("Player, Fire Point, or Bullet Prefab not assigned in the Inspector!");
             return;
