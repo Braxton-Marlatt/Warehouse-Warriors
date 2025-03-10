@@ -17,6 +17,7 @@ public class BulletAmplifier
 // To Here ^
 
     [UnityTest]
+    [System.Obsolete]
     public IEnumerator RoofTest()
     {
         var playerShooter = GameObject.FindObjectOfType<PlayerShooter>();

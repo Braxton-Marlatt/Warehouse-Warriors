@@ -16,7 +16,7 @@ public class Turret : Enemy
 
     private float nextFireTime = 0f; // Tracks when to shoot next
 
-    void Update()
+    protected override void Update()
     {
         if (target == null){
             Debug.LogWarning("Turret has no target assigned!");

@@ -22,6 +22,7 @@ public class AmmoTest2
 
 
     [UnityTest]
+    [System.Obsolete]
     public IEnumerator spareAmmo()
     {
         var playerShooter = GameObject.FindObjectOfType<PlayerShooter>();
