@@ -18,7 +18,7 @@ public class Turret : Enemy
 
     protected override void Update()
     {
-        base.Update();
+        if (!isSpawned) return;
         if (target == null){
             Debug.LogWarning("Turret has no target assigned!");
             return;

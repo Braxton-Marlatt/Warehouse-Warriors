@@ -15,17 +15,21 @@ public class Enemy : MonoBehaviour
     public int disengageDistance = 3; // for ranged
     public List<Node> path = new List<Node>();
     public bool isSpawned = false;
-
+    private SpriteRenderer spriteRenderer;
     public enum StateMachine{
         Engage, //Chase down
         Evade, //Move Randomly
         Flee, //Run away
         Freeze //Do nothing
     }
-
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     protected virtual void Update(){
         if(!isSpawned) return;
+        FacePlayer();
         switch (currentState){
             case StateMachine.Engage:
                 Engage();
@@ -93,7 +97,13 @@ public class Enemy : MonoBehaviour
     }
     public void Despawn(){
         isSpawned = false;
-        Destroy(gameObject);
+        //Destroy(gameObject);
+    }
+    protected virtual void FacePlayer(){
+        if (player == null) return;
+        if (player.position.x > transform.position.x)
+            spriteRenderer.flipX = true;
+        else spriteRenderer.flipX = false;
     }
 }
 
