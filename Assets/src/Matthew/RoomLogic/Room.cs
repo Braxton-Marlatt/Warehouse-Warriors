@@ -68,6 +68,9 @@ public class Room : MonoBehaviour
         if(GetEnemiesLeft() <= 0){
             hasComplete = true;
             Debug.Log("Room Cleared");
+            foreach(Enemy n in enemies){
+                n.Despawn();
+            }
         } 
     }
  

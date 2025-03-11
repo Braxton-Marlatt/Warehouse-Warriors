@@ -91,5 +91,9 @@ public class Enemy : MonoBehaviour
     public void Spawn(){
         isSpawned = true;
     }
+    public void Despawn(){
+        isSpawned = false;
+        Destroy(gameObject);
+    }
 }
 
