@@ -4,19 +4,24 @@ using UnityEngine.SceneManagement;
 
 public class changeScene : MonoBehaviour
 {
-
-    public void moveToScene(int sceneID)
+    public void startGame()
     {
-        SceneManager.LoadScene(sceneID);
+        SceneManager.LoadScene(1); // TestScene
     }
 
+    public void loadHelpMenu()
+    {
+        HelpMenuTracker.source = "start";
+        SceneManager.LoadScene(2); // HelpMenu
+    }
 
     public void quitGame()
     {
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else
-    Application.Quit();
+        Application.Quit();
 #endif
     }
 }
+
