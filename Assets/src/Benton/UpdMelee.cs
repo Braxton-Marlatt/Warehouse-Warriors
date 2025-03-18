@@ -10,7 +10,6 @@ public class UpdMelee : MonoBehaviour
     // The ending offset for the attack relative to the player's base position
     [SerializeField] private Vector3 attackEndOffset = new Vector3(1f, -0.5f, 0f);
     [SerializeField] private int damage = 1;
-    [SerializeField] private AudioManager audioManager;
 
     // Save the player's original local position
     private Vector3 originalLocalPosition;
@@ -42,6 +41,7 @@ public class UpdMelee : MonoBehaviour
         // Trigger the attack when the right mouse button is pressed
         if (Input.GetMouseButtonDown(1) && !isAttacking)
         {
+            AudioManager.Instance.PlayMelee();
             if (bigBake && !bigBakeEnabled)
             {
                 transform.localScale *= 1.75f;
@@ -51,7 +51,6 @@ public class UpdMelee : MonoBehaviour
             spriteRenderer.enabled = true;
             weaponCollider.enabled = true;
             TriggerAttack();
-            audioManager.PlayMeleeSound();
         }
     }
 

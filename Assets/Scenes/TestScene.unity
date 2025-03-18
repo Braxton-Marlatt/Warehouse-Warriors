@@ -2540,8 +2540,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bc3e88b1b80dd37409fbbb7f1f023571, type: 3}
-  m_Resource: {fileID: 8300000, guid: bc3e88b1b80dd37409fbbb7f1f023571, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2049901dbf845a44abf9988d95172a3c, type: 3}
+  m_Resource: {fileID: 8300000, guid: 2049901dbf845a44abf9988d95172a3c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6437,7 +6437,6 @@ MonoBehaviour:
   attackStartOffset: {x: 0, y: 0, z: 0}
   attackEndOffset: {x: 0, y: -0.15, z: 0}
   damage: 1
-  audioManager: {fileID: 1541856540}
   bigBake: 0
 --- !u!1 &1093426632
 GameObject:
@@ -10145,9 +10144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685329b6d8d691d408122b6cc8f4b903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerShoot: {fileID: 1238643923}
-  _playerHit: {fileID: 439259957}
-  _meleeSound: {fileID: 1508936925}
+  playershoot: {fileID: 1238643923}
+  playerhit: {fileID: 439259957}
+  playermelee: {fileID: 1508936925}
 --- !u!4 &1541856541
 Transform:
   m_ObjectHideFlags: 0
@@ -11428,7 +11427,6 @@ MonoBehaviour:
   bulletSpeed: 10
   bulletDamage: 10
   fireRate: 0.2
-  audioManager: {fileID: 1541856540}
   ammo: 35
   tripleShot: 0
   bigCookie: 0
@@ -11465,7 +11463,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   invincibilityDuration: 2
-  audioManager: {fileID: 1541856540}
 --- !u!114 &1759393501
 MonoBehaviour:
   m_ObjectHideFlags: 0

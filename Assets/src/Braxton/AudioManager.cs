@@ -2,23 +2,59 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    // Singleton instance
+    private static AudioManager _instance;
+
+    // Public property to access the instance
+    public static AudioManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                Debug.LogError("AudioManager instance is null. Ensure AudioManager is in the scene.");
+            }
+            return _instance;
+        }
+        private set
+        {
+            _instance = value;
+        }
+    }
 
     [Header("Sound Effects")]
-    [SerializeField] private AudioSource _playerShoot;
-    [SerializeField] private AudioSource _playerHit;
-    [SerializeField] private AudioSource _meleeSound;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private AudioSource playershoot;
+    [SerializeField] private AudioSource playerhit;
+    [SerializeField] private AudioSource playermelee;
 
-    public void PlayPlayerShoot()
+    // Ensure only one instance exists
+    private void Awake()
     {
-        _playerShoot.Play();
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
-    public void PlayMeleeSound()
+
+    // Play a sound effect
+    public void Playershoot()
     {
-        _meleeSound.Play();
+        playershoot.Play();
     }
-    public void PlayPlayerHit()
+
+    public void Playerhit()
     {
-        _playerHit.Play();
+        playerhit.Play();
     }
+
+    public void PlayMelee()
+    {
+        playermelee.Play();
+    }
+
 }

@@ -6,7 +6,6 @@ public class PlayerShooter : Shooter
     public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second)
     
     private float nextFireTime = 0f; // Time when the player can shoot next
-    [SerializeField] public AudioManager audioManager;
     [SerializeField] private int ammo = 35;
 
     // For shooting types
@@ -24,9 +23,19 @@ public class PlayerShooter : Shooter
         // Handle input for shooting with a fixed fire rate
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime && ammo > 0) // Left mouse button held
         {
+            if (AudioManager.Instance != null)
+            {
+                Debug.Log("Playing shoot sound");
+                AudioManager.Instance.Playershoot();
+            }
+            else
+            {
+                Debug.LogError("AudioManager instance is null!");
+            }
             //comment out for test
             nextFireTime = Time.time + fireRate; // Set the next allowed fire time // 
-
+            // Play the shoot sound effect
+            AudioManager.Instance.Playershoot();
             // Get mouse position in world space
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -36,7 +45,6 @@ public class PlayerShooter : Shooter
                 // Call the Shoot method from the base class
                 Shoot(mousePos);
                 ammo--; //Comment out for Play test
-                audioManager.PlayPlayerShoot();
             }
         }
     }
@@ -54,7 +62,6 @@ public class PlayerShooter : Shooter
         Shoot((Vector2)transform.position + rightDir * 10f); // Right shot
 
         ammo -= 3;
-        audioManager.PlayPlayerShoot();
     }
 
 
