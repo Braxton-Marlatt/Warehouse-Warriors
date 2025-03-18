@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: 518b0ff4e51463a409c9e864280f69e2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - heartPrefab: {fileID: 1650937825202876778, guid: 0288700460164ec4eaaa4f5535f74ca5, type: 3}
+  - ammoPrefab: {fileID: 1650937825202876778, guid: 0288700460164ec4eaaa4f5535f74ca5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

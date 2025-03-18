@@ -18,7 +18,6 @@ public class Room : MonoBehaviour
     public bool isOccupied = false; // The player is inside of this room
     public bool isDiscoverable = false; // This room is adjacent to a completed room !! no implementation yet
 
-
     public void EnterRoom(string direction){
         if(!hasComplete) return;
         if(direction.Equals("n") && northRoom != null){
@@ -47,6 +46,9 @@ public class Room : MonoBehaviour
         isOccupied = true;
         if(hasComplete) return;
         foreach(Enemy e in enemies){
+            Vector2 pos = e.transform.position;
+            e.currentNode = AStarManager.instance.InitializeClosestNode(pos);
+            e.player = player;
             Debug.Log("enemy spawned");
             e.Spawn();
         }

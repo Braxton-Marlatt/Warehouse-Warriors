@@ -74,7 +74,21 @@ public class AStarManager : MonoBehaviour{
 
         return null;
     }
+    public Node InitializeClosestNode(Vector2 pos)
+    {
+        Node closestNode = null;
+        float minDistance = float.MaxValue;
 
+        foreach (Node node in AllNodes()){
+            float currentDistance = Vector2.Distance(pos, node.transform.position);
+            if (currentDistance < minDistance){
+                minDistance = currentDistance;
+                closestNode = node;
+            }
+        }
+
+        return closestNode;
+    }
     //Finds the closest connected node to a point. This instructions is repeated for adaptability
     public Node FindNearestNode(Node currentNode, Vector2 pos){
         Node foundNode = null;
