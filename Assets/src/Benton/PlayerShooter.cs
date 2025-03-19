@@ -80,6 +80,7 @@ public class PlayerShooter : Shooter
             if (bigCookie)
                 {
                     bullet.transform.localScale *= 2f;
+                    bulletScript.damage += 1;
                 }
             }
         }
