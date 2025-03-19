@@ -494,7 +494,6 @@ MonoBehaviour:
   attackStartOffset: {x: 0, y: 0, z: 0}
   attackEndOffset: {x: 0, y: -0.15, z: 0}
   damage: 1
-  audioManager: {fileID: 950448170}
   bigBake: 0
 --- !u!61 &261792906
 BoxCollider2D:
@@ -2024,7 +2023,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2026110227}
   cameraReference: {fileID: 481025194}
-  aStarManager: {fileID: 0}
   spawnPrefab: {fileID: 5342122984518619755, guid: 3222670e4bd3bc345aeff842d45c3034, type: 3}
   bossRoomPrefab: {fileID: 6862938851634696689, guid: d6b869beb310447fe91bd858f8de764a, type: 3}
   roomPrefabs:
@@ -2135,9 +2133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685329b6d8d691d408122b6cc8f4b903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerShoot: {fileID: 2061177682}
-  _playerHit: {fileID: 1697673209}
-  _meleeSound: {fileID: 2080531145}
+  playershoot: {fileID: 2061177682}
+  playerhit: {fileID: 1697673209}
+  playermelee: {fileID: 2080531145}
 --- !u!4 &950448171
 Transform:
   m_ObjectHideFlags: 0
@@ -2959,6 +2957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartPrefab: {fileID: 1650937825202876778, guid: 780ffeb3e38a8cb448d88848152a93db, type: 3}
+  ammoPrefab: {fileID: 0}
 --- !u!4 &1924669064
 Transform:
   m_ObjectHideFlags: 0
@@ -3070,7 +3069,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   invincibilityDuration: 2
-  audioManager: {fileID: 950448170}
 --- !u!114 &2026110231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3088,7 +3086,6 @@ MonoBehaviour:
   bulletSpeed: 10
   bulletDamage: 10
   fireRate: 0.2
-  audioManager: {fileID: 950448170}
   ammo: 35
   tripleShot: 0
   bigCookie: 0

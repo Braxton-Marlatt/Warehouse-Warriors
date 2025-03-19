@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource playershoot;
     [SerializeField] private AudioSource playerhit;
     [SerializeField] private AudioSource playermelee;
+    [SerializeField] private AudioSource music;
 
     // Ensure only one instance exists
     private void Awake()
@@ -37,24 +38,128 @@ public class AudioManager : MonoBehaviour
         else
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 
     // Play a sound effect
     public void Playershoot()
     {
-        playershoot.Play();
+        if (playershoot != null)
+        {
+            playershoot.Play();
+        }
+        else
+        {
+            Debug.LogError("Player shoot AudioSource is null!");
+        }
     }
-
+    
     public void Playerhit()
     {
-        playerhit.Play();
+        if (playershoot != null)
+        {
+            playerhit.Play();
+        }
+        else
+        {
+            Debug.LogError("Player shoot AudioSource is null!");
+        }
     }
-
-    public void PlayMelee()
+    public void Playermelee()
     {
-        playermelee.Play();
+        if (playershoot != null)
+        {
+            playermelee.Play();
+        }
+        else
+        {
+            Debug.LogError("Player shoot AudioSource is null!");
+        }
     }
 
+    // Play music
+    public void PlayMusic()
+    {
+        if (music != null)
+        {
+            music.Play();
+        }
+        else
+        {
+            Debug.LogError("Music AudioSource is null!");
+        }
+    }
+
+    // Set volume for all audio sources
+    public void SetVolume(float volume)
+    {
+        if (playershoot != null)
+        {
+            playershoot.volume = volume;
+        }
+        if (playerhit != null)
+        {
+            playerhit.volume = volume;
+        }
+        if (playermelee != null)
+        {
+            playermelee.volume = volume;
+        }
+    }
+    //Set pitch for all audio sources
+    public void SetPitch(float pitch)
+    {
+        if (playershoot != null)
+        {
+            playershoot.pitch = pitch;
+        }
+        if (playerhit != null)
+        {
+            playerhit.pitch = pitch;
+        }
+        if (playermelee != null)
+        {
+            playermelee.pitch = pitch;
+        }
+    }
+
+    public float GetPitch(){
+        if (playershoot != null)
+        {
+            return playershoot.pitch;
+        }
+        else
+        {
+            Debug.LogError("Player shoot AudioSource is null!");
+            return 0f;
+        }
+    }    
+    // Get the volume of the playershoot AudioSource, used for testing
+    public float GetVolume()
+    {
+        if (playershoot != null)
+        {
+            return playershoot.volume;
+        }
+        else
+        {
+            Debug.LogError("Player shoot AudioSource is null!");
+            return 0f;
+        }
+    }
+    public AudioSource GetPlayerHitAudioSource(){
+        return playerhit;
+    }
+
+    public AudioSource GetPlayerMeleeAudioSource(){
+        return playermelee;
+    }
+
+    public AudioSource GetPlayerShootAudioSource(){
+        return playershoot;
+    }
+
+    public AudioSource GetMusicAudioSource(){
+        return music;
+    }
 }
