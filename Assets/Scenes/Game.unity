@@ -2136,6 +2136,7 @@ MonoBehaviour:
   playershoot: {fileID: 2061177682}
   playerhit: {fileID: 1697673209}
   playermelee: {fileID: 2080531145}
+  music: {fileID: 0}
 --- !u!4 &950448171
 Transform:
   m_ObjectHideFlags: 0
