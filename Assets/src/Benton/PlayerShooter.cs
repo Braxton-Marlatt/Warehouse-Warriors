@@ -12,8 +12,6 @@ public class PlayerShooter : Shooter
      public bool tripleShot = false;
      public bool bigCookie = false;
 
-
-    public int getAmmo() { return ammo; }
     void Update()
     {
         if (Time.timeScale == 0) return; // Prevent shooting when the game is paused // Conner added this line
@@ -88,4 +86,9 @@ public class PlayerShooter : Shooter
         return bullet;
     }
 
+    public int getAmmo() { return ammo; }
+
+    public void AddAmmo(){
+        ammo += 10;
+    }
 }
