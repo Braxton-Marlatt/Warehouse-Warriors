@@ -61,5 +61,8 @@ public class MusicManager : MonoBehaviour
             WeBringTheBoom.Stop();
         }
     }
+    public void SetVolume(float Volume){
+        WeBringTheBoom.volume = Volume;
+    }
 
 }
