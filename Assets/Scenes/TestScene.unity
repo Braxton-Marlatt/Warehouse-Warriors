@@ -820,7 +820,11 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &194977073
+=======
+--- !u!1 &211322453
+>>>>>>> Stashed changes
 =======
 --- !u!1 &211322453
 >>>>>>> Stashed changes
@@ -834,6 +838,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
   - component: {fileID: 194977074}
@@ -852,6 +857,11 @@ GameObject:
   m_Layer: 0
   m_Name: Projectile Noises
 >>>>>>> Stashed changes
+=======
+  - component: {fileID: 211322454}
+  m_Layer: 0
+  m_Name: Projectile Noises
+>>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -859,8 +869,13 @@ GameObject:
   m_IsActive: 1
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!224 &194977074
 RectTransform:
+=======
+--- !u!4 &211322454
+Transform:
+>>>>>>> Stashed changes
 =======
 --- !u!4 &211322454
 Transform:
@@ -875,7 +890,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 194977073}
+=======
+  m_GameObject: {fileID: 211322453}
+  serializedVersion: 2
+>>>>>>> Stashed changes
 =======
   m_GameObject: {fileID: 211322453}
   serializedVersion: 2
@@ -889,6 +909,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
   - {fileID: 1256979276}
@@ -994,6 +1015,8 @@ CanvasRenderer:
   m_GameObject: {fileID: 194977073}
   m_CullTransparentMesh: 1
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   - {fileID: 1238643924}
@@ -12152,7 +12175,11 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 875c4ea5da1e54c96a840a71365225b9, type: 3}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &3061629835104799555
+=======
+--- !u!1001 &3550534741839337413
+>>>>>>> Stashed changes
 =======
 --- !u!1001 &3550534741839337413
 >>>>>>> Stashed changes
@@ -12164,6 +12191,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     m_TransformParent: {fileID: 793060236}
@@ -12213,6 +12241,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     m_TransformParent: {fileID: 0}
@@ -12318,6 +12348,9 @@ PrefabInstance:
       value: Canvas_Pause_Menu
       objectReference: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -12327,7 +12360,11 @@ PrefabInstance:
     m_AddedComponents: []
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_SourcePrefab: {fileID: 100100000, guid: ffcd39629802ca1459231a56a1d4b8d9, type: 3}
+=======
+  m_SourcePrefab: {fileID: 100100000, guid: 6c8fa22197b75ef4491bc94691e1d15e, type: 3}
+>>>>>>> Stashed changes
 =======
   m_SourcePrefab: {fileID: 100100000, guid: 6c8fa22197b75ef4491bc94691e1d15e, type: 3}
 >>>>>>> Stashed changes
