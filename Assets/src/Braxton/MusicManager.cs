@@ -1,0 +1,65 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MusicManager : MonoBehaviour
+{
+    // Singleton instance
+    private static MusicManager _instance;
+
+    // Public property to access the instance
+    public static MusicManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                Debug.LogError("AudioManager instance is null. Ensure AudioManager is in the scene.");
+            }
+            return _instance;
+        }
+        private set
+        {
+            _instance = value;
+        }
+    }
+
+    [Header("Sound Effects")]
+    [SerializeField] private AudioSource WeBringTheBoom;
+
+    // Ensure only one instance exists
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+        MainMenu();
+    }
+
+    // Play a sound effect
+    public void PlayWeBringTheBoom()
+    {
+        if (WeBringTheBoom != null)
+        {
+            WeBringTheBoom.Play();
+        }
+        else
+        {
+            Debug.LogError("WeBringtheBoom AudioSource is null!");
+        }
+    }
+
+    public void MainMenu(){
+        if(SceneManager.GetActiveScene().name == "Start_Menu"){
+            PlayWeBringTheBoom();
+        }
+        else{
+            WeBringTheBoom.Stop();
+        }
+    }
+
+}

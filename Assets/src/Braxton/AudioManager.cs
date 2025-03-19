@@ -26,7 +26,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource playershoot;
     [SerializeField] private AudioSource playerhit;
     [SerializeField] private AudioSource playermelee;
-    [SerializeField] private AudioSource music;
 
     // Ensure only one instance exists
     private void Awake()
@@ -77,18 +76,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // Play music
-    public void PlayMusic()
-    {
-        if (music != null)
-        {
-            music.Play();
-        }
-        else
-        {
-            Debug.LogError("Music AudioSource is null!");
-        }
-    }
 
     // Set volume for all audio sources
     public void SetVolume(float volume)
@@ -159,7 +146,4 @@ public class AudioManager : MonoBehaviour
         return playershoot;
     }
 
-    public AudioSource GetMusicAudioSource(){
-        return music;
-    }
 }
