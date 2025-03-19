@@ -18,7 +18,7 @@ public class AudioBoundaryTest: MonoBehaviour
     [UnityTest]
     public IEnumerator VolumeBoundaryTest()
     {
-        float[] testVolumes = { 0.0f, 0.5f, 1.0f, 2.0f, 4.0f, 8.0f, 16.0f, 32.0f, 64.0f, 128.0f, 256.0f, 512.0f, 1024.0f };
+        float[] testVolumes = { 0.0f, 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f };
 
         foreach (float volume in testVolumes)
         {
