@@ -33,4 +33,12 @@ public class HeartScript : MonoBehaviour
         }
 
 }
+
+public void UpdateHearts()
+{
+    Update();
 }
+
+
+}
+
