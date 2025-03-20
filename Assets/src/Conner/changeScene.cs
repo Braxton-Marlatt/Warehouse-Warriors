@@ -6,7 +6,7 @@ public class changeScene : MonoBehaviour
 {
     public void startGame()
     {
-        SceneManager.LoadScene(1); // TestScene
+        SceneManager.LoadScene(1); // Gamescene
     }
 
     public void loadHelpMenu()
