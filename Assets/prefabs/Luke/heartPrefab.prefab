@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 7648086647728928664}
   - component: {fileID: 3856793675996893393}
   - component: {fileID: 8181566116377899933}
-  - component: {fileID: -4279800397208734921}
   - component: {fileID: -654766740295683208}
+  - component: {fileID: 1957509799152436256}
   m_Layer: 0
   m_Name: heartPrefab
-  m_TagString: Heart
+  m_TagString: Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,19 +136,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
---- !u!114 &-4279800397208734921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650937825202876778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d3a4d06d48dc3242a10715e4c042d27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healAmount: 1
 --- !u!50 &-654766740295683208
 Rigidbody2D:
   serializedVersion: 5
@@ -176,3 +163,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1957509799152436256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650937825202876778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf187ad27f3f9d48ba49beab23ee563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoAmount: 10

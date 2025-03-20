@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4279800397208734921}
   - component: {fileID: -654766740295683208}
   m_Layer: 0
-  m_Name: ammoPrefab
+  m_Name: heartPrefabOG
   m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: -1678806369
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2853566114444752598, guid: b4337bc1586ff41498dbba0209d73da7, type: 3}
+  m_Sprite: {fileID: -6464448793567062433, guid: 2f622a2ae20408047a7bcdb8897a2188, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,7 +128,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.4, y: 7.47}
+    oldSize: {x: 0.23, y: 0.2}
     newSize: {x: 0.23, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
