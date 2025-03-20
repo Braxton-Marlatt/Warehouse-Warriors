@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Heart
   - EnemyBullet
+  - Ammo
   layers:
   - Default
   - TransparentFX

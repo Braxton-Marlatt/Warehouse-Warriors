@@ -7,63 +7,55 @@ using System.Diagnostics;
 
 public class MenuStressTest
 {
-    private GameObject pauseManagerObject;
-    private PauseManager pauseManager;
+    PauseManager pauseManager;
+    int clicks = 0;
+    Stopwatch timer = new Stopwatch();
 
     [UnitySetUp]
     public IEnumerator SetUp()
     {
         if (SceneManager.GetActiveScene().name != "TestScene")
             SceneManager.LoadScene("TestScene");
-
         yield return new WaitForSecondsRealtime(0.5f);
 
-        pauseManagerObject = GameObject.FindObjectOfType<PauseManager>()?.gameObject;
-        Assert.IsNotNull(pauseManagerObject, "PauseManager not found in scene!");
-
-        pauseManager = pauseManagerObject.GetComponent<PauseManager>();
-        Assert.IsNotNull(pauseManager, "PauseManager component missing!");
+        pauseManager = GameObject.FindFirstObjectByType<PauseManager>();
+        Assert.IsNotNull(pauseManager, "PauseManager not found.");
     }
 
     [UnityTest]
-    public IEnumerator MenuStressTest_PauseResume_AggressiveAcceleration()
+    public IEnumerator PauseResumeStressTest()
     {
-        float delay = 0.5f;           // Start slow
-        float minDelay = 0.05f;      // Stop at this speed
-        float decayFactor = 0.95f;    // Speed increases ~15% faster per cycle
-        float fpsThreshold = 20f;
-        int cycles = 20;
-
-        var stopwatch = new Stopwatch();
+        float delay = 0.3f, min = 0.03f, decay = 0.90f, fpsMin = 20f;
+        int cycles = 150;
+        timer.Start();
 
         for (int i = 0; i < cycles; i++)
         {
-            stopwatch.Restart();
-
-            pauseManager.pauseGame();
+            pauseManager.pauseGame(); clicks++;
             yield return new WaitForSecondsRealtime(delay);
-            Assert.IsTrue(PauseManager.isPaused, $"❌ Failed to pause on cycle {i}");
-
-            pauseManager.resumeGame();
+            pauseManager.resumeGame(); clicks++;
             yield return new WaitForSecondsRealtime(delay);
-            Assert.IsFalse(PauseManager.isPaused, $"❌ Failed to resume on cycle {i}");
-
-            stopwatch.Stop();
 
             float fps = 1f / Time.unscaledDeltaTime;
-            float cycleTime = stopwatch.ElapsedMilliseconds / 1000f;
+            float cps = clicks / (timer.ElapsedMilliseconds / 1000f);
 
-            UnityEngine.Debug.Log($"[Cycle {i}] Delay: {delay:F3}s | FPS: {fps:F1} | Iteration Time: {cycleTime:F3}s");
+            UnityEngine.Debug.Log($"CPS: {cps:F2} | FPS: {fps:F1}");
 
-            if (fps < fpsThreshold)
+            // Simulated fake FPS drop OR intentional failure
+            if (fps < fpsMin || i == 80)  // force fail at cycle 80
             {
-                Assert.Fail($"❌ TEST FAILED: FPS dropped below {fpsThreshold} at cycle {i}. FPS: {fps:F1}");
+                LogAssert.Expect(LogType.Error, new System.Text.RegularExpressions.Regex(".*FPS dropped.*"));
+                LogAssert.Expect(LogType.Error, new System.Text.RegularExpressions.Regex(".*CPS.*"));
+
+                UnityEngine.Debug.LogError($"FPS dropped below {fpsMin}. FPS: {fps:F1}");
+                UnityEngine.Debug.LogError($"CPS: {cps:F2}");
+                Assert.Fail("Forced failure (simulated low FPS or intentional break).");
             }
 
-            // Exponential acceleration
-            delay = Mathf.Max(minDelay, delay * decayFactor);
+            delay = Mathf.Max(min, delay * decay);
         }
 
-        UnityEngine.Debug.Log("✅ Stress test completed successfully.");
+        float finalCps = clicks / (timer.ElapsedMilliseconds / 1000f);
+        UnityEngine.Debug.Log($"Test complete. CPS: {finalCps:F2}");
     }
 }

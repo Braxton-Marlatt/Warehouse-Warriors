@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     public GameObject pauseMenu;
-
     public static bool isPaused;
 
     void Start()
@@ -22,19 +21,14 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
-            {
                 resumeGame();
-            }
             else
-            {
                 pauseGame();
-            }
         }
     }
 
@@ -60,11 +54,17 @@ public class PauseManager : MonoBehaviour
 
     public void loadHelpFromPause()
     {
-        HelpMenuTracker.source = "pause"; // Track where we're coming from
+        HelpMenuTracker.source = "pause";
         Time.timeScale = 1.0f;
         isPaused = false;
-        pauseMenu.SetActive(false);
-        SceneManager.LoadScene(2); // HelpMenu scene index
+        SceneManager.LoadScene(2); // Load Help scene directly without hiding pauseMenu first
+    }
+
+    public void mainMenu()
+    {
+        Time.timeScale = 1.0f;
+        isPaused = false;
+        SceneManager.LoadScene(0);
     }
 
     public void quitGame()
@@ -73,13 +73,6 @@ public class PauseManager : MonoBehaviour
         EditorApplication.ExitPlaymode();
 #else
         Application.Quit();
-#endif    
-    }
-
-    public void mainMenu()
-    {
-        Time.timeScale = 1.0f;
-        isPaused = false;
-        SceneManager.LoadScene(0); // Start Menu scene
+#endif
     }
 }
