@@ -20,8 +20,8 @@ public class PauseBoundaryTest
 
         yield return null;
 
-        playerShooter = GameObject.FindObjectOfType<PlayerShooter>();
-        pauseManager = GameObject.FindObjectOfType<PauseManager>();
+        playerShooter = GameObject.FindFirstObjectByType<PlayerShooter>();
+        pauseManager = GameObject.FindFirstObjectByType<PauseManager>();
     }
 
     [UnityTest]
