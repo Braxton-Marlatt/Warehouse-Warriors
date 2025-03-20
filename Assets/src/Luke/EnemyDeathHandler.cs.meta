@@ -4,8 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - heartPrefab: {fileID: 788221117799952726, guid: fba8c0b8ccbeb1d4e835efde911e2219, type: 3}
-  - ammoPrefab: {instanceID: 0}
+  - heartPrefab2: {fileID: 788221117799952726, guid: fba8c0b8ccbeb1d4e835efde911e2219, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

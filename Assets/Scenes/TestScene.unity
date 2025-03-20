@@ -996,8 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518b0ff4e51463a409c9e864280f69e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartPrefab: {fileID: 1650937825202876778, guid: 780ffeb3e38a8cb448d88848152a93db, type: 3}
-  ammoPrefab: {fileID: 0}
+  heartPrefab2: {fileID: 0}
 --- !u!114 &217925852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13649,7 +13648,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 788221117799952726, guid: fba8c0b8ccbeb1d4e835efde911e2219, type: 3}
       propertyPath: m_Name
-      value: heartPrefab
+      value: heartPrefab2
       objectReference: {fileID: 0}
     - target: {fileID: 3049541442446029221, guid: fba8c0b8ccbeb1d4e835efde911e2219, type: 3}
       propertyPath: m_LocalPosition.x
