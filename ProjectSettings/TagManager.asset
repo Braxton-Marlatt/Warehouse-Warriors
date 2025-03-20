@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Walls
   - Bullet
+  - Heart
+  - Ammo
   layers:
   - Default
   - TransparentFX
