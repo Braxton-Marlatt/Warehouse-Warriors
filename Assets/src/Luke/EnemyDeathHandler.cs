@@ -4,6 +4,7 @@ public class EnemyDeathHandler : MonoBehaviour
 {
     // Reference to the heartPrefab2
     public GameObject heartPrefab2;
+    public GameObject ammoPrefab;
 
     private void OnEnable()
     {
@@ -17,14 +18,24 @@ public class EnemyDeathHandler : MonoBehaviour
         EnemyHealth.OnEnemyDeath -= HandleEnemyDeath;
     }
 
-    // Method to handle enemy death
+
     private void HandleEnemyDeath(EnemyHealth enemyHealth, Enemy enemy)
     {
         // Check if the heartPrefab2 is assigned
-        if (heartPrefab2 != null)
+        float randomChance = Random.value;  // This will give a float between 0 and 1
+
+        // Spawn ammoPrefab half the time, heartPrefab2 the other half
+        if (randomChance < 0.5f)
         {
-            // Spawn the heartPrefab2 at the enemy's position
+            // Spawn ammoPrefab
+            Instantiate(ammoPrefab, enemy.transform.position, Quaternion.identity);
+            Debug.Log("Spawned Ammo");
+        }
+        else if (randomChance > 0.5f)
+        {
+            // Spawn heartPrefab2
             Instantiate(heartPrefab2, enemy.transform.position, Quaternion.identity);
+            Debug.Log("Spawned Heart");
         }
         else
         {

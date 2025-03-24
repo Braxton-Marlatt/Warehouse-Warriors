@@ -22,7 +22,6 @@ public class EnemyHealth : MonoBehaviour
             Die();
         }else StartCoroutine(FlashRed());
         Debug.Log("HIT!");
-        EnemyHealth.OnEnemyDeath?.Invoke(this, GetComponent<Enemy>());
     }
     public int GetHealth(){
         return health;

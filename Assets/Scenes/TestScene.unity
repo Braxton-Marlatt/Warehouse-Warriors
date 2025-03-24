@@ -996,7 +996,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518b0ff4e51463a409c9e864280f69e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartPrefab2: {fileID: 0}
+  heartPrefab2: {fileID: 788221117799952726, guid: fba8c0b8ccbeb1d4e835efde911e2219, type: 3}
+  ammoPrefab: {fileID: 0}
 --- !u!114 &217925852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2891,7 +2892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -11.999878}
+  m_AnchoredPosition: {x: 0, y: -12.000061}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &529609819
