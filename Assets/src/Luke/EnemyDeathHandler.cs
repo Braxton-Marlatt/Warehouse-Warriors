@@ -1,45 +1,43 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemyDeathHandler : MonoBehaviour
 {
-    // Reference to the heartPrefab2
-    public GameObject heartPrefab2;
-    public GameObject ammoPrefab;
-
-    private void OnEnable()
+    [System.Serializable]
+    public class LootDrop
     {
-        // Subscribe to the enemy death event
-        EnemyHealth.OnEnemyDeath += HandleEnemyDeath;
+        public GameObject pickupPrefab;
+        [Range(0, 1)] public float dropProbability;
     }
 
-    private void OnDisable()
-    {
-        // Unsubscribe from the enemy death event to prevent memory leaks
-        EnemyHealth.OnEnemyDeath -= HandleEnemyDeath;
-    }
+    public List<LootDrop> lootDrops = new List<LootDrop>();
 
+    private void OnEnable() => EnemyHealth.OnEnemyDeath += HandleEnemyDeath;
+    private void OnDisable() => EnemyHealth.OnEnemyDeath -= HandleEnemyDeath;
 
     private void HandleEnemyDeath(EnemyHealth enemyHealth, Enemy enemy)
     {
-        // Check if the heartPrefab2 is assigned
-        float randomChance = Random.value;  // This will give a float between 0 and 1
+        float totalWeight = 0f;
+        foreach (var loot in lootDrops)
+        {
+            totalWeight += loot.dropProbability;
+        }
 
-        // Spawn ammoPrefab half the time, heartPrefab2 the other half
-        if (randomChance < 0.5f)
+        float randomValue = Random.Range(0f, totalWeight);
+        float cumulative = 0f;
+
+        foreach (var loot in lootDrops)
         {
-            // Spawn ammoPrefab
-            Instantiate(ammoPrefab, enemy.transform.position, Quaternion.identity);
-            Debug.Log("Spawned Ammo");
-        }
-        else if (randomChance > 0.5f)
-        {
-            // Spawn heartPrefab2
-            Instantiate(heartPrefab2, enemy.transform.position, Quaternion.identity);
-            Debug.Log("Spawned Heart");
-        }
-        else
-        {
-            Debug.LogWarning("heartPrefab2 is not assigned in the EnemyDeathHandler script.");
+            cumulative += loot.dropProbability;
+            if (randomValue <= cumulative)
+            {
+                if (loot.pickupPrefab != null)
+                {
+                    Instantiate(loot.pickupPrefab, enemy.transform.position, Quaternion.identity);
+                    Debug.Log($"Dropped {loot.pickupPrefab.name}");
+                }
+                return;
+            }
         }
     }
 }

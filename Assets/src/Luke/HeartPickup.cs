@@ -1,25 +1,16 @@
 using UnityEngine;
 
-public class HeartPickup : MonoBehaviour
+public class HeartPickup : BasePickup
 {
     public int healAmount = 1;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected override void ApplyEffect(GameObject player)
     {
-        if (other.CompareTag("Player"))
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
         {
-            Debug.Log("Heart picked up by player!");
-
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-
-            if (playerHealth != null)
-            { 
-                playerHealth.Heal();
-
-                Debug.Log("Player healed by " + healAmount + " HP!");
-            }
-            Destroy(gameObject);
-
+            playerHealth.Heal();
+            Debug.Log($"Player healed by {healAmount} HP!");
         }
     }
 }
