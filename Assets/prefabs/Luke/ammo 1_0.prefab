@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4060466770794922093}
   - component: {fileID: 3917301053329704942}
   - component: {fileID: 6106766088407295157}
-  - component: {fileID: 6848982593639141657}
+  - component: {fileID: -7969422200791037298}
   m_Layer: 0
   m_Name: ammo 1_0
   m_TagString: Ammo
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.52, y: 2.61}
   m_EdgeRadius: 0
---- !u!114 &6848982593639141657
+--- !u!114 &-7969422200791037298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1764613264757857428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf187ad27f3f9d48ba49beab23ee563, type: 3}
+  m_Script: {fileID: 11500000, guid: 01f57a92cc0306d4ba08b8ac844c5472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoAmount: 10
+  pickupEffect: {fileID: 11400000, guid: 7c4000b03f848d847b3d79edd14911f9, type: 2}

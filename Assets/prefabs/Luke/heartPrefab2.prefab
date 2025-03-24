@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3049541442446029221}
   - component: {fileID: 7799294417218700259}
-  - component: {fileID: 1064288699595917898}
   - component: {fileID: 998775264864502606}
+  - component: {fileID: -1211135670327184543}
   m_Layer: 0
   m_Name: heartPrefab2
   m_TagString: Heart
@@ -89,19 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1064288699595917898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788221117799952726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d3a4d06d48dc3242a10715e4c042d27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healAmount: 1
 --- !u!61 &998775264864502606
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -148,3 +135,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 8, y: 7}
   m_EdgeRadius: 0
+--- !u!114 &-1211135670327184543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788221117799952726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b01caa4688a6ac4288b514f056eab79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupEffect: {fileID: 11400000, guid: bd72a080ceb544a4d8caa5f5de0d4653, type: 2}

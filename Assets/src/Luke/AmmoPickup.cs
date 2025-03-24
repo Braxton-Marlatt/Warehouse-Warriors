@@ -1,20 +1,15 @@
 using UnityEngine;
 
-public class AmmoPickup : BasePickup
+public class AmmoPickup : MonoBehaviour
 {
-    public int ammoAmount = 10;
+    [SerializeField] private AmmoEffect pickupEffect; // Assign via Inspector
 
-    protected override void ApplyEffect(GameObject player)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerShooter playerShoot = player.GetComponent<PlayerShooter>();
-        if (playerShoot != null)
+        if (other.CompareTag("Player"))
         {
-            playerShoot.AddAmmo();
-            Debug.Log("Ammo refilled!");
-        }
-        else
-        {
-            Debug.LogError("PlayerShoot component not found!");
+            pickupEffect.ApplyEffect(other.gameObject);
+            Destroy(gameObject);
         }
     }
 }

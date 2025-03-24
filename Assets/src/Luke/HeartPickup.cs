@@ -1,16 +1,15 @@
 using UnityEngine;
 
-public class HeartPickup : BasePickup
+public class HeartPickup : MonoBehaviour
 {
-    public int healAmount = 1;
+    [SerializeField] private HealthEffect pickupEffect; // Assign via Inspector
 
-    protected override void ApplyEffect(GameObject player)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
+        if (other.CompareTag("Player"))
         {
-            playerHealth.Heal();
-            Debug.Log($"Player healed by {healAmount} HP!");
+            pickupEffect.ApplyEffect(other.gameObject);
+            Destroy(gameObject);
         }
     }
 }

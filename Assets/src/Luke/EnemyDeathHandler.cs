@@ -6,22 +6,19 @@ public class EnemyDeathHandler : MonoBehaviour
     [System.Serializable]
     public class LootDrop
     {
-        public GameObject pickupPrefab;
+        public GameObject pickupPrefab; // Assign HeartPickup/AmmoPickup prefabs
         [Range(0, 1)] public float dropProbability;
     }
 
-    public List<LootDrop> lootDrops = new List<LootDrop>();
+    [SerializeField] private List<LootDrop> lootDrops = new List<LootDrop>();
 
     private void OnEnable() => EnemyHealth.OnEnemyDeath += HandleEnemyDeath;
     private void OnDisable() => EnemyHealth.OnEnemyDeath -= HandleEnemyDeath;
 
     private void HandleEnemyDeath(EnemyHealth enemyHealth, Enemy enemy)
     {
-        float totalWeight = 0f;
-        foreach (var loot in lootDrops)
-        {
-            totalWeight += loot.dropProbability;
-        }
+        float totalWeight = 0;
+        foreach (var loot in lootDrops) totalWeight += loot.dropProbability;
 
         float randomValue = Random.Range(0f, totalWeight);
         float cumulative = 0f;
@@ -31,11 +28,7 @@ public class EnemyDeathHandler : MonoBehaviour
             cumulative += loot.dropProbability;
             if (randomValue <= cumulative)
             {
-                if (loot.pickupPrefab != null)
-                {
-                    Instantiate(loot.pickupPrefab, enemy.transform.position, Quaternion.identity);
-                    Debug.Log($"Dropped {loot.pickupPrefab.name}");
-                }
+                Instantiate(loot.pickupPrefab, enemy.transform.position, Quaternion.identity);
                 return;
             }
         }
