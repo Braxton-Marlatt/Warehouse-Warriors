@@ -17,6 +17,11 @@ public class CoinManager : MonoBehaviour
         
     }
 
+    public int GetCoinCount()
+    {
+        return coinCount;
+    }
+
     public void AddCoin()
     {
         coinCount++;

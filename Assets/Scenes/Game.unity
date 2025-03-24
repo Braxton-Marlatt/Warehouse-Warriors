@@ -3612,8 +3612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518b0ff4e51463a409c9e864280f69e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartPrefab: {fileID: 1650937825202876778, guid: 780ffeb3e38a8cb448d88848152a93db, type: 3}
-  ammoPrefab: {fileID: 0}
+  lootDrops: []
 --- !u!4 &1924669064
 Transform:
   m_ObjectHideFlags: 0
@@ -3649,6 +3648,8 @@ GameObject:
   - component: {fileID: 2026110236}
   - component: {fileID: 2026110237}
   - component: {fileID: 2026110238}
+  - component: {fileID: 2026110240}
+  - component: {fileID: 2026110239}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3944,6 +3945,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!114 &2026110239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026110226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2a2f2ced4524343b0d9936b68eea0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredCoinsForTripleShot: 1
+--- !u!114 &2026110240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026110226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e9cbd4a9f8b47c3916a256a50d600b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinCount: 0
 --- !u!4 &2066269288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6157144667559120662, guid: bdb7053fd92a9ea4892d8c24cf08f0e3, type: 3}
