@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 moveDirection.x += 1;
-                Vector3 newScale = transform.localScale;
+                Vector2 newScale = transform.localScale;
                 newScale.x = -Mathf.Abs(newScale.x); // Negative to face right.
                 transform.localScale = newScale;
             }
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 moveDirection.x -= 1;
-                Vector3 newScale = transform.localScale;
+                Vector2 newScale = transform.localScale;
                 newScale.x = Mathf.Abs(newScale.x); // Positive to face left (default).
                 transform.localScale = newScale;
             }
