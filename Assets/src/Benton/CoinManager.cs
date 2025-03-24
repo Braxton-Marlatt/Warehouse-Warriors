@@ -22,7 +22,7 @@ public class CoinManager : MonoBehaviour
         coinCount++;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log($"Collided with: {other.name}");
         if(other.CompareTag("Coin"))
