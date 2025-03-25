@@ -13901,6 +13901,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: FastDash
       objectReference: {fileID: 0}
+    - target: {fileID: 4883052118155398758, guid: 1cb42fa1d92df4762b08804ac1daecbf, type: 3}
+      propertyPath: m_Color.b
+      value: 0.70105433
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883052118155398758, guid: 1cb42fa1d92df4762b08804ac1daecbf, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883052118155398758, guid: 1cb42fa1d92df4762b08804ac1daecbf, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8426088458905682477, guid: 1cb42fa1d92df4762b08804ac1daecbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.05
