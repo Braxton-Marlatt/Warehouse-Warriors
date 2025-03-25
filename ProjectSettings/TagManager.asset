@@ -12,6 +12,8 @@ TagManager:
   - Ammo
   - Coin
   - TripleShot
+  - BigCook
+  - FastDash
   layers:
   - Default
   - TransparentFX

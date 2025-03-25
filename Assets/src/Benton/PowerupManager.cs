@@ -3,15 +3,19 @@ using UnityEngine;
 public class PowerupManager : MonoBehaviour
 {
     public int requiredCoinsForTripleShot = 1; // Number of coins required for triple shot
+    public int requiredCoinsForBigCook = 1;
+    public int requiredCoinsForFastDash = 1;
 
     private CoinManager coinManager; // Reference to CoinManager
     private PlayerShooter playerShooter; // Reference to PlayerShooter
+    private PlayerMovement playerMovement; // Reference to PlayerMovement
 
     void Start()
     {
         // Get references to CoinManager and PlayerShooter
         coinManager = FindFirstObjectByType<CoinManager>();
         playerShooter = FindFirstObjectByType<PlayerShooter>();
+        playerMovement = FindFirstObjectByType<PlayerMovement>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -25,14 +29,27 @@ public class PowerupManager : MonoBehaviour
                 // Activate Triple Shot
                 playerShooter.tripleShot = true;
                 coinManager.coinCount -= requiredCoinsForTripleShot; // Deduct coins for the power-up
-                Debug.Log("Triple Shot Activated!");
+                Destroy(other.gameObject);
             }
-            else
+        }
+        else if (other.CompareTag("BigCook"))
+        {
+            // Check if the player has enough coins to activate the power-up
+            if (coinManager.GetCoinCount() >= requiredCoinsForBigCook)               
             {
-                Debug.Log("Not enough coins for power-up.");
+                    playerShooter.bigCookie = true;
+                    coinManager.coinCount -= requiredCoinsForBigCook; // Deduct coins for the power-up
+                    Destroy(other.gameObject);
             }
-            // Optionally, destroy the power-up item after interaction
-            Destroy(other.gameObject);
+        }
+        else if(other.CompareTag("FastDash"))
+        {
+            if (coinManager.GetCoinCount() >= requiredCoinsForFastDash)
+            {
+                playerMovement.fastDash = true;
+                coinManager.coinCount -= requiredCoinsForFastDash; // Deduct coins for the power-up
+                Destroy(other.gameObject);
+            }
         }
     }
 }
