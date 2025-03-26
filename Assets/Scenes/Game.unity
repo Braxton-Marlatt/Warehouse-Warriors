@@ -3747,7 +3747,7 @@ MonoBehaviour:
   bulletSpeed: 10
   bulletDamage: 10
   fireRate: 0.2
-  ammo: 35
+  ammo: 64
   tripleShot: 0
   bigCookie: 0
 --- !u!114 &2026110232
@@ -3959,6 +3959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredCoinsForTripleShot: 1
+  requiredCoinsForBigCook: 1
+  requiredCoinsForFastDash: 1
 --- !u!114 &2026110240
 MonoBehaviour:
   m_ObjectHideFlags: 0

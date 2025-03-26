@@ -6,7 +6,7 @@ public class PlayerShooter : Shooter
     public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second)
     
     private float nextFireTime = 0f; // Time when the player can shoot next
-    [SerializeField] private int ammo = 35;
+    [SerializeField] private int ammo = 64;
 
     // For shooting types
      public bool tripleShot = false;
