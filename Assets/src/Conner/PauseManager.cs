@@ -5,9 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
+    public static PauseManager instance; // Singleton instance
+
     public GameObject pauseMenu;
     public static bool isPaused;
 
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject); // Prevent duplicates
+    }
     void Start()
     {
         if (isPaused)
@@ -75,4 +84,4 @@ public class PauseManager : MonoBehaviour
         Application.Quit();
 #endif
     }
-}
+} // End PauseManager.cs
