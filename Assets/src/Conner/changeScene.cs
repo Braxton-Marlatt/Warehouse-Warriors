@@ -15,13 +15,15 @@ public class changeScene : MonoBehaviour
         SceneManager.LoadScene(2); // HelpMenu
     }
 
-    public void quitGame()
+    
+        public void quitGame()
     {
 #if UNITY_EDITOR
-        EditorApplication.ExitPlaymode();
+        UnityEditor.EditorApplication.ExitPlaymode();
 #else
-        Application.Quit();
+    Application.Quit();
 #endif
     }
-}
+
+}//End changeScene.cs
 
