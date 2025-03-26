@@ -6,16 +6,16 @@ public class PlayerShooter : Shooter
     public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second)
     
     private float nextFireTime = 0f; // Time when the player can shoot next
-    [SerializeField] private int ammo = 35;
+    [SerializeField] private int ammo = 64;
 
     // For shooting types
      public bool tripleShot = false;
      public bool bigCookie = false;
-
+    
     void Update()
     {
         if (Time.timeScale == 0) return; // Prevent shooting when the game is paused // Conner added this line
-
+        
         // Full auto: Removed fire rate restriction by commenting out NextFireTime
 
         // Handle input for shooting with a fixed fire rate
@@ -23,8 +23,9 @@ public class PlayerShooter : Shooter
         {
             if (AudioManager.Instance != null)
             {
-                Debug.Log("Playing shoot sound");
                 AudioManager.Instance.Playershoot();
+                Debug.Log("Playing shoot sound");
+                
             }
             else
             {
