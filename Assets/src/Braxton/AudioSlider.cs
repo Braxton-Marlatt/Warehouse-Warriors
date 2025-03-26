@@ -26,7 +26,9 @@ public class AudioSlider : MonoBehaviour
     public void OnVolumeChange(float value)
     {
         // Set the volume in the AudioManager
-        MusicManager.Instance.SetVolume(value);
+        MusicManager.Instance.SetMusicVolume(value);
         AudioManager.Instance.SetVolume(value);
+
     }
+
 }
