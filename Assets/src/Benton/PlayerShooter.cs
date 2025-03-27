@@ -23,7 +23,8 @@ public class PlayerShooter : Shooter
     {
         if (Time.timeScale == 0) return; // Prevent shooting when the game is paused
 
-        if (Input.GetMouseButton(0) && Time.time >= nextFireTime && ammo > 0) // Left mouse button held
+        // Detect if the player is touching the screen or clicking with the mouse
+        if ((Input.touchCount > 0 || Input.GetMouseButton(0)) && Time.time >= nextFireTime && ammo > 0)
         {
             if (AudioManager.Instance != null)
             {
@@ -38,17 +39,26 @@ public class PlayerShooter : Shooter
             nextFireTime = Time.time + fireRate;
             AudioManager.Instance.Playershoot();
 
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // Get the touch position or mouse position and convert it to world space
+            Vector2 targetPosition;
+            if (Input.touchCount > 0)
+            {
+                targetPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            }
+            else
+            {
+                targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
 
             animator.SetTrigger("Shoot"); // Trigger animation
 
             if (tripleShot && ammo >= 3)
             {
-                FireTripleShot(mousePos);
+                FireTripleShot(targetPosition);
             }
             else
             {
-                Shoot(mousePos);
+                Shoot(targetPosition);
                 ammo--;
             }
         }
