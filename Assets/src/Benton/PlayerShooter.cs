@@ -4,72 +4,77 @@ public class PlayerShooter : Shooter
 {
     public int bulletDamage = 1; // Damage dealt by the player's bullets
     public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second)
-    
+
     private float nextFireTime = 0f; // Time when the player can shoot next
-    [SerializeField] private int ammo = 35;
+    [SerializeField] private int ammo = 64;
 
     // For shooting types
-     public bool tripleShot = false;
-     public bool bigCookie = false;
+    public bool tripleShot = false;
+    public bool bigCookie = false;
+
+    private Animator animator;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
-        if (Time.timeScale == 0) return; // Prevent shooting when the game is paused // Conner added this line
+        if (Time.timeScale == 0) return; // Prevent shooting when the game is paused
 
-        // Full auto: Removed fire rate restriction by commenting out NextFireTime
-
-        // Handle input for shooting with a fixed fire rate
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime && ammo > 0) // Left mouse button held
         {
             if (AudioManager.Instance != null)
             {
-                Debug.Log("Playing shoot sound");
                 AudioManager.Instance.Playershoot();
+                Debug.Log("Playing shoot sound");
             }
             else
             {
                 Debug.LogError("AudioManager instance is null!");
             }
-            //comment out for test
-            nextFireTime = Time.time + fireRate; // Set the next allowed fire time // 
-            // Play the shoot sound effect
+
+            nextFireTime = Time.time + fireRate;
             AudioManager.Instance.Playershoot();
-            // Get mouse position in world space
+
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            if(tripleShot && ammo >= 3){
-               FireTripleShot(mousePos);    
-            }else{
-                // Call the Shoot method from the base class
+            animator.SetTrigger("Shoot"); // Trigger animation
+
+            if (tripleShot && ammo >= 3)
+            {
+                FireTripleShot(mousePos);
+            }
+            else
+            {
                 Shoot(mousePos);
-                ammo--; //Comment out for Play test
+                ammo--;
             }
         }
     }
 
-       public void FireTripleShot(Vector2 targetPosition)
+    public void FireTripleShot(Vector2 targetPosition)
     {
-        float spreadAngle = 15f; // Angle spread for the triple shot
+        float spreadAngle = 15f;
 
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
         Vector2 leftDir = Quaternion.Euler(0, 0, spreadAngle) * direction;
         Vector2 rightDir = Quaternion.Euler(0, 0, -spreadAngle) * direction;
 
-        Shoot(targetPosition); // Center shot
-        Shoot((Vector2)transform.position + leftDir * 10f); // Left shot
-        Shoot((Vector2)transform.position + rightDir * 10f); // Right shot
+        Shoot(targetPosition);
+        Shoot((Vector2)transform.position + leftDir * 10f);
+        Shoot((Vector2)transform.position + rightDir * 10f);
 
         ammo -= 3;
     }
 
-
     public override GameObject Shoot(Vector2 targetPosition)
     {
-        if (ammo <= 0) return null; // Prevent shooting if no ammo
+        if (ammo <= 0) return null;
 
         GameObject bullet = base.Shoot(targetPosition);
 
-        // Assign damage to the bullet
         if (bullet != null)
         {
             Bullet bulletScript = bullet.GetComponent<Bullet>();
@@ -77,7 +82,7 @@ public class PlayerShooter : Shooter
             {
                 bulletScript.damage = bulletDamage;
 
-            if (bigCookie)
+                if (bigCookie)
                 {
                     bullet.transform.localScale *= 2f;
                     bulletScript.damage += 1;
@@ -89,7 +94,8 @@ public class PlayerShooter : Shooter
 
     public int getAmmo() { return ammo; }
 
-    public void AddAmmo(){
+    public void AddAmmo()
+    {
         ammo += 10;
     }
 }
