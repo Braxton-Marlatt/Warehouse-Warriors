@@ -24,6 +24,7 @@ public class CoinManager : MonoBehaviour
 
     public void AddCoin()
     {
+        Debug.Log("Coin Count Increased by 1");
         coinCount++;
     }
 
