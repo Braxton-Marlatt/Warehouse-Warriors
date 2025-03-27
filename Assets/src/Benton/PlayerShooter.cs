@@ -96,6 +96,6 @@ public class PlayerShooter : Shooter
 
     public void AddAmmo()
     {
-        ammo += 10;
+        ammo += 32;
     }
 }
