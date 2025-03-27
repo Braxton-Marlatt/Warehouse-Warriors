@@ -1073,6 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  coinPrefab: {fileID: 1514815469349759902, guid: 05da8e72f040642a3a3283a6b35a6905, type: 3}
   cameraReference: {fileID: 0}
   panSpeed: 5
   cameraLocation: {fileID: 572747633916279647}
