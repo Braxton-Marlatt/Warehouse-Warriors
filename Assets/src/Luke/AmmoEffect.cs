@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewAmmoEffect", menuName = "Pickup Effects/Ammo")]
-public class AmmoEffect : ScriptableObject, IPickupEffect
+public class AmmoEffect : MonoBehaviour, IPickupEffect
 {
     [SerializeField] private int ammoAmount = 10;
 

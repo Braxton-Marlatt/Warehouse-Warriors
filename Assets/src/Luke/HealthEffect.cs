@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewHealthEffect", menuName = "Pickup Effects/Health")]
-public class HealthEffect : ScriptableObject, IPickupEffect
+public class HealthEffect : MonoBehaviour, IPickupEffect
 {
     [SerializeField] private int healAmount = 1;
 
