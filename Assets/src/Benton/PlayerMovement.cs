@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldown = 1f;
     public float knockbackForce = 8f;
     public float knockbackDuration = 0.2f;
+    public Joystick joystick;
 
     public Vector2 moveDirection;
     private float nextDashTime;
@@ -14,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isKnockedBack;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    private bool isPhone;
+
 
     public bool fastDash = false;
 
@@ -22,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>(); // Get Rigidbody2D reference
         rb.gravityScale = 0; // Disable gravity to avoid unwanted movement
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            isPhone = true; // it is in phone
+        }
     }
 
     void Update()
@@ -47,37 +54,41 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            moveDirection = Vector2.zero;
+        moveDirection = Vector2.zero;
 
-            // Movement Inputs
+        if (isPhone && joystick != null) 
+        {
+            // Use joystick input if on a phone
+            moveDirection.x = joystick.Horizontal;
+            moveDirection.y = joystick.Vertical;
+        }
+        else
+        {
+            // Use keyboard input if not on a phone
             if (Input.GetKey(KeyCode.W)) moveDirection.y += 1;
             if (Input.GetKey(KeyCode.S)) moveDirection.y -= 1;
 
-            // When pressing D, move right and flip character to face right.
             if (Input.GetKey(KeyCode.D))
             {
                 moveDirection.x += 1;
-                Vector2 newScale = transform.localScale;
-                newScale.x = -Mathf.Abs(newScale.x); // Negative to face right.
-                transform.localScale = newScale;
+                FlipSpriteRight();
             }
 
-            // When pressing A, move left and flip character to face left.
             if (Input.GetKey(KeyCode.A))
             {
                 moveDirection.x -= 1;
-                Vector2 newScale = transform.localScale;
-                newScale.x = Mathf.Abs(newScale.x); // Positive to face left (default).
-                transform.localScale = newScale;
+                FlipSpriteLeft();
             }
-
-            moveDirection.Normalize();
         }
+
+        moveDirection.Normalize();
 
         if (!isDashing)
         {
             rb.linearVelocity = moveDirection * moveSpeed;
         }
+        }
+
     }
 
 
@@ -147,5 +158,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.localScale = newScale;
+    }
+
+    void FlipSpriteRight()
+    {
+        transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+    }
+
+    void FlipSpriteLeft()
+    {
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 }
