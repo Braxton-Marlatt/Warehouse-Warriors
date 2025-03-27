@@ -19,6 +19,11 @@ public class PauseManager : MonoBehaviour
     }
     void Start()
     {
+        if (pauseMenu == null)
+        {
+            Debug.LogError("PauseManager ERROR: pauseMenu is not assigned!");
+        }
+
         if (isPaused)
         {
             pauseMenu.SetActive(true);

@@ -3687,7 +3687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86466bdd8a780a74b862ce041e6f10c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 413147171}
+  pauseMenu: {fileID: 653765151}
 --- !u!114 &2026110229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3959,6 +3959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredCoinsForTripleShot: 1
+  requiredCoinsForBigCook: 1
+  requiredCoinsForFastDash: 1
 --- !u!114 &2026110240
 MonoBehaviour:
   m_ObjectHideFlags: 0
