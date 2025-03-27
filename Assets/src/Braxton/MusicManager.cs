@@ -13,7 +13,7 @@ public class MusicManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                Debug.LogError("AudioManager instance is null. Ensure AudioManager is in the scene.");
+                Debug.LogError("MusicManager instance is null. Ensure MusicManager is in the scene.");
             }
             return _instance;
         }
@@ -36,6 +36,7 @@ public class MusicManager : MonoBehaviour
         else
         {
             _instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         MainMenu();
     }
@@ -49,20 +50,25 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("WeBringtheBoom AudioSource is null!");
+            Debug.LogError("WeBringTheBoom AudioSource is null!");
         }
     }
 
-    public void MainMenu(){
-        if(SceneManager.GetActiveScene().name == "Start_Menu"){
+    public void MainMenu()
+    {
+        if (SceneManager.GetActiveScene().name == "Start_Menu")
+        {
             PlayWeBringTheBoom();
         }
-        else{
+        else
+        {
             WeBringTheBoom.Stop();
         }
     }
-    public void SetVolume(float Volume){
-        WeBringTheBoom.volume = Volume;
+
+    public void SetMusicVolume(float volume)
+    {
+        WeBringTheBoom.volume = volume;
     }
 
 }

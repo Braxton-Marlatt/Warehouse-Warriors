@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : PlayShootAudio
 {
     // Singleton instance
     private static AudioManager _instance;
@@ -37,11 +37,13 @@ public class AudioManager : MonoBehaviour
         else
         {
             _instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 
     // Play a sound effect
-    public void Playershoot()
+    // Override the Playershoot method from PlayShootAudio, Comment for griddy song
+    public override void Playershoot()
     {
         if (playershoot != null)
         {
@@ -52,65 +54,57 @@ public class AudioManager : MonoBehaviour
             Debug.LogError("Player shoot AudioSource is null!");
         }
     }
-    
+
     public void Playerhit()
     {
-        if (playershoot != null)
+        if (playerhit != null)
         {
             playerhit.Play();
         }
         else
         {
-            Debug.LogError("Player shoot AudioSource is null!");
+            Debug.LogError("Player hit AudioSource is null!");
         }
     }
+
     public void Playermelee()
     {
-        if (playershoot != null)
+        if (playermelee != null)
         {
             playermelee.Play();
         }
         else
         {
-            Debug.LogError("Player shoot AudioSource is null!");
+            Debug.LogError("Player melee AudioSource is null!");
         }
     }
-
 
     // Set volume for all audio sources
     public void SetVolume(float volume)
     {
-        if (playershoot != null)
+        foreach (var audioSource in new[] { playershoot, playerhit, playermelee })
         {
-            playershoot.volume = volume;
-        }
-        if (playerhit != null)
-        {
-            playerhit.volume = volume;
-        }
-        if (playermelee != null)
-        {
-            playermelee.volume = volume;
-        }
-    }
-    //Set pitch for all audio sources
-    public void SetPitch(float pitch)
-    {
-        if (playershoot != null)
-        {
-            playershoot.pitch = pitch;
-        }
-        if (playerhit != null)
-        {
-            playerhit.pitch = pitch;
-        }
-        if (playermelee != null)
-        {
-            playermelee.pitch = pitch;
+            if (audioSource != null)
+            {
+                audioSource.volume = volume;
+            }
         }
     }
 
-    public float GetPitch(){
+    // Set pitch for all audio sources
+    public void SetPitch(float pitch)
+    {
+        foreach (var audioSource in new[] { playershoot, playerhit, playermelee })
+        {
+            if (audioSource != null)
+            {
+                audioSource.pitch = pitch;
+            }
+        }
+    }
+
+    public float GetPitch()
+    {
         if (playershoot != null)
         {
             return playershoot.pitch;
@@ -120,7 +114,8 @@ public class AudioManager : MonoBehaviour
             Debug.LogError("Player shoot AudioSource is null!");
             return 0f;
         }
-    }    
+    }
+
     // Get the volume of the playershoot AudioSource, used for testing
     public float GetVolume()
     {
@@ -134,16 +129,19 @@ public class AudioManager : MonoBehaviour
             return 0f;
         }
     }
-    public AudioSource GetPlayerHitAudioSource(){
+
+    public AudioSource GetPlayerHitAudioSource()
+    {
         return playerhit;
     }
 
-    public AudioSource GetPlayerMeleeAudioSource(){
+    public AudioSource GetPlayerMeleeAudioSource()
+    {
         return playermelee;
     }
 
-    public AudioSource GetPlayerShootAudioSource(){
+    public AudioSource GetPlayerShootAudioSource()
+    {
         return playershoot;
     }
-
 }

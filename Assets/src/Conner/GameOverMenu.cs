@@ -3,24 +3,23 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour
 {
+    // Called by the Restart button
     public void RestartLevel()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1); // Game scene
     }
 
+    // Called by the Main Menu button
     public void LoadMainMenu()
     {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene(0); 
+        PauseManager.instance.mainMenu();
     }
 
+
+    // Called by the Quit button
     public void QuitGame()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.ExitPlaymode();
-#else
-        Application.Quit();
-#endif
+        PauseManager.instance.quitGame();
     }
 }

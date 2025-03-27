@@ -6,7 +6,7 @@ public class PlayerShooter : Shooter
     public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second)
 
     private float nextFireTime = 0f; // Time when the player can shoot next
-    [SerializeField] private int ammo = 35;
+    [SerializeField] private int ammo = 64;
 
     // For shooting types
     public bool tripleShot = false;
@@ -21,14 +21,14 @@ public class PlayerShooter : Shooter
 
     void Update()
     {
-        if (Time.timeScale == 0) return; // Prevent shooting when the game is paused // Conner added this line
+        if (Time.timeScale == 0) return; // Prevent shooting when the game is paused
 
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime && ammo > 0) // Left mouse button held
         {
             if (AudioManager.Instance != null)
             {
-                Debug.Log("Playing shoot sound");
                 AudioManager.Instance.Playershoot();
+                Debug.Log("Playing shoot sound");
             }
             else
             {
@@ -40,7 +40,7 @@ public class PlayerShooter : Shooter
 
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            animator.SetTrigger("Shoot"); // ?? Shooting animation trigger added here
+            animator.SetTrigger("Shoot"); // Trigger animation
 
             if (tripleShot && ammo >= 3)
             {

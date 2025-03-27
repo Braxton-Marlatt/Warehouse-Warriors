@@ -1028,9 +1028,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1642218961}
-        m_TargetAssemblyTypeName: GameOverMenu, NewAssembly
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 1642218963}
+        m_TargetAssemblyTypeName: PauseManager, NewAssembly
+        m_MethodName: mainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1528,6 +1528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1642218962}
   - component: {fileID: 1642218961}
+  - component: {fileID: 1642218963}
   m_Layer: 0
   m_Name: GameOverManager
   m_TagString: Untagged
@@ -1562,6 +1563,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1642218963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642218960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86466bdd8a780a74b862ce041e6f10c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
 --- !u!1 &1899849428
 GameObject:
   m_ObjectHideFlags: 0
