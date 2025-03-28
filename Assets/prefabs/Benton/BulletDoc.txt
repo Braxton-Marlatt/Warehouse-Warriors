@@ -1,0 +1,19 @@
+Using the Bullet prefabs:
+
+
+What this prefabs contains:
+    - Sprite image of cookie
+    - Rigid Body 2d for physics
+    - Box collider for detecting collisions
+    - Script controlling bullet behavior logic
+    - 
+
+How to use:
+    This object is intednded to be used by a shooting method. This bullet will be called to instantiate when the player shoots.
+    On this object there are tags to determine collisions and the event to handle. For the target tag you will populate this with 
+    the target the bullet is trying to hit. Such as "enemy" so that it knows what to do when the bullet hits an object wiht this tag. 
+    For the player bullet it will retrive the health component attached to the enemy the bullet collides with and call the hurt() function.
+    It also will check for collisions with the playing area as long as you fill the obstacle tag field with the tag that all of your 
+    walls and boundary of your game have. When a collision is detected with this object it will simply just destroy the current bullet
+    object. There is also a damage field in this script but this is going to be defined when the shoot() fucntion is called. This allows
+    for more robust combat mechanics as the bullet damage can change based on the person shooting and the abilities they posses.  
