@@ -20,10 +20,14 @@ public class RoomManager : MonoBehaviour
     public GameObject spawnPrefab; //Spawn Room game object reference
     //prefab references
     public GameObject bossRoomPrefab;
+    public GameObject shopRoomPrefab; // Assign your shop room prefab in the Inspector
     public List<GameObject> roomPrefabs = new List<GameObject>(); //include shop prefab
     private List<GameObject> usedRoomPrefabs = new List<GameObject>();
     public int spawnedRooms = 12;
     private int count = 0;
+    private bool shopRoomSpawned = false;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -85,6 +89,12 @@ public class RoomManager : MonoBehaviour
     }
     private GameObject GetRandomRoomPrefab()
     {
+        if (!shopRoomSpawned)
+        {
+            shopRoomSpawned = true;
+            return shopRoomPrefab;
+        }
+
         // If all rooms have been used, reset the list
         if (roomPrefabs.Count == 0) {
             roomPrefabs.AddRange(usedRoomPrefabs);
