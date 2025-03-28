@@ -27,7 +27,7 @@ public class PlayerShooter : Shooter
         {
             if (AudioManager.Instance != null)
             {
-                AudioManager.Instance.Playershoot();
+                AudioManager.Instance.PlayerShoot();
                 Debug.Log("Playing shoot sound");
             }
             else
@@ -36,7 +36,7 @@ public class PlayerShooter : Shooter
             }
 
             nextFireTime = Time.time + fireRate;
-            AudioManager.Instance.Playershoot();
+            AudioManager.Instance.PlayerShoot();
 
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

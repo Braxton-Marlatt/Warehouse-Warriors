@@ -24,7 +24,7 @@ public class AudioBoundaryTest: MonoBehaviour
         {
             AudioManager.Instance.SetVolume(volume);
             Assert.AreEqual(volume, AudioManager.Instance.GetVolume(), $"Volume {volume} was not set correctly.");
-            AudioManager.Instance.Playershoot();
+            AudioManager.Instance.PlayerShoot();
             Assert.AreEqual(volume, AudioManager.Instance.GetVolume(), $"Volume {volume} was not set correctly.");
             yield return new WaitForSeconds(1.0f); // Wait for a frame to ensure the volume is set
         }
@@ -38,7 +38,7 @@ public class AudioBoundaryTest: MonoBehaviour
         {
             AudioManager.Instance.SetPitch(pitch);
             Assert.AreEqual(pitch, AudioManager.Instance.GetPitch(), $"Pitch {pitch} was not set correctly.");
-            AudioManager.Instance.Playershoot();
+            AudioManager.Instance.PlayerShoot();
             Assert.AreEqual(pitch, AudioManager.Instance.GetPitch(), $"Pitch {pitch} was not set correctly.");
             yield return new WaitForSeconds(0.5f); // Wait for a frame to ensure the pitch is set
         }
