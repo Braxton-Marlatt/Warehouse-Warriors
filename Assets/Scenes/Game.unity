@@ -4640,7 +4640,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518b0ff4e51463a409c9e864280f69e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootDrops: []
+  lootDrops:
+  - pickupPrefab: {fileID: 1764613264757857428, guid: 89e790ef6f1a06d4e853f35abab07a07, type: 3}
+    dropProbability: 0.33
+  - pickupPrefab: {fileID: 788221117799952726, guid: fba8c0b8ccbeb1d4e835efde911e2219, type: 3}
+    dropProbability: 0.33
+  - pickupPrefab: {fileID: 1514815469349759902, guid: 05da8e72f040642a3a3283a6b35a6905, type: 3}
+    dropProbability: 0.33
 --- !u!4 &1924669064
 Transform:
   m_ObjectHideFlags: 0
@@ -4700,9 +4706,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44861c1a3a9ae4b43ae877525c8157a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerDotPrefab: {fileID: 0}
   MiniMapNodePrefab: {fileID: 9109384987100409796, guid: faac53961e12642479f3f6bf7715f90d, type: 3}
   minimapParent: {fileID: 182171447}
-  playerDotPrefab: {fileID: 0}
 --- !u!1 &2026110226
 GameObject:
   m_ObjectHideFlags: 0
@@ -5036,6 +5042,7 @@ MonoBehaviour:
   requiredCoinsForTripleShot: 1
   requiredCoinsForBigCook: 1
   requiredCoinsForFastDash: 1
+  requiredCoinsForBigBake: 1
 --- !u!114 &2026110240
 MonoBehaviour:
   m_ObjectHideFlags: 0
