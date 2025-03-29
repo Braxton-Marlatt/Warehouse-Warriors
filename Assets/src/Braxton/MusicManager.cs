@@ -35,12 +35,16 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
+            _instance = this;  
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
-        MainMenu();
+        
     }
-
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        PlayMusic();
+    }
+    
     // Play a sound effect
     public void PlayWeBringTheBoom()
     {
@@ -54,7 +58,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    public void MainMenu()
+    public void PlayMusic()
     {
         if (SceneManager.GetActiveScene().name == "Start_Menu")
         {

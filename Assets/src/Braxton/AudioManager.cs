@@ -26,6 +26,7 @@ public class AudioManager : PlayShootAudio
     [SerializeField] private AudioSource playershoot;
     [SerializeField] private AudioSource playerhit;
     [SerializeField] private AudioSource playermelee;
+    [SerializeField] private AudioSource boom;
 
     // Ensure only one instance exists
     private void Awake()
@@ -37,13 +38,13 @@ public class AudioManager : PlayShootAudio
         else
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+            
         }
     }
 
     // Play a sound effect
     // Override the Playershoot method from PlayShootAudio, Comment for griddy song
-    public override void Playershoot()
+    public override void PlayerShoot()
     {
         if (playershoot != null)
         {
@@ -55,7 +56,7 @@ public class AudioManager : PlayShootAudio
         }
     }
 
-    public void Playerhit()
+    public void PlayerHit()
     {
         if (playerhit != null)
         {
@@ -67,7 +68,19 @@ public class AudioManager : PlayShootAudio
         }
     }
 
-    public void Playermelee()
+    // Play the boom sound effect
+    public void PlayBoom()
+    {
+        if (boom != null)
+        {
+            boom.Play();
+        }
+        else
+        {
+            Debug.LogError("Boom AudioSource is null!");
+        }
+    }
+    public void PlayerMelee()
     {
         if (playermelee != null)
         {
@@ -82,7 +95,7 @@ public class AudioManager : PlayShootAudio
     // Set volume for all audio sources
     public void SetVolume(float volume)
     {
-        foreach (var audioSource in new[] { playershoot, playerhit, playermelee })
+        foreach (var audioSource in new[] { playershoot, playerhit, playermelee, boom })
         {
             if (audioSource != null)
             {
@@ -94,7 +107,7 @@ public class AudioManager : PlayShootAudio
     // Set pitch for all audio sources
     public void SetPitch(float pitch)
     {
-        foreach (var audioSource in new[] { playershoot, playerhit, playermelee })
+        foreach (var audioSource in new[] { playershoot, playerhit, playermelee, boom })
         {
             if (audioSource != null)
             {

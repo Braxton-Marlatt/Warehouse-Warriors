@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using System.ComponentModel;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -30,11 +31,13 @@ public class EnemyHealth : MonoBehaviour
         if(health <= 0){
             this.health = 0;
             Die();
+            
         } 
         this.health = health;
     }
     private void Die(){
         Enemy enemy = GetComponent<Enemy>();
+        AudioManager.Instance.PlayBoom();
         OnEnemyDeath?.Invoke(this,enemy);
         Destroy(gameObject); // Destroy the enemy GameObject
     }
