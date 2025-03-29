@@ -48,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
         {
             FlipSprite();
         }
+        Debug.Log("Horizontal: " + joystick.Horizontal + " | Vertical: " + joystick.Vertical);
+
     }
 
     public void MovePlayer()

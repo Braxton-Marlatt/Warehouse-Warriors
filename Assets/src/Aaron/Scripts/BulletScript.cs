@@ -6,8 +6,6 @@ public class BullettScript : MonoBehaviour
 {
     public PlayerShooter playerShooter;
     public Text bulletText;
-    private int bulletCount = 0;
-    private int maxBullets = 10;
 
     void Start()
     {
