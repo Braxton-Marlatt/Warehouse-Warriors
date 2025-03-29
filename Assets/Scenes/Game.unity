@@ -4653,9 +4653,9 @@ GameObject:
   - component: {fileID: 2026110228}
   - component: {fileID: 2026110236}
   - component: {fileID: 2026110237}
-  - component: {fileID: 2026110238}
   - component: {fileID: 2026110240}
   - component: {fileID: 2026110239}
+  - component: {fileID: 2026110241}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4939,19 +4939,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2026110238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026110226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 042847be394cc2c4b8a63d03ccf8ce24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!114 &2026110239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4981,6 +4968,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinCount: 0
+--- !u!114 &2026110241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026110226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042847be394cc2c4b8a63d03ccf8ce24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2040585682 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252285020697096, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
