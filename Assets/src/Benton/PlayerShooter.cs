@@ -4,6 +4,7 @@ public class PlayerShooter : Shooter
 {
     public int bulletDamage = 1; // Damage dealt by the player's bullets
     public float fireRate = 0.2f; // Time between shots (e.g., 5 shots per second)
+    public Joystick joystick; // Joystick reference for mobile controls
 
     private float nextFireTime = 0f; // Time when the player can shoot next
     [SerializeField] private int ammo = 64;
@@ -19,50 +20,43 @@ public class PlayerShooter : Shooter
         animator = GetComponent<Animator>();
     }
 
-    void Update()
+
+void Update()
+{
+    if (Time.timeScale == 0) return; // Prevent shooting when the game is paused
+
+    if ((Input.touchCount > 0 || Input.GetMouseButton(0)) && Time.time >= nextFireTime && ammo > 0)
     {
-        if (Time.timeScale == 0) return; // Prevent shooting when the game is paused
+        Vector2 touchPos = Input.touchCount > 0 
+            ? (Vector2)Input.GetTouch(0).position 
+            : (Vector2)Input.mousePosition;
 
-        // Detect if the player is touching the screen or clicking with the mouse
-        if ((Input.touchCount > 0 || Input.GetMouseButton(0)) && Time.time >= nextFireTime && ammo > 0)
+        // Prevent shooting if touching the joystick
+        if (IsTouchOnJoystick(touchPos)) return;
+
+        nextFireTime = Time.time + fireRate;
+        AudioManager.Instance?.PlayerShoot();
+
+        Vector2 targetPosition = Camera.main.ScreenToWorldPoint(touchPos);
+        animator.SetTrigger("Shoot");
+
+        if (tripleShot && ammo >= 3)
         {
-            if (AudioManager.Instance != null)
-            {
-                AudioManager.Instance.PlayerShoot();
-                Debug.Log("Playing shoot sound");
-            }
-            else
-            {
-                Debug.LogError("AudioManager instance is null!");
-            }
-
-            nextFireTime = Time.time + fireRate;
-            AudioManager.Instance.PlayerShoot();
-
-            // Get the touch position or mouse position and convert it to world space
-            Vector2 targetPosition;
-            if (Input.touchCount > 0)
-            {
-                targetPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            }
-            else
-            {
-                targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            }
-
-            animator.SetTrigger("Shoot"); // Trigger animation
-
-            if (tripleShot && ammo >= 3)
-            {
-                FireTripleShot(targetPosition);
-            }
-            else
-            {
-                Shoot(targetPosition);
-                ammo--;
-            }
+            FireTripleShot(targetPosition);
+        }
+        else
+        {
+            Shoot(targetPosition);
+            ammo--;
         }
     }
+}
+
+bool IsTouchOnJoystick(Vector2 touchPos)
+{
+    return RectTransformUtility.RectangleContainsScreenPoint(joystick.GetComponent<RectTransform>(), touchPos, null);
+}
+
 
     public void FireTripleShot(Vector2 targetPosition)
     {

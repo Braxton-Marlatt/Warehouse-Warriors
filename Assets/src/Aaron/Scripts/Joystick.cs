@@ -43,7 +43,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     protected virtual void Start()
     {
-    // Disable joystick if not running on Android or iOS
+    //Disable joystick if not running on Android or iOS
     if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
     {
         gameObject.SetActive(false);

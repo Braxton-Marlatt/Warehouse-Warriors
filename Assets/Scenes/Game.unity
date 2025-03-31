@@ -4908,6 +4908,7 @@ MonoBehaviour:
   bulletSpeed: 10
   bulletDamage: 10
   fireRate: 0.2
+  joystick: {fileID: 1540917977}
   ammo: 64
   tripleShot: 0
   bigCookie: 0
