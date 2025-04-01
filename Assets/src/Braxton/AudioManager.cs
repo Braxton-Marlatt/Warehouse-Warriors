@@ -12,7 +12,7 @@ public class AudioManager : PlayShootAudio
         {
             if (_instance == null)
             {
-                Debug.LogError("AudioManager instance is null. Ensure AudioManager is in the scene.");
+                Debug.LogWarning("AudioManager instance is null. Ensure AudioManager is in the scene.");
             }
             return _instance;
         }
@@ -52,7 +52,7 @@ public class AudioManager : PlayShootAudio
         }
         else
         {
-            Debug.LogError("Player shoot AudioSource is null!");
+            Debug.LogWarning("Player shoot AudioSource is null!");
         }
     }
 
@@ -64,7 +64,7 @@ public class AudioManager : PlayShootAudio
         }
         else
         {
-            Debug.LogError("Player hit AudioSource is null!");
+            Debug.LogWarning("Player hit AudioSource is null!");
         }
     }
 
@@ -77,7 +77,7 @@ public class AudioManager : PlayShootAudio
         }
         else
         {
-            Debug.LogError("Boom AudioSource is null!");
+            Debug.LogWarning("Boom AudioSource is null!");
         }
     }
     public void PlayerMelee()
@@ -88,7 +88,7 @@ public class AudioManager : PlayShootAudio
         }
         else
         {
-            Debug.LogError("Player melee AudioSource is null!");
+            Debug.LogWarning("Player melee AudioSource is null!");
         }
     }
 
@@ -124,7 +124,7 @@ public class AudioManager : PlayShootAudio
         }
         else
         {
-            Debug.LogError("Player shoot AudioSource is null!");
+            Debug.LogWarning("Player shoot AudioSource is null!");
             return 0f;
         }
     }
@@ -138,7 +138,7 @@ public class AudioManager : PlayShootAudio
         }
         else
         {
-            Debug.LogError("Player shoot AudioSource is null!");
+            Debug.LogWarning("Player shoot AudioSource is null!");
             return 0f;
         }
     }

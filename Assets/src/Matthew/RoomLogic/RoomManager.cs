@@ -25,7 +25,6 @@ public class RoomManager : MonoBehaviour
     private List<GameObject> usedRoomPrefabs = new List<GameObject>();
     public int spawnedRooms = 12;
     private int count = 0;
-    private bool shopRoomSpawned = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,18 +38,25 @@ public class RoomManager : MonoBehaviour
     - You cannot have repeat rooms until all rooms are used
     - select 1 random room w/ < 4 adjacent rooms
     - select a random direction, link a room in that direction
-    - repeat until no rooms are left (including shop)
-    - find the room furthest from spawn w/ < 4 adjacent rooms
-    - pick a random direction, link the boss room to it
+    - repeat until no rooms are left
+    - places shop/bossroom once all rooms spawn
     */
     public void InitializeAllRooms(){
         InitializeRoom(0,0,spawnPrefab); //set the spawn room at 0,0
+        Vector2Int randRoom;
+        Vector2Int newRoom;
         for(int i = 0; i <= spawnedRooms; i++){
             GameObject prefab = GetRandomRoomPrefab();
-            Vector2Int randRoom = GetRandomRoom();
-            Vector2Int newRoom = GetRandomDirection(randRoom.x,randRoom.y);
+            randRoom = GetRandomRoom();
+            newRoom = GetRandomDirection(randRoom.x,randRoom.y);
             InitializeRoom(newRoom.x,newRoom.y,prefab);
         }
+        randRoom = GetRandomRoom();
+        newRoom = GetRandomDirection(randRoom.x,randRoom.y);
+        InitializeRoom(newRoom.x,newRoom.y,shopRoomPrefab); // spawns the shop after all rooms
+        randRoom = GetRandomRoom();
+        newRoom = GetRandomDirection(randRoom.x,randRoom.y);
+        InitializeRoom(newRoom.x,newRoom.y,bossRoomPrefab); // spawns the boss after all rooms
         DeleteUnusedDoors();
         SetDoorStates();
     }
@@ -84,17 +90,52 @@ public class RoomManager : MonoBehaviour
     }
     //if a room is completed, open all doors
     //if a door leads to the boss room, use boss room door
+    //called after extra doors are deleted
     private void SetDoorStates(){
-
+        foreach (var kvp in roomMap)
+        {
+            Room r = kvp.Value;
+            Transform doorsParent = r.transform.Find("Doors"); // Find the "Doors" parent object
+            if (doorsParent != null)
+            {
+                Transform nor = doorsParent.Find("North Door");
+                Transform sou = doorsParent.Find("South Door");
+                Transform eas = doorsParent.Find("East Door");
+                Transform wes = doorsParent.Find("West Door");
+                if (r.northRoom != null){
+                    if(r.northRoom.isBoss){
+                        nor.GetComponent<SpriteRenderer>().color = Color.red;
+                    }else if(r.northRoom.isShop){
+                        nor.GetComponent<SpriteRenderer>().color = Color.green;
+                    }
+                }
+                if (r.southRoom != null){
+                    if(r.southRoom.isBoss){
+                        sou.GetComponent<SpriteRenderer>().color = Color.red;
+                    }else if(r.southRoom.isShop){
+                        sou.GetComponent<SpriteRenderer>().color = Color.green;
+                    }
+                }
+                if (r.eastRoom != null){
+                    if(r.eastRoom.isBoss){
+                        eas.GetComponent<SpriteRenderer>().color = Color.red;
+                    }else if(r.eastRoom.isShop){
+                        eas.GetComponent<SpriteRenderer>().color = Color.green;
+                    }
+                }
+                if (r.westRoom != null){
+                    if(r.westRoom.isBoss){
+                        wes.GetComponent<SpriteRenderer>().color = Color.red;
+                    }else if(r.westRoom.isShop){
+                        wes.GetComponent<SpriteRenderer>().color = Color.green;
+                    }
+                }
+            }
+        }
+        Debug.Log("Deleted Unused Doors");
     }
     private GameObject GetRandomRoomPrefab()
     {
-        if (!shopRoomSpawned)
-        {
-            shopRoomSpawned = true;
-            return shopRoomPrefab;
-        }
-
         // If all rooms have been used, reset the list
         if (roomPrefabs.Count == 0) {
             roomPrefabs.AddRange(usedRoomPrefabs);

@@ -1089,7 +1089,8 @@ MonoBehaviour:
   - {fileID: 1707715096745850594}
   hasComplete: 0
   isOccupied: 0
-  isDiscoverable: 0
+  isShop: 0
+  isBoss: 0
 --- !u!1 &7351222531580678849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,11 +1690,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 435935660358584617, guid: 3682508465ea2418d81f462726f9d2f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8309736
+      value: 2.74
       objectReference: {fileID: 0}
     - target: {fileID: 435935660358584617, guid: 3682508465ea2418d81f462726f9d2f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.680794
+      value: -3.63
       objectReference: {fileID: 0}
     - target: {fileID: 435935660358584617, guid: 3682508465ea2418d81f462726f9d2f6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2207,11 +2208,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 435935660358584617, guid: 3682508465ea2418d81f462726f9d2f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.367653
+      value: -4.32
       objectReference: {fileID: 0}
     - target: {fileID: 435935660358584617, guid: 3682508465ea2418d81f462726f9d2f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4265015
+      value: -1.78
       objectReference: {fileID: 0}
     - target: {fileID: 435935660358584617, guid: 3682508465ea2418d81f462726f9d2f6, type: 3}
       propertyPath: m_LocalPosition.z

@@ -17,7 +17,8 @@ public class Room : MonoBehaviour
     public List<Enemy> enemies = new List<Enemy>();
     public bool hasComplete = false; // Determines if the room has been beaten
     public bool isOccupied = false; // The player is inside of this room
-    public bool isDiscoverable = false; // This room is adjacent to a completed room !! no implementation yet
+    public bool isShop = false;
+    public bool isBoss = false;
     public static event Action<Room, Vector2Int> OnRoomEntered; // Event to notify when a room is entered
 
     public void EnterRoom(string direction){

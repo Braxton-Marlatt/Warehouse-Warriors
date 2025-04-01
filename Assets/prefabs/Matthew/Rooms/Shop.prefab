@@ -1091,7 +1091,8 @@ MonoBehaviour:
   enemies: []
   hasComplete: 0
   isOccupied: 0
-  isDiscoverable: 0
+  isShop: 1
+  isBoss: 0
 --- !u!1 &7351222531580678849
 GameObject:
   m_ObjectHideFlags: 0
