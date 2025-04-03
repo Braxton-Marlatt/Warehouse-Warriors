@@ -11,7 +11,7 @@ public class AudioSlider : MonoBehaviour
         if (volumeSlider != null)
         {
             // Set the initial value of the slider to the current volume
-            volumeSlider.value = AudioManager.Instance.GetVolume();
+            volumeSlider.value = SoundEffectManager.Instance.GetVolume("playershoot", SoundEffectManager.Instance.audioSources);
 
             // Add a listener to call the OnVolumeChange method whenever the slider value changes
             volumeSlider.onValueChanged.AddListener(OnVolumeChange);
@@ -26,8 +26,8 @@ public class AudioSlider : MonoBehaviour
     public void OnVolumeChange(float value)
     {
         // Set the volume in the AudioManager
-        MusicManager.Instance.SetMusicVolume(value);
-        AudioManager.Instance.SetVolume(value);
+        MusicManager.Instance.SetVolume(MusicManager.Instance.musicSources, value);
+        SoundEffectManager.Instance.SetVolume(SoundEffectManager.Instance.audioSources, value);
 
     }
 

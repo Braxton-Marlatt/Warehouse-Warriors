@@ -1,160 +1,83 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : PlayShootAudio
+public class AudioManager : MonoBehaviour
 {
-    // Singleton instance
-    private static AudioManager _instance;
-
-    // Public property to access the instance
-    public static AudioManager Instance
+    public virtual void PlaySound(string soundKey, Dictionary<string, AudioSource> audioSources)
     {
-        get
+        if (audioSources.TryGetValue(soundKey, out var audioSource))
         {
-            if (_instance == null)
+            if (audioSource != null)
             {
-                Debug.LogWarning("AudioManager instance is null. Ensure AudioManager is in the scene.");
+                audioSource.loop = true; // Ensure the music loops
             }
-            return _instance;
-        }
-        private set
-        {
-            _instance = value;
-        }
-    }
-
-    [Header("Sound Effects")]
-    [SerializeField] private AudioSource playershoot;
-    [SerializeField] private AudioSource playerhit;
-    [SerializeField] private AudioSource playermelee;
-    [SerializeField] private AudioSource boom;
-
-    // Ensure only one instance exists
-    private void Awake()
-    {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(gameObject);
+            else
+            {
+                Debug.LogError($"AudioSource for key '{soundKey}' is null!");
+            }
         }
         else
         {
-            _instance = this;
+            Debug.LogError($"Sound key '{soundKey}' not found in AudioManager!");
+        }
+    }
+
+
+    // Get the volume of a specific sound effect
+    public float GetVolume(string soundKey, Dictionary<string, AudioSource> audioSources)
+    {
+        if (audioSources.TryGetValue(soundKey, out var audioSource))
+        {
+            if (audioSource != null)
+            {
+                return audioSource.volume;
+            }
+        }
+        Debug.LogError($"Sound key '{soundKey}' not found or AudioSource is null!");
+        return 0f;
+    }
+
+    public void SetVolume(Dictionary<string, AudioSource> audioSources, float volume)
+    {
+        foreach (var kvp in audioSources)
+        {
+            if (audioSources.ContainsKey(kvp.Key))
+            {
+                audioSources[kvp.Key].volume = volume;
+            }
+            else
+            {
+                Debug.LogError($"Sound key '{kvp.Key}' not found in AudioManager!");
+            }
+        }
+    }
+
+    public void SetPitch(Dictionary<string, AudioSource> audioSources, float pitch)
+    {
+        foreach (var kvp in audioSources)
+        {
+            if (audioSources.ContainsKey(kvp.Key))
+            {
+                audioSources[kvp.Key].pitch = pitch;
+            }
+            else
+            {
+                Debug.LogError($"Sound key '{kvp.Key}' not found in AudioManager!");
+            }
             
         }
     }
 
-    // Play a sound effect
-    // Override the Playershoot method from PlayShootAudio, Comment for griddy song
-    public override void PlayerShoot()
+    public float GetPitch(string soundKey, Dictionary<string, AudioSource> audioSources)
     {
-        if (playershoot != null)
-        {
-            playershoot.Play();
-        }
-        else
-        {
-            Debug.LogWarning("Player shoot AudioSource is null!");
-        }
-    }
-
-    public void PlayerHit()
-    {
-        if (playerhit != null)
-        {
-            playerhit.Play();
-        }
-        else
-        {
-            Debug.LogWarning("Player hit AudioSource is null!");
-        }
-    }
-
-    // Play the boom sound effect
-    public void PlayBoom()
-    {
-        if (boom != null)
-        {
-            boom.Play();
-        }
-        else
-        {
-            Debug.LogWarning("Boom AudioSource is null!");
-        }
-    }
-    public void PlayerMelee()
-    {
-        if (playermelee != null)
-        {
-            playermelee.Play();
-        }
-        else
-        {
-            Debug.LogWarning("Player melee AudioSource is null!");
-        }
-    }
-
-    // Set volume for all audio sources
-    public void SetVolume(float volume)
-    {
-        foreach (var audioSource in new[] { playershoot, playerhit, playermelee, boom })
+        if (audioSources.TryGetValue(soundKey, out var audioSource))
         {
             if (audioSource != null)
             {
-                audioSource.volume = volume;
+                return audioSource.pitch;
             }
         }
-    }
-
-    // Set pitch for all audio sources
-    public void SetPitch(float pitch)
-    {
-        foreach (var audioSource in new[] { playershoot, playerhit, playermelee, boom })
-        {
-            if (audioSource != null)
-            {
-                audioSource.pitch = pitch;
-            }
-        }
-    }
-
-    public float GetPitch()
-    {
-        if (playershoot != null)
-        {
-            return playershoot.pitch;
-        }
-        else
-        {
-            Debug.LogWarning("Player shoot AudioSource is null!");
-            return 0f;
-        }
-    }
-
-    // Get the volume of the playershoot AudioSource, used for testing
-    public float GetVolume()
-    {
-        if (playershoot != null)
-        {
-            return playershoot.volume;
-        }
-        else
-        {
-            Debug.LogWarning("Player shoot AudioSource is null!");
-            return 0f;
-        }
-    }
-
-    public AudioSource GetPlayerHitAudioSource()
-    {
-        return playerhit;
-    }
-
-    public AudioSource GetPlayerMeleeAudioSource()
-    {
-        return playermelee;
-    }
-
-    public AudioSource GetPlayerShootAudioSource()
-    {
-        return playershoot;
+        Debug.LogError($"Sound key '{soundKey}' not found or AudioSource is null!");
+        return 0f;
     }
 }
