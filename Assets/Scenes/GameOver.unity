@@ -1028,9 +1028,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1642218963}
-        m_TargetAssemblyTypeName: PauseManager, NewAssembly
-        m_MethodName: mainMenu
+      - m_Target: {fileID: 1642218961}
+        m_TargetAssemblyTypeName: GameOverMenu, NewAssembly
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

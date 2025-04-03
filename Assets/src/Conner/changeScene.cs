@@ -18,11 +18,7 @@ public class changeScene : MonoBehaviour
     
         public void quitGame()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.ExitPlaymode();
-#else
-    Application.Quit();
-#endif
+        PauseManager.instance.quitGame();//Singleton Used here
     }
 
 }//End changeScene.cs
