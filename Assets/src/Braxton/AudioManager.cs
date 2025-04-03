@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
         {
             if (audioSource != null)
             {
-                audioSource.Play();
+                audioSource.loop = true; // Ensure the music loops
             }
             else
             {
