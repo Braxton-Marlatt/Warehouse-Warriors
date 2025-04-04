@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 
 public class MusicManager : AudioManager
 {
@@ -26,6 +27,7 @@ public class MusicManager : AudioManager
     // Dictionary to hold audio sources
     private Dictionary<string, AudioSource> musicSources;
 
+    [SerializeField] public AudioMixerGroup audioMixerGroup;
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -49,9 +51,7 @@ public class MusicManager : AudioManager
     // Initialize the music sources dictionary
     private void InitializeMusicSources()
     {
-        musicSources = new Dictionary<string, AudioSource>();
-
-        AddMusicSource("WeBringTheBoom", "Webringtheboom");
+        AddMusicSource("Webringtheboom", "Webringtheboom");
         AddMusicSource("GameMusic", "Gamemusic");
 
         Debug.Log("Music sources initialized successfully.");
@@ -62,14 +62,13 @@ public class MusicManager : AudioManager
     {
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = Resources.Load<AudioClip>(resourceName);
-
+        audioSource.outputAudioMixerGroup = audioMixerGroup; // Set the audio mixer group if needed
         if (audioSource.clip == null)
         {
             Debug.LogError($"Audio clip '{resourceName}' could not be loaded! Ensure it is in the Resources folder.");
             return;
         }
-
-        musicSources[key] = audioSource;
+        audioSources[key] = audioSource; // Add to the base class dictionary
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -84,7 +83,7 @@ public class MusicManager : AudioManager
 
         if (sceneName == "Start_Menu")
         {
-            PlaySound("WeBringTheBoom");
+            PlaySound("Webringtheboom");
         }
         else if (sceneName == "Game")
         {
@@ -99,7 +98,7 @@ public class MusicManager : AudioManager
     // Stop all currently playing music
     private void StopAllMusic()
     {
-        foreach (var audioSource in musicSources.Values)
+        foreach (var audioSource in audioSources.Values)
         {
             if (audioSource.isPlaying)
             {

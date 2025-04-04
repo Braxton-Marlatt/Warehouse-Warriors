@@ -94,6 +94,7 @@ public class Enemy : MonoBehaviour
     }
     public void Spawn(){
         isSpawned = true;
+        SoundFXManager.Instance.PlaySound("ShoppingCart"); // Play spawn sound
     }
     public void Despawn(){
         isSpawned = false;

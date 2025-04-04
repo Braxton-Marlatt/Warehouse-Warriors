@@ -39,6 +39,8 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            SoundFXManager.Instance.PlaySound("ButtonClick"); // Play button click sound
+
             if (isPaused)
                 resumeGame();
             else

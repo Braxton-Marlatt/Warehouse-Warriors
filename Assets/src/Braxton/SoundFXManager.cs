@@ -51,6 +51,8 @@ public class SoundFXManager : AudioManager
         AddAudioSource("PlayerShoot", "Playershoot");
         AddAudioSource("EnemyDeath", "Enemydeath");
         AddAudioSource("PlayerMelee", "Playermelee");
+        AddAudioSource("ButtonClick", "Buttonclick");
+        AddAudioSource("ShoppingCart", "Shoppingcart");
 
         Debug.Log("soundFXSources initialized successfully.");
     }
