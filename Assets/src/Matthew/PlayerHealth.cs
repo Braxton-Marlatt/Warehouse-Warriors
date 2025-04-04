@@ -24,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
     public void Hurt(int damage = 1, Vector2? knockbackDirection = null){
         if (isInvincible || health <=0 || ToggleValue.isToggleOn) return;
         health--;
-        AudioManager.Instance.PlayerHit(); //Play hit sound
+        SoundFXManager.Instance.PlaySound("PlayerHit"); // Play player hurt sound
         if (health <= 0){ //Check for no health
             GameOver();
         }else{ //gives the player breif invinciblility on hit

@@ -35,7 +35,7 @@ void Update()
         if (IsTouchOnJoystick(touchPos)) return;
 
         nextFireTime = Time.time + fireRate;
-        AudioManager.Instance?.PlayerShoot();
+        SoundFXManager.Instance.PlaySound("PlayerShoot");
 
         Vector2 targetPosition = Camera.main.ScreenToWorldPoint(touchPos);
         animator.SetTrigger("Shoot");

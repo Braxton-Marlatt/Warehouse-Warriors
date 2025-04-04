@@ -41,7 +41,8 @@ public class UpdMelee : MonoBehaviour
         // Trigger the attack when the right mouse button is pressed
         if (Input.GetMouseButtonDown(1) && !isAttacking)
         {
-            AudioManager.Instance.PlayerMelee();
+            SoundFXManager.Instance.PlaySound("PlayerMelee");
+            // Check if the player is in a state that allows for an attack
             if (bigBake && !bigBakeEnabled)
             {
                 transform.localScale *= 1.75f;
