@@ -48,6 +48,7 @@ public class PauseManager : MonoBehaviour
 
     public void resumeGame()
     {
+        SoundEffectManager.Instance.PlaySound("buttonClick", SoundEffectManager.Instance.audioSources);
         pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
         isPaused = false;
@@ -55,6 +56,7 @@ public class PauseManager : MonoBehaviour
 
     public void pauseGame()
     {
+        //SoundEffectManager.Instance.PlaySound("buttonClick", SoundEffectManager.Instance.audioSources);
         pauseMenu.SetActive(true);
         Time.timeScale = 0.0f;
         isPaused = true;
@@ -68,6 +70,7 @@ public class PauseManager : MonoBehaviour
 
     public void loadHelpFromPause()
     {
+        SoundEffectManager.Instance.PlaySound("buttonClick", SoundEffectManager.Instance.audioSources);
         HelpMenuTracker.source = "pause";
         Time.timeScale = 1.0f;
         isPaused = false;
@@ -76,6 +79,7 @@ public class PauseManager : MonoBehaviour
 
     public void mainMenu()
     {
+        SoundEffectManager.Instance.PlaySound("buttonClick", SoundEffectManager.Instance.audioSources);
         Time.timeScale = 1.0f;
         isPaused = false;
         SceneManager.LoadScene(0);
@@ -83,6 +87,7 @@ public class PauseManager : MonoBehaviour
 
     public void quitGame()
     {
+        SoundEffectManager.Instance.PlaySound("buttonClick", SoundEffectManager.Instance.audioSources);
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else
