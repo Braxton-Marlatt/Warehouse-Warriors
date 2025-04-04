@@ -37,7 +37,7 @@ public class EnemyHealth : MonoBehaviour
     }
     private void Die(){
         Enemy enemy = GetComponent<Enemy>();
-        SoundEffectManager.Instance.PlaySound("boom", SoundEffectManager.Instance.audioSources);
+        AudioManager.Instance.PlayBoom();
         OnEnemyDeath?.Invoke(this,enemy);
         Destroy(gameObject); // Destroy the enemy GameObject
     }

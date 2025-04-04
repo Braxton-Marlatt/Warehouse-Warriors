@@ -22,10 +22,10 @@ public class AudioBoundaryTest: MonoBehaviour
 
         foreach (float volume in testVolumes)
         {
-            SoundEffectManager.Instance.SetVolume(SoundEffectManager.Instance.audioSources, volume);
-            Assert.AreEqual(volume, SoundEffectManager.Instance.GetVolume("playershoot", SoundEffectManager.Instance.audioSources), $"Volume {volume} was not set correctly.");
-            SoundEffectManager.Instance.PlaySound("playershoot", SoundEffectManager.Instance.audioSources);
-            Assert.AreEqual(volume, SoundEffectManager.Instance.GetVolume("playershoot", SoundEffectManager.Instance.audioSources), $"Volume {volume} was not set correctly.");
+            AudioManager.Instance.SetVolume(volume);
+            Assert.AreEqual(volume, AudioManager.Instance.GetVolume(), $"Volume {volume} was not set correctly.");
+            AudioManager.Instance.PlayerShoot();
+            Assert.AreEqual(volume, AudioManager.Instance.GetVolume(), $"Volume {volume} was not set correctly.");
             yield return new WaitForSeconds(1.0f); // Wait for a frame to ensure the volume is set
         }
     }
@@ -36,10 +36,10 @@ public class AudioBoundaryTest: MonoBehaviour
 
         foreach (float pitch in testPitches)
         {
-            SoundEffectManager.Instance.SetPitch(SoundEffectManager.Instance.audioSources, pitch);
-            Assert.AreEqual(pitch, SoundEffectManager.Instance.GetPitch("playershoot", SoundEffectManager.Instance.audioSources), $"Pitch {pitch} was not set correctly.");
-            SoundEffectManager.Instance.PlaySound("playershoot", SoundEffectManager.Instance.audioSources);
-            Assert.AreEqual(pitch, SoundEffectManager.Instance.GetPitch("playershhot",SoundEffectManager.Instance.audioSources), $"Pitch {pitch} was not set correctly.");
+            AudioManager.Instance.SetPitch(pitch);
+            Assert.AreEqual(pitch, AudioManager.Instance.GetPitch(), $"Pitch {pitch} was not set correctly.");
+            AudioManager.Instance.PlayerShoot();
+            Assert.AreEqual(pitch, AudioManager.Instance.GetPitch(), $"Pitch {pitch} was not set correctly.");
             yield return new WaitForSeconds(0.5f); // Wait for a frame to ensure the pitch is set
         }
     }
