@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
-    public static PauseManager instance; // Singleton instance
+    public static PauseManager instance; // Singleton instance -> Used in GameOverMenu.cs and ChangeScene.cs
 
     public GameObject pauseMenu;
     public static bool isPaused;
