@@ -11,7 +11,7 @@ public class GameOver : MonoBehaviour
         {
             // Scene 4 = Game Over
             Time.timeScale = 1.0f;
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(3);
         }
     }
 }
