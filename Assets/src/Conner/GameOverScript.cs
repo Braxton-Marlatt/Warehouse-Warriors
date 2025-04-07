@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOver : MonoBehaviour
+public class GameOverScript : MonoBehaviour
 {
     public PlayerHealth player;
 
