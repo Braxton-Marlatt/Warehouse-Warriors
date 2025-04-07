@@ -17,6 +17,7 @@ public class GameOverScript : MonoBehaviour
             // we trigger the OnPlayerDeath event from GameEvents
             //SceneManager.LoadScene("GameOver"); // Skipped this because were doing the observer pattern
             GameEvents.PlayerDied();
+            SoundFXManager.Instance.PlaySound("PlayerDeath"); // Play player death sound
         }
     }
 }

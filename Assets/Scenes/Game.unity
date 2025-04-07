@@ -4244,6 +4244,10 @@ PrefabInstance:
       propertyPath: playershoot1
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2883094624697415091, guid: bdb7053fd92a9ea4892d8c24cf08f0e3, type: 3}
+      propertyPath: audioMixerGroup
+      value: 
+      objectReference: {fileID: -6958878125097087141, guid: 4ca11235414345e40978a3bb1e2af815, type: 2}
     - target: {fileID: 6157144667559120662, guid: bdb7053fd92a9ea4892d8c24cf08f0e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

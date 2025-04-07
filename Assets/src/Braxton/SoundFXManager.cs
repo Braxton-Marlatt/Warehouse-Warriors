@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using NUnit.Framework;
 
 public class SoundFXManager : AudioManager
 {
@@ -53,7 +54,8 @@ public class SoundFXManager : AudioManager
         AddAudioSource("ShoppingCart", "Shoppingcart");
         AddAudioSource("EnemyHit", "Enemyhit");
         AddAudioSource("EnemyShoot", "Enemyshoot");
-        AddAudioSource("EnmmyReload", "Enemyreload");
+        AddAudioSource("EnemyReload", "Enemyreload");
+        AddAudioSource("PlayerDeath", "Playerdeath");
 
         Debug.Log("soundFXSources initialized successfully.");
     }
@@ -84,10 +86,30 @@ public class SoundFXManager : AudioManager
         }
         if(hasMeleeEnemies)
         {
+            SoundFXManager.Instance.audioSources["ShoppingCart"].loop = true;
             PlaySound("ShoppingCart"); // Play the sound if melee enemies are present
         }
     }
 
+    public void StopShoppingCart(List<Enemy> enemies)
+    {
+        foreach (Enemy e in enemies)
+        {
+            // Check if the enemy is melee and still alive
+            EnemyHealth enemyHealth = e.GetComponent<EnemyHealth>();
+            if (e.enemyType == 0 && enemyHealth != null && enemyHealth.health > 0)
+            {
+                Debug.Log("Melee enemy is alive, returning from StopShoppingCart");
+                return; // Exit if any melee enemy is still alive
+            }
+        }
+
+        // If no melee enemies are alive, stop the ShoppingCart sound
+        Debug.Log("No melee enemies alive. Stopping ShoppingCart sound.");
+        StopSound("ShoppingCart");
+    }
+
+    
     public System.Collections.IEnumerator PlaySoundWithDelay(string soundKey, float delay)
     {
         yield return new WaitForSeconds(delay);

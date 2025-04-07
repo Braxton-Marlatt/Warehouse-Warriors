@@ -82,7 +82,9 @@ public class Room : MonoBehaviour
     }
     public void HandleEnemyDeath(EnemyHealth enemyHealth, Enemy enemy){ 
         Debug.Log("Enemy Killed");
+        SoundFXManager.Instance.StopShoppingCart(enemies);
         RemoveEnemy(enemy);
+        
     }
     public void RemoveEnemy(Enemy e){
         if(enemies.Contains(e)) enemies.Remove(e);
@@ -94,7 +96,6 @@ public class Room : MonoBehaviour
                 n.Despawn();
             }
         }
-        SoundFXManager.Instance.StopSoundEffect("ShoppingCart"); // Play room complete sound 
     }
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
