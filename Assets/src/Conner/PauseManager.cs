@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
-    public static PauseManager instance; // Singleton instance -> Used in GameOverMenu.cs and ChangeScene.cs
+    public static PauseManager instance; // Singleton instance
 
     public GameObject pauseMenu;
     public static bool isPaused;
@@ -39,6 +39,8 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            SoundFXManager.Instance.PlaySound("ButtonClick"); // Play button click sound
+
             if (isPaused)
                 resumeGame();
             else

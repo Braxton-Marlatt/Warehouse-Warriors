@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using UnityEngine.Audio;
 
-public class MusicManager : MonoBehaviour
+public class MusicManager : AudioManager
 {
     // Singleton instance
     private static MusicManager _instance;
 
-    // Public property to access the instance
     public static MusicManager Instance
     {
         get
@@ -23,56 +24,114 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    [Header("Sound Effects")]
-    [SerializeField] private AudioSource WeBringTheBoom;
+    // Dictionary to hold audio sources
+    private Dictionary<string, AudioSource> musicSources;
 
-    // Ensure only one instance exists
+    [SerializeField] public AudioMixerGroup audioMixerGroup;
     private void Awake()
     {
         if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
-        }
-        else
-        {
-            _instance = this;
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            return;
         }
 
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        InitializeMusicSources();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // Initialize the music sources dictionary
+    private void InitializeMusicSources()
+    {
+        AddMusicSource("Webringtheboom", "Webringtheboom");
+        AddMusicSource("GameMusic", "Gamemusic");
+
+        Debug.Log("Music sources initialized successfully.");
+    }
+
+    // Helper method to add a music source
+    private void AddMusicSource(string key, string resourceName)
+    {
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = Resources.Load<AudioClip>(resourceName);
+        audioSource.outputAudioMixerGroup = audioMixerGroup; // Set the audio mixer group if needed
+        if (audioSource.clip == null)
+        {
+            Debug.LogError($"Audio clip '{resourceName}' could not be loaded! Ensure it is in the Resources folder.");
+            return;
+        }
+        audioSources[key] = audioSource; // Add to the base class dictionary
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        PlayMusic();
+        PlayMusicForScene(scene.name);
     }
 
-    // Play a sound effect
-    public void PlayWeBringTheBoom()
+    // Play music based on the scene name
+    private void PlayMusicForScene(string sceneName)
     {
-        if (WeBringTheBoom != null)
+        StopAllMusic();
+
+        if (sceneName == "Start_Menu")
         {
-            WeBringTheBoom.Play();
+            PlaySound("Webringtheboom");
+        }
+        else if (sceneName == "Game")
+        {
+            PlaySound("GameMusic");
         }
         else
         {
-            Debug.LogError("WeBringTheBoom AudioSource is null!");
+            Debug.LogWarning($"No music configured for scene '{sceneName}'.");
         }
     }
 
-    public void PlayMusic()
+    // Stop all currently playing music
+    private void StopAllMusic()
     {
-        if (SceneManager.GetActiveScene().name == "Start_Menu")
+        foreach (var audioSource in audioSources.Values)
         {
-            PlayWeBringTheBoom();
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
+    }
+
+    public override void PlaySound(string soundKey)
+    {
+        if (audioSources.TryGetValue(soundKey, out var audioSource))
+        {
+            if (audioSource != null)
+            {
+                if (audioSource.clip == null)
+                {
+                    Debug.LogError($"Audio clip for key '{soundKey}' is not assigned!");
+                    return;
+                }
+
+                Debug.Log($"Playing sound for key '{soundKey}' with volume {audioSource.volume}");
+                audioSource.loop = true; // Ensure music loops
+                audioSource.Play();
+            }
+            else
+            {
+                Debug.LogError($"AudioSource for key '{soundKey}' is null!");
+            }
         }
         else
         {
-            WeBringTheBoom.Stop();
+            Debug.LogWarning($"Sound key '{soundKey}' not found in AudioManager!");
         }
     }
-
-    public void SetMusicVolume(float volume)
-    {
-        WeBringTheBoom.volume = volume;
-    }
-
 }
+

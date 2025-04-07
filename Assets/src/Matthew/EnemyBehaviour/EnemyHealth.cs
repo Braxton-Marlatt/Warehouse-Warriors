@@ -39,6 +39,7 @@ public class EnemyHealth : MonoBehaviour
     private void Die(){
         Enemy enemy = GetComponent<Enemy>();
         SoundFXManager.Instance.PlaySound("EnemyDeath"); // Play enemy death sound
+        SoundFXManager.Instance.StopSoundEffect("ShoppingCart"); // Stop ShoppingCart sound
         OnEnemyDeath?.Invoke(this,enemy);
         Destroy(gameObject); // Destroy the enemy GameObject
     }
