@@ -11,7 +11,8 @@ public class AudioSlider : MonoBehaviour
         if (volumeSlider != null)
         {
             // Set the initial value of the slider to the current volume
-            volumeSlider.value = SoundFXManager.Instance.GetVolume("PlayerShoot");
+            volumeSlider.value = SoundFXManager.Instance.GetVolume("PlayerShoot"); // Assuming "PlayerHit" is a sound key in SoundFXManager
+            // Set the slider's min and max values (0 to 1 for volume)
 
             // Add a listener to call the OnVolumeChange method whenever the slider value changes
             volumeSlider.onValueChanged.AddListener(OnVolumeChange);

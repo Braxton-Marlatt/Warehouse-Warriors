@@ -51,7 +51,7 @@ public class MusicManager : AudioManager
     // Initialize the music sources dictionary
     private void InitializeMusicSources()
     {
-        AddMusicSource("Webringtheboom", "Webringtheboom");
+        AddMusicSource("WeBringTheBoom", "Webringtheboom");
         AddMusicSource("GameMusic", "Gamemusic");
 
         Debug.Log("Music sources initialized successfully.");
@@ -83,7 +83,7 @@ public class MusicManager : AudioManager
 
         if (sceneName == "Start_Menu")
         {
-            PlaySound("Webringtheboom");
+            PlaySound("WeBringTheBoom");
         }
         else if (sceneName == "Game")
         {
@@ -134,4 +134,3 @@ public class MusicManager : AudioManager
         }
     }
 }
-
