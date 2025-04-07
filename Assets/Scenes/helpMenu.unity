@@ -188,7 +188,7 @@ MonoBehaviour:
     Rignt = D
 
     Dash
-    = SpaceBar
+    = Space
 
 '
   m_isRightToLeft: 0

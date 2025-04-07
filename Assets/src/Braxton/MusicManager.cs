@@ -35,16 +35,16 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
-            _instance = this;  
+            _instance = this;
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
-        
+
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         PlayMusic();
     }
-    
+
     // Play a sound effect
     public void PlayWeBringTheBoom()
     {

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 using UnityEditor.PackageManager;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class ConnerTests
     {
         SceneManager.LoadScene("Start_Menu");
         yield return new WaitForSecondsRealtime(0.5f);
+        // LogAssert.Expect(LogType.Error, new Regex(".*AudioSource.*null.*")); // There is a known error in the MusicManager that we are silencing here
+
     }
 
     [UnityTest] // Checks if Help button returns to home screen from home

@@ -14,9 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 184fbb92b9764406db03f50ba2c420e3
-  - enabled: 0
-    path: Assets/Scenes/TestScene.unity
-    guid: c08a7d96fe2124ce895339b79551c795
   - enabled: 1
     path: Assets/Scenes/helpMenu.unity
     guid: 83b1a82ce36ae2447b660e816ecbb88a
@@ -29,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AFKScene.unity
     guid: 3f03d46918771ca45a5f6bba57b8e663
+  - enabled: 0
+    path: Assets/Scenes/TestScene.unity
+    guid: c08a7d96fe2124ce895339b79551c795
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
