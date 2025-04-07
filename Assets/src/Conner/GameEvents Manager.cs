@@ -1,4 +1,4 @@
-  //Subject
+ //Subject
  // This static class acts as the event broadcaster for major game events
 // In this case, we use it to signal when the player dies
 using System;
