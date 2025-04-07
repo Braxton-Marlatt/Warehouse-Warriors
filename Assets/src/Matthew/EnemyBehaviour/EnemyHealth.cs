@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public void Hurt(int damage=1){
         health -= damage;
+        SoundFXManager.Instance.PlaySound("EnemyHit"); // Play enemy hit sound
         if (health <= 0){
             Die();
         }else StartCoroutine(FlashRed());
@@ -38,6 +39,7 @@ public class EnemyHealth : MonoBehaviour
     private void Die(){
         Enemy enemy = GetComponent<Enemy>();
         SoundFXManager.Instance.PlaySound("EnemyDeath"); // Play enemy death sound
+        SoundFXManager.Instance.StopSoundEffect("ShoppingCart"); // Stop ShoppingCart sound
         OnEnemyDeath?.Invoke(this,enemy);
         Destroy(gameObject); // Destroy the enemy GameObject
     }

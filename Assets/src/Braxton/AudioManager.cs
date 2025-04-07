@@ -132,7 +132,6 @@ public abstract class AudioManager : MonoBehaviour
     {
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = Resources.Load<AudioClip>(resourceName);
-        audioSource.playOnAwake = false; // Prevent auto-play on awake
         if (audioSource.clip == null)
         {
             Debug.LogError($"Audio clip '{resourceName}' could not be loaded! Ensure it is in the Resources folder.");

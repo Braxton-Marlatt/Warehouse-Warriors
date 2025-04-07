@@ -71,6 +71,7 @@ public class Room : MonoBehaviour
             Debug.Log("enemy spawned");
             e.Spawn();
         }
+        SoundFXManager.Instance.PlayShoppingCartIfMeleeEnemies(enemies); // Play sound if there are melee enemies
     }
     public int GetEnemiesLeft() { //gets # of enemies left besides turrets
         int turretCount = 0;
@@ -92,7 +93,8 @@ public class Room : MonoBehaviour
             foreach(Enemy n in enemies){
                 n.Despawn();
             }
-        } 
+        }
+        SoundFXManager.Instance.StopSoundEffect("ShoppingCart"); // Play room complete sound 
     }
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created

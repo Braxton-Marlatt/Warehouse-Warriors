@@ -23,8 +23,6 @@ public class SoundFXManager : AudioManager
         }
     }
 
-    // Dictionary to hold audio sources
-    public Dictionary<string, AudioSource> soundFXSources = new Dictionary<string, AudioSource>();
 
     // Ensure only one instance exists
     private void Awake()
@@ -53,6 +51,9 @@ public class SoundFXManager : AudioManager
         AddAudioSource("PlayerMelee", "Playermelee");
         AddAudioSource("ButtonClick", "Buttonclick");
         AddAudioSource("ShoppingCart", "Shoppingcart");
+        AddAudioSource("EnemyHit", "Enemyhit");
+        AddAudioSource("EnemyShoot", "Enemyshoot");
+        AddAudioSource("EnmmyReload", "Enemyreload");
 
         Debug.Log("soundFXSources initialized successfully.");
     }
@@ -69,7 +70,29 @@ public class SoundFXManager : AudioManager
         StopSound(soundKey);
     }
 
-    
+    public void PlayShoppingCartIfMeleeEnemies(List<Enemy> enemies)
+    {
+        bool hasMeleeEnemies = false;
+        // Check if the list contains any melee enemies
+        foreach(Enemy e in enemies)
+        {
+            if(e.enemyType == 0)
+            {
+                hasMeleeEnemies = true;
+                break; // Exit the loop if a melee enemy is found
+            }
+        }
+        if(hasMeleeEnemies)
+        {
+            PlaySound("ShoppingCart"); // Play the sound if melee enemies are present
+        }
+    }
+
+    public System.Collections.IEnumerator PlaySoundWithDelay(string soundKey, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlaySound(soundKey);
+    }
 }
 
 

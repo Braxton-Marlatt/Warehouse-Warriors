@@ -29,6 +29,8 @@ public class Ranged : Enemy
         if (rb != null){
             Vector2 direction = (player.position - firePoint.position).normalized;
             rb.linearVelocity = direction * bulletSpeed;
+            SoundFXManager.Instance.PlaySound("EnemyShoot"); // Play shooting sound
+            SoundFXManager.Instance.PlaySoundWithDelay("EnemyReload", 0.5f); // Play shooting sound with a delay
         }else Debug.LogWarning("Bullet prefab needs a Rigidbody2D component!");
     }
     //public override void CreatePath(){
