@@ -7,6 +7,7 @@ public class MusicManager : AudioManager
 {
     // Singleton instance
     private static MusicManager _instance;
+    private IAudioSourceFactory musicSourceFactory = new AudioSourceFactory();
 
     public static MusicManager Instance
     {
@@ -23,6 +24,7 @@ public class MusicManager : AudioManager
             _instance = value;
         }
     }
+    
 
     // Dictionary to hold audio sources
     private Dictionary<string, AudioSource> musicSources;
@@ -38,7 +40,6 @@ public class MusicManager : AudioManager
 
         _instance = this;
         DontDestroyOnLoad(gameObject);
-
         InitializeMusicSources();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -56,20 +57,14 @@ public class MusicManager : AudioManager
 
         Debug.Log("Music sources initialized successfully.");
     }
-
-    // Helper method to add a music source
-    private void AddMusicSource(string key, string resourceName)
+    public void AddMusicSource(string key, string resourceName)
     {
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = Resources.Load<AudioClip>(resourceName);
-        audioSource.outputAudioMixerGroup = audioMixerGroup; // Set the audio mixer group if needed
-        if (audioSource.clip == null)
-        {
-            Debug.LogError($"Audio clip '{resourceName}' could not be loaded! Ensure it is in the Resources folder.");
-            return;
-        }
-        audioSources[key] = audioSource; // Add to the base class dictionary
+        AudioSource audioSource = musicSourceFactory.CreateAudioSource(resourceName);
+        audioSources[key] = audioSource;
+
+        Debug.Log($"Audio source '{key}' added successfully.");
     }
+
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

@@ -1,11 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
+using PlasticPipe.PlasticProtocol.Messages;
 
 public abstract class AudioManager : MonoBehaviour
 {
     // Dictionary to store audio sources
     protected Dictionary<string, AudioSource> audioSources = new Dictionary<string, AudioSource>();
+    public IAudioSourceFactory audioSourceFactory;
 
+    // Add an audio source using the factory
     // Play a sound by key
     public virtual void PlaySound(string soundKey)
     {
@@ -128,18 +131,5 @@ public abstract class AudioManager : MonoBehaviour
     }
 
     // Add an audio source to the dictionary
-    protected void AddAudioSource(string key, string resourceName)
-    {
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = Resources.Load<AudioClip>(resourceName);
-        if (audioSource.clip == null)
-        {
-            Debug.LogError($"Audio clip '{resourceName}' could not be loaded! Ensure it is in the Resources folder.");
-            return;
-        }
 
-        audioSources[key] = audioSource;
-
-        Debug.Log($"Audio source '{key}' added successfully.");
-    }
 }

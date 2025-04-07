@@ -6,7 +6,7 @@ public class SoundFXManager : AudioManager
 {
     // Singleton instance
     private static SoundFXManager _instance;
-
+    private IAudioSourceFactory soundFXSourceFactory = new AudioSourceFactory();
     // Public property to access the instance
     public static SoundFXManager Instance
     {
@@ -38,6 +38,15 @@ public class SoundFXManager : AudioManager
         DontDestroyOnLoad(gameObject);
 
         InitializeSoundFXSources();
+    }
+
+    
+    public void AddAudioSource(string key, string resourceName)
+    {
+        AudioSource audioSource = soundFXSourceFactory.CreateAudioSource(resourceName);
+        audioSources[key] = audioSource;
+
+        Debug.Log($"Audio source '{key}' added successfully.");
     }
 
     // Initialize sound effects
