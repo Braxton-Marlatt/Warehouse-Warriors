@@ -21,12 +21,11 @@ public class PauseManager : MonoBehaviour
     {
         if (pauseMenu == null)
         {
-            Debug.LogError("PauseManager ERROR: pauseMenu is not assigned!");
+            Debug.LogError("pauseMenu is not assigned!");
         }
 
         if (isPaused)
         {
-            SoundFXManager.Instance.PlaySound("Buttonclick"); // Play sound when pausing
             pauseMenu.SetActive(true);
             Time.timeScale = 0.0f;
         }
@@ -35,12 +34,11 @@ public class PauseManager : MonoBehaviour
             pauseMenu.SetActive(false);
         }
     }
-
+    //Checks for ESC key to pause the game
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SoundFXManager.Instance.PlaySound("Buttonclick"); // Play sound when pausing/unpausing
             if (isPaused)
                 resumeGame();
             else
@@ -62,15 +60,14 @@ public class PauseManager : MonoBehaviour
         isPaused = true;
         StartCoroutine(PreventImmediateInput());
     }
-
+    //Waits 0.1 second before accepting input after pressing pause/play 
     private IEnumerator PreventImmediateInput()
     {
         yield return new WaitForSecondsRealtime(0.1f);
     }
 
     public void loadHelpFromPause()
-    {   
-        SoundFXManager.Instance.PlaySound("Buttonclick"); // Play sound when loading help menu
+    {
         HelpMenuTracker.source = "pause";
         Time.timeScale = 1.0f;
         isPaused = false;

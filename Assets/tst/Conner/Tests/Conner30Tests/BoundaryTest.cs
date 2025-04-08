@@ -12,7 +12,7 @@ public class PauseBoundaryTest
     [UnitySetUp]
     public IEnumerator SetUp()
     {
-        var asyncLoad = SceneManager.LoadSceneAsync("TestScene");
+        var asyncLoad = SceneManager.LoadSceneAsync("Game");
         while (!asyncLoad.isDone)
         {
             yield return null;
