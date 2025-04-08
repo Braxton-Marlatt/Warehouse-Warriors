@@ -165,7 +165,7 @@ public class BulletBoundary
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
             // Generate a random direction
-            playerShooter.FireTripleShot(Vector2.left);
+            playerShooter.FireTripleShot((Vector2)playerShooter.transform.position + Vector2.left);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
             {
@@ -196,7 +196,7 @@ public class BulletBoundary
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
             // Generate a random direction
-            playerShooter.FireTripleShot(Vector2.right);
+            playerShooter.FireTripleShot((Vector2)playerShooter.transform.position + Vector2.right);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
             {
@@ -226,7 +226,7 @@ public class BulletBoundary
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
             // Generate a random direction
-            playerShooter.FireTripleShot(Vector2.up);
+            playerShooter.FireTripleShot((Vector2)playerShooter.transform.position + Vector2.up);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
             {
@@ -256,7 +256,7 @@ public class BulletBoundary
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
             // Generate a random direction
-            playerShooter.FireTripleShot(Vector2.down);
+            playerShooter.FireTripleShot((Vector2)playerShooter.transform.position + Vector2.down);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
             {
@@ -287,7 +287,7 @@ public class BulletBoundary
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
             // Generate a random direction
-            playerShooter.Shoot(Vector2.left);
+            playerShooter.Shoot((Vector2)playerShooter.transform.position + Vector2.left);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
             {
@@ -317,7 +317,7 @@ public class BulletBoundary
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
             // Generate a random direction
-            playerShooter.Shoot(Vector2.right);
+            playerShooter.Shoot((Vector2)playerShooter.transform.position + Vector2.right);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
             {
@@ -348,7 +348,7 @@ public class BulletBoundary
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
             // Generate a random direction
-            playerShooter.Shoot(Vector2.up);
+            playerShooter.Shoot((Vector2)playerShooter.transform.position + Vector2.up);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
             {
@@ -378,7 +378,7 @@ public class BulletBoundary
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
             // Generate a random direction
-            playerShooter.Shoot(Vector2.down);
+            playerShooter.Shoot((Vector2)playerShooter.transform.position + Vector2.down);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
             {
@@ -408,7 +408,7 @@ public class BulletBoundary
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
             // Generate a random direction
-            playerShooter.Shoot(Vector2.left);
+            playerShooter.Shoot((Vector2)playerShooter.transform.position + Vector2.left);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
             {
@@ -438,7 +438,7 @@ public class BulletBoundary
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
             // Generate a random direction
-            playerShooter.Shoot(Vector2.down);
+            playerShooter.Shoot((Vector2)playerShooter.transform.position + Vector2.down);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
             {
@@ -468,7 +468,7 @@ public class BulletBoundary
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
             // Generate a random direction
-            playerShooter.Shoot(Vector2.right);
+            playerShooter.Shoot((Vector2)playerShooter.transform.position + Vector2.right);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
             {
@@ -498,7 +498,7 @@ public class BulletBoundary
             Debug.Log($"BulletSpeed: {playerShooter.bulletSpeed}, FPS: {fps}");
 
             // Generate a random direction
-            playerShooter.Shoot(Vector2.up);
+            playerShooter.Shoot((Vector2)playerShooter.transform.position + Vector2.up);
 
             foreach (var bullet in GameObject.FindGameObjectsWithTag("Bullet"))
             {
