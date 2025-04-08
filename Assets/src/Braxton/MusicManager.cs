@@ -28,7 +28,7 @@ public class MusicManager : AudioManager
 
     // Dictionary to hold audio sources
 
-    [SerializeField] public AudioMixerGroup audioMixerGroup;
+    [SerializeField] private AudioMixerGroup audioMixerGroup;
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -57,7 +57,7 @@ public class MusicManager : AudioManager
         Debug.Log("Music sources initialized successfully.");
     }
     
-    public void AddMusicSource(string key, string resourceName)
+    private void AddMusicSource(string key, string resourceName)
     {
         AudioSource audioSource = musicSourceFactory.CreateAudioSource(resourceName, audioMixerGroup);
         audioSources[key] = audioSource;

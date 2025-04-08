@@ -187,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
         else if(isMoving && rb.linearVelocity.magnitude < 0.1f) // Check if the player stops moving
         {
             isMoving = false; // Reset isMoving when the player stops moving
-            SoundFXManager.Instance.StopSoundEffect("Playermove"); // Stop footstep sound
+            SoundFXManager.Instance.StopSound("Playermove"); // Stop footstep sound
         }
     }
 }

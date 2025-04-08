@@ -2666,8 +2666,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 415124099}
-        m_TargetAssemblyTypeName: SoundFXManager, NewAssembly
-        m_MethodName: PlaySoundEffect
+        m_TargetAssemblyTypeName: AudioManager, NewAssembly
+        m_MethodName: PlaySound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3360,11 +3360,11 @@ PrefabInstance:
       objectReference: {fileID: 415124099}
     - target: {fileID: 8364492450044850177, guid: c84c3ccf59af0fe46abd02edd29a52da, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlaySoundEffect
+      value: PlaySound
       objectReference: {fileID: 0}
     - target: {fileID: 8364492450044850177, guid: c84c3ccf59af0fe46abd02edd29a52da, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SoundFXManager, NewAssembly
+      value: AudioManager, NewAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 8364492450044850177, guid: c84c3ccf59af0fe46abd02edd29a52da, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -4165,8 +4165,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 415124099}
-        m_TargetAssemblyTypeName: SoundFXManager, NewAssembly
-        m_MethodName: PlaySoundEffect
+        m_TargetAssemblyTypeName: AudioManager, NewAssembly
+        m_MethodName: PlaySound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4618,8 +4618,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 415124099}
-        m_TargetAssemblyTypeName: SoundFXManager, NewAssembly
-        m_MethodName: PlaySoundEffect
+        m_TargetAssemblyTypeName: AudioManager, NewAssembly
+        m_MethodName: PlaySound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5810,8 +5810,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 415124099}
-        m_TargetAssemblyTypeName: SoundFXManager, NewAssembly
-        m_MethodName: PlaySoundEffect
+        m_TargetAssemblyTypeName: AudioManager, NewAssembly
+        m_MethodName: PlaySound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

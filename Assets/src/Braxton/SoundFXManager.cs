@@ -73,17 +73,6 @@ public class SoundFXManager : AudioManager
         Debug.Log("soundFXSources initialized successfully.");
     }
 
-    // Play a specific sound effect
-    public void PlaySoundEffect(string soundKey)
-    {
-        PlaySound(soundKey);
-    }
-
-    // Stop a specific sound effect
-    public void StopSoundEffect(string soundKey)
-    {
-        StopSound(soundKey);
-    }
 
     public void PlayShoppingCartIfMeleeEnemies(List<Enemy> enemies)
     {
@@ -113,7 +102,7 @@ public class SoundFXManager : AudioManager
                 return; // Exit the method if there are still melee enemies
             }
         }
-        StopSoundEffect("ShoppingCart"); // Stop the sound if no melee enemies are present
+        StopSound("ShoppingCart"); // Stop the sound if no melee enemies are present
     }
 
     
