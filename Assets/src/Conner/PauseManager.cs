@@ -26,6 +26,7 @@ public class PauseManager : MonoBehaviour
 
         if (isPaused)
         {
+            SoundFXManager.Instance.PlaySound("Buttonclick"); // Play sound when pausing
             pauseMenu.SetActive(true);
             Time.timeScale = 0.0f;
         }
@@ -39,6 +40,7 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            SoundFXManager.Instance.PlaySound("Buttonclick"); // Play sound when pausing/unpausing
             if (isPaused)
                 resumeGame();
             else
@@ -67,7 +69,8 @@ public class PauseManager : MonoBehaviour
     }
 
     public void loadHelpFromPause()
-    {
+    {   
+        SoundFXManager.Instance.PlaySound("Buttonclick"); // Play sound when loading help menu
         HelpMenuTracker.source = "pause";
         Time.timeScale = 1.0f;
         isPaused = false;
