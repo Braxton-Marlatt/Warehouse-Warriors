@@ -1580,6 +1580,17 @@ Transform:
   - {fileID: 1928824623}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &415124099 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1601516537867000050, guid: bdb7053fd92a9ea4892d8c24cf08f0e3, type: 3}
+  m_PrefabInstance: {fileID: 1887286307}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e0bb1bca46e8140b365bc43dfc6135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &472432177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,6 +2665,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 415124099}
+        m_TargetAssemblyTypeName: SoundFXManager, NewAssembly
+        m_MethodName: PlaySoundEffect
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Buttonclick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &692788995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3326,6 +3349,30 @@ PrefabInstance:
     - target: {fileID: 5868603175673710917, guid: c84c3ccf59af0fe46abd02edd29a52da, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364492450044850177, guid: c84c3ccf59af0fe46abd02edd29a52da, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364492450044850177, guid: c84c3ccf59af0fe46abd02edd29a52da, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 415124099}
+    - target: {fileID: 8364492450044850177, guid: c84c3ccf59af0fe46abd02edd29a52da, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364492450044850177, guid: c84c3ccf59af0fe46abd02edd29a52da, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SoundFXManager, NewAssembly
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364492450044850177, guid: c84c3ccf59af0fe46abd02edd29a52da, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Buttonclick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364492450044850177, guid: c84c3ccf59af0fe46abd02edd29a52da, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8702191575195001935, guid: c84c3ccf59af0fe46abd02edd29a52da, type: 3}
       propertyPath: m_Name
@@ -4117,6 +4164,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 415124099}
+        m_TargetAssemblyTypeName: SoundFXManager, NewAssembly
+        m_MethodName: PlaySoundEffect
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Buttonclick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1461080974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4558,6 +4617,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 415124099}
+        m_TargetAssemblyTypeName: SoundFXManager, NewAssembly
+        m_MethodName: PlaySoundEffect
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Buttonclick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1616124133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4757,6 +4828,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 414396870}
     m_Modifications:
+    - target: {fileID: 1601516537867000050, guid: bdb7053fd92a9ea4892d8c24cf08f0e3, type: 3}
+      propertyPath: audioMixerGroup
+      value: 
+      objectReference: {fileID: 7912314524576889181, guid: 4ca11235414345e40978a3bb1e2af815, type: 2}
     - target: {fileID: 2248892423726632405, guid: bdb7053fd92a9ea4892d8c24cf08f0e3, type: 3}
       propertyPath: playershoot1
       value: 
@@ -5732,6 +5807,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 415124099}
+        m_TargetAssemblyTypeName: SoundFXManager, NewAssembly
+        m_MethodName: PlaySoundEffect
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Buttonclick
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2073359155

@@ -32,6 +32,7 @@ public class Ranged : Enemy
            // Play the shooting sound
         SoundFXManager.Instance.PlaySound("EnemyShoot");
 
+
         // Start the coroutine to play the reload sound after a delay
         SoundFXManager.Instance.StartCoroutine(SoundFXManager.Instance.PlaySoundWithDelay("EnemyReload", 0.1f));
         }else Debug.LogWarning("Bullet prefab needs a Rigidbody2D component!");

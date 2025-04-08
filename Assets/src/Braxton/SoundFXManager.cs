@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 using NUnit.Framework;
+using UnityEngine.Audio;
 
 public class SoundFXManager : AudioManager
 {
     // Singleton instance
     private static SoundFXManager _instance;
     private IAudioSourceFactory soundFXSourceFactory = new AudioSourceFactory();
+    [SerializeField] public AudioMixerGroup audioMixerGroup; // Reference to the AudioMixerGroup
     // Public property to access the instance
     public static SoundFXManager Instance
     {
@@ -41,9 +43,9 @@ public class SoundFXManager : AudioManager
     }
 
     
-    public void AddAudioSource(string key, string resourceName)
+    public void AddAudioSource(string key, string resourceName, AudioMixerGroup audioMixer = null)
     {
-        AudioSource audioSource = soundFXSourceFactory.CreateAudioSource(resourceName);
+        AudioSource audioSource = soundFXSourceFactory.CreateAudioSource(resourceName, audioMixer);
         audioSources[key] = audioSource;
 
         Debug.Log($"Audio source '{key}' added successfully.");
@@ -59,12 +61,14 @@ public class SoundFXManager : AudioManager
         AddAudioSource("PlayerShoot", "Playershoot");
         AddAudioSource("EnemyDeath", "Enemydeath");
         AddAudioSource("PlayerMelee", "Playermelee");
-        AddAudioSource("ButtonClick", "Buttonclick");
-        AddAudioSource("ShoppingCart", "Shoppingcart");
+        AddAudioSource("Buttonclick", "Buttonclick", audioMixerGroup);
+        AddAudioSource("ShoppingCart", "Shoppingcart", audioMixerGroup);
         AddAudioSource("EnemyHit", "Enemyhit");
         AddAudioSource("EnemyShoot", "Enemyshoot");
-        AddAudioSource("EnemyReload", "Enemyreload");
+        AddAudioSource("EnemyReload", "Enemyreload", audioMixerGroup);
         AddAudioSource("PlayerDeath", "Playerdeath");
+        AddAudioSource("Playerdash", "Playerdash");
+        AddAudioSource("Playermove", "Playermove");
 
         Debug.Log("soundFXSources initialized successfully.");
     }
@@ -104,18 +108,12 @@ public class SoundFXManager : AudioManager
     {
         foreach (Enemy e in enemies)
         {
-            // Check if the enemy is melee and still alive
-            EnemyHealth enemyHealth = e.GetComponent<EnemyHealth>();
-            if (e.enemyType == 0 && enemyHealth != null && enemyHealth.health > 0)
+            if (e.enemyType == 0) // Check if there are no melee enemies left
             {
-                Debug.Log("Melee enemy is alive, returning from StopShoppingCart");
-                return; // Exit if any melee enemy is still alive
+                return; // Exit the method if there are still melee enemies
             }
         }
-
-        // If no melee enemies are alive, stop the ShoppingCart sound
-        Debug.Log("No melee enemies alive. Stopping ShoppingCart sound.");
-        StopSound("ShoppingCart");
+        StopSoundEffect("ShoppingCart"); // Stop the sound if no melee enemies are present
     }
 
     
@@ -124,6 +122,20 @@ public class SoundFXManager : AudioManager
         yield return new WaitForSeconds(delay);
         PlaySound(soundKey);
     }
+
+    public void PlaysoundwithLoop(string soundKey)
+    {
+        if (audioSources.TryGetValue(soundKey, out var audioSource))
+        {
+            audioSource.loop = true; // Set the loop property
+            PlaySound(soundKey); // Play the sound
+        }
+        else
+        {
+            Debug.LogWarning($"Sound key '{soundKey}' not found in AudioManager!");
+        }
+    }
+
 }
 
 

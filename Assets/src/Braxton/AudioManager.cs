@@ -6,7 +6,6 @@ public abstract class AudioManager : MonoBehaviour
 {
     // Dictionary to store audio sources
     protected Dictionary<string, AudioSource> audioSources = new Dictionary<string, AudioSource>();
-    public IAudioSourceFactory audioSourceFactory;
 
     // Add an audio source using the factory
     // Play a sound by key

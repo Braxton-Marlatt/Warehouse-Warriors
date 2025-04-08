@@ -45,21 +45,6 @@ public class DashTest
         player.transform.position = initialPosition;
         elapsedTime = 0f;
 
-        // Move right
-        // while (elapsedTime < moveDuration)
-        // {
-        //     player.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-        //     elapsedTime += Time.deltaTime;
-        //     yield return null;
-        // }
-
-        // finalPosition = player.transform.position;
-        // Assert.Greater(finalPosition.x, 21f, "Player did not move out of the screen to the right");
-
-        // // Reset player position
-        // player.transform.position = initialPosition;
-        // elapsedTime = 0f;
-
         // Move up
         while (elapsedTime < moveDuration)
         {

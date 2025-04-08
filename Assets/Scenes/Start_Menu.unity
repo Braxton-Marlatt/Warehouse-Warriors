@@ -414,6 +414,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1601516537867000050, guid: bdb7053fd92a9ea4892d8c24cf08f0e3, type: 3}
+      propertyPath: audioMixerGroup
+      value: 
+      objectReference: {fileID: 7912314524576889181, guid: 4ca11235414345e40978a3bb1e2af815, type: 2}
     - target: {fileID: 2883094624697415091, guid: bdb7053fd92a9ea4892d8c24cf08f0e3, type: 3}
       propertyPath: audioMixerGroup
       value: 
@@ -516,7 +520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439233659765526145, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: ButtonClick
+      value: Buttonclick
       objectReference: {fileID: 0}
     - target: {fileID: 439233659765526145, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -568,7 +572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2498840300947688300, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: ButtonClick
+      value: Buttonclick
       objectReference: {fileID: 0}
     - target: {fileID: 2498840300947688300, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -577,6 +581,30 @@ PrefabInstance:
     - target: {fileID: 3068548929875813349, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062927847411489388, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062927847411489388, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2764745709359880903}
+    - target: {fileID: 6062927847411489388, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062927847411489388, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SoundFXManager, NewAssembly
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062927847411489388, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Buttonclick
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062927847411489388, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6289452902841286881, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -728,7 +756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8764321142354727357, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: ButtonClick
+      value: Buttonclick
       objectReference: {fileID: 0}
     - target: {fileID: 8764321142354727357, guid: 71d587efc0c63994f9ddc51ea10f8472, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
