@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: 89f8c67e97f324cf99be7c6fea15de60
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8670214967185496323
+    second: output-onlinegiftools-3_0
+  - first:
+      213: -4475630793041300126
+    second: output-onlinegiftools-3_1
+  - first:
+      213: -3794412353806595834
+    second: output-onlinegiftools-3_2
+  - first:
+      213: -2859143333821439146
+    second: output-onlinegiftools-3_3
+  - first:
+      213: 1384167579551027335
+    second: output-onlinegiftools-3_4
+  - first:
+      213: 6950811621931914916
+    second: output-onlinegiftools-3_5
+  - first:
+      213: 1272221953209022209
+    second: output-onlinegiftools-3_6
+  - first:
+      213: 8605847622827718701
+    second: output-onlinegiftools-3_7
+  - first:
+      213: -4487457412580555021
+    second: output-onlinegiftools-3_8
+  - first:
+      213: -8222944729146569745
+    second: output-onlinegiftools-3_9
+  - first:
+      213: 3002252641205167126
+    second: output-onlinegiftools-3_10
+  - first:
+      213: 7344677592354899801
+    second: output-onlinegiftools-3_11
+  - first:
+      213: -8085833263983865622
+    second: output-onlinegiftools-3_12
+  - first:
+      213: 8098031306276803784
+    second: output-onlinegiftools-3_13
+  - first:
+      213: 1508920352777209766
+    second: output-onlinegiftools-3_14
+  - first:
+      213: -8348048930628450037
+    second: output-onlinegiftools-3_15
+  - first:
+      213: 4229827822436220266
+    second: output-onlinegiftools-3_16
+  - first:
+      213: 2199310315347369874
+    second: output-onlinegiftools-3_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CartWalk_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9623af9765dca4afb970dae630c8781d
+      internalID: 1203034767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_1
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4b7b368b7c4545c297b0b4b02133e36
+      internalID: 1409123998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_2
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a1c736a92a8348bd857acf373291f26
+      internalID: 52669288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_3
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ea3a314e6c654f63a8f4132886c0056
+      internalID: 1570981186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_4
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 10
+        width: 48
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6091708ba62a8414cac72cc4f505e115
+      internalID: -1143345849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_5
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41843ae0912094635abdc74971468718
+      internalID: 22538427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_6
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c6493b2c9fbe4a5583a734db5a4e24c
+      internalID: -1508140131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_7
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e85ac4e84ee5d45ca905394779e15e2e
+      internalID: -1852725017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_8
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca4ffef2ed5424dcda4547f48d494d67
+      internalID: -1515199437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_9
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb1fdc14da38c45f5ab675c55c68b09b
+      internalID: 995387693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_10
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95c8773f07bb043e0ad534039b69328a
+      internalID: 855084452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_11
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 215f529dc8a6a4be383c68bf665dccc0
+      internalID: -950560209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_12
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc35e3ae54e99427190f2f8a9e4a8966
+      internalID: -883166803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_13
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83125bc3aaecd47dbac0e3a1a17a7ef5
+      internalID: -278953865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_14
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41a6990ec89e84652bf75d34c3b18c16
+      internalID: -1599653970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_15
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 335c0b0dbe1d9473fa857fe518e6ff8a
+      internalID: -1996519930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_16
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b39c9e3812c7b4a9eba63a5cd14fc992
+      internalID: 1437434117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CartWalk_17
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 10
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a95728b90b5d74fdcb11c4c8654e5506
+      internalID: -186011432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c3f9267fb0d674e2eb0043b54ffb4d50
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      CartWalk_0: 1203034767
+      CartWalk_1: 1409123998
+      CartWalk_10: 855084452
+      CartWalk_11: -950560209
+      CartWalk_12: -883166803
+      CartWalk_13: -278953865
+      CartWalk_14: -1599653970
+      CartWalk_15: -1996519930
+      CartWalk_16: 1437434117
+      CartWalk_17: -186011432
+      CartWalk_2: 52669288
+      CartWalk_3: 1570981186
+      CartWalk_4: -1143345849
+      CartWalk_5: 22538427
+      CartWalk_6: -1508140131
+      CartWalk_7: -1852725017
+      CartWalk_8: -1515199437
+      CartWalk_9: 995387693
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
