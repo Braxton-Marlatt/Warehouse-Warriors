@@ -7,7 +7,10 @@ public class CoinEffect : ScriptableObject, IPickupEffect
 
     public void ApplyEffect(GameObject player)
     {
-        FindObjectOfType<CoinManager>().AddCoin();
+        if(coins < 0){
+        coins = 1;
+        }
+        FindAnyObjectByType<CoinManager>().AddCoin();
         Debug.Log("Coin picked up");
     }
 }
