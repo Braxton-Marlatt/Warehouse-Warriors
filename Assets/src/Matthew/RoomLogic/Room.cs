@@ -32,28 +32,28 @@ public class Room : MonoBehaviour
             entryDirection = new Vector2Int(0, 1); //Set the entry direction to north
             player.transform.position = northRoom.southSpawn.position;
             cameraReference.target = northRoom.cameraLocation;
-            northRoom.SpawnEnemies();
+            StartCoroutine(northRoom.SpawnEnemies());
         } else if(direction.Equals("s") && southRoom != null){
             isOccupied = false;
             nextRoom = southRoom; //set the nextRoom        THIS IS FOR MINIMAP
             entryDirection = new Vector2Int(0, -1); //Set the entry direction to south
             player.transform.position = southRoom.northSpawn.position;
             cameraReference.target = southRoom.cameraLocation;
-            southRoom.SpawnEnemies();
+            StartCoroutine(southRoom.SpawnEnemies());
         } else if(direction.Equals("e")  && eastRoom != null){
             isOccupied = false;
             nextRoom = eastRoom; //set the nextRoom        THIS IS FOR MINIMAP
             entryDirection = new Vector2Int(1, 0); //Set the entry direction to east
             player.transform.position = eastRoom.westSpawn.position;
             cameraReference.target = eastRoom.cameraLocation;
-            eastRoom.SpawnEnemies();
+            StartCoroutine(eastRoom.SpawnEnemies());
         } else if(direction.Equals("w")  && westRoom != null){
             isOccupied = false;
             nextRoom = westRoom; //set the nextRoom        THIS IS FOR MINIMAP
             entryDirection = new Vector2Int(-1, 0); //Set the entry direction to west
             player.transform.position = westRoom.eastSpawn.position;
             cameraReference.target = westRoom.cameraLocation;
-            westRoom.SpawnEnemies();
+            StartCoroutine(westRoom.SpawnEnemies());
         }
         if (nextRoom != null){
             OnRoomEntered?.Invoke(nextRoom, entryDirection); // Notify the minimap manager about the room change
@@ -61,10 +61,12 @@ public class Room : MonoBehaviour
         }
 
     }
-    public void SpawnEnemies(){
+    public IEnumerator SpawnEnemies(){
+        yield return new WaitForSeconds(0.5f); // Delay before spawning
         isOccupied = true;
-        if(hasComplete) return;
-        foreach(Enemy e in enemies){
+        if (hasComplete) yield break;
+        foreach (Enemy e in enemies)
+        {
             Vector2 pos = e.transform.position;
             e.currentNode = AStarManager.instance.InitializeClosestNode(pos);
             e.player = player;
@@ -72,8 +74,10 @@ public class Room : MonoBehaviour
             e.Spawn();
 
         }
-        SoundFXManager.Instance.PlayShoppingCartIfMeleeEnemies(enemies); // Play sound if there are melee enemies
+
+        SoundFXManager.Instance.PlayShoppingCartIfMeleeEnemies(enemies);
     }
+
     public int GetEnemiesLeft() { //gets # of enemies left besides turrets
         int turretCount = 0;
         foreach(Enemy e in enemies){

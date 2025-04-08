@@ -1,4 +1,3 @@
-// This script checks the player's health and fires the event when health reaches 0
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,9 +12,8 @@ public class GameOverScript : MonoBehaviour
         {
             Time.timeScale = 1.0f; // Reset time scale in case game was paused
 
-            // Instead of loading the Game Over scene directly,
-            // we trigger the OnPlayerDeath event from GameEvents
-            //SceneManager.LoadScene("GameOver"); // Skipped this because were doing the observer pattern
+            // Instead of loading the Game Over scene directly we trigger the OnPlayerDeath event from GameEvents
+
             GameEvents.PlayerDied();
             SoundFXManager.Instance.PlaySound("PlayerDeath"); // Play player death sound
         }

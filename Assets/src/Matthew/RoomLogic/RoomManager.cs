@@ -12,7 +12,15 @@ public class RoomManager : MonoBehaviour
      * Deletes doors/spawn points that are unused
      * Grabs rooms from prefabs
      */
-
+    public static RoomManager Instance { get; private set; } //Singleton pattern
+    void Awake(){
+        if (Instance == null){
+            Instance = this;
+            DontDestroyOnLoad(gameObject); 
+        } else {
+            Destroy(gameObject);
+        }
+    }
     public Transform player;
     public RoomCamera cameraReference;
     //Keep track of the map:
@@ -24,7 +32,7 @@ public class RoomManager : MonoBehaviour
     public List<GameObject> roomPrefabs = new List<GameObject>(); //include shop prefab
     private List<GameObject> usedRoomPrefabs = new List<GameObject>();
     public int spawnedRooms = 12;
-    private int count = 0;
+    private int count = 0; // Private Class Data: tracks # of rooms placed
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
