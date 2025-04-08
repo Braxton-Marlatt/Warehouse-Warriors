@@ -23,7 +23,6 @@ public class Room : MonoBehaviour
 
     public void EnterRoom(string direction){
         if(!hasComplete) return;
-
         Vector2Int entryDirection = Vector2Int.zero;
         Room nextRoom = null;
 
@@ -60,6 +59,7 @@ public class Room : MonoBehaviour
             OnRoomEntered?.Invoke(nextRoom, entryDirection); // Notify the minimap manager about the room change
             Debug.Log("Room entered: " + nextRoom + " in direction: " + entryDirection);
         }
+
     }
     public void SpawnEnemies(){
         isOccupied = true;
@@ -70,6 +70,7 @@ public class Room : MonoBehaviour
             e.player = player;
             Debug.Log("enemy spawned");
             e.Spawn();
+
         }
         SoundFXManager.Instance.PlayShoppingCartIfMeleeEnemies(enemies); // Play sound if there are melee enemies
     }
@@ -82,9 +83,10 @@ public class Room : MonoBehaviour
     }
     public void HandleEnemyDeath(EnemyHealth enemyHealth, Enemy enemy){ 
         Debug.Log("Enemy Killed");
-        SoundFXManager.Instance.StopShoppingCart(enemies);
         RemoveEnemy(enemy);
+        SoundFXManager.Instance.StopShoppingCart(enemies); // Stop sound if no melee enemies are present
         
+
     }
     public void RemoveEnemy(Enemy e){
         if(enemies.Contains(e)) enemies.Remove(e);

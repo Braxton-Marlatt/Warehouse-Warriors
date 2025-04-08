@@ -4757,6 +4757,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 414396870}
     m_Modifications:
+    - target: {fileID: 1601516537867000050, guid: bdb7053fd92a9ea4892d8c24cf08f0e3, type: 3}
+      propertyPath: audioMixerGroup
+      value: 
+      objectReference: {fileID: 7912314524576889181, guid: 4ca11235414345e40978a3bb1e2af815, type: 2}
     - target: {fileID: 2248892423726632405, guid: bdb7053fd92a9ea4892d8c24cf08f0e3, type: 3}
       propertyPath: playershoot1
       value: 

@@ -134,7 +134,7 @@ MonoBehaviour:
   damageAmount: 1
   currentState: 3
   currentNode: {fileID: 0}
-  enemyType: 0
+  enemyType: 2
   disengageDistance: 3
   path: []
   isSpawned: 0
