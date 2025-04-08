@@ -1,29 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
- // === DYNAMIC BINDING EXAMPLE ===
-
-// Base class for minimap node behavior
-public class MinimapNodeBase
-{
-    // Base class with a virtual method—this is what allows dynamic binding to work.
-    public virtual void DisplayInfo()
-    {
-        Debug.Log("Generic minimap node.");
-    }
-}
-
-// Derived class with specific behavior
-public class SpecialMinimapNode : MinimapNodeBase
-{
-    // Derived class overrides the base method. The override enables runtime polymorphism.
-    public override void DisplayInfo()
-    {
-        Debug.Log("Special node: Boss Room or Secret Area.");
-    }
-}
-
-
 // SINGLETON IMPLEMENTATION IN MINIMAPMANAGER
 // Ensures only one instance of MinimapManager exists at any time
 public class MinimapManager : MonoBehaviour
@@ -41,8 +18,6 @@ public class MinimapManager : MonoBehaviour
     public Transform minimapParent; // Parent object for minimap elements
     private Dictionary<Vector2Int, GameObject> minimapNodes = new Dictionary<Vector2Int, GameObject>();
     private Vector2Int currentRoomPos = Vector2Int.zero;
-
-
 
     private void Awake()
     {
@@ -97,27 +72,6 @@ public class MinimapManager : MonoBehaviour
 
 private void AddRoomToMinimap(Vector2Int position)
 {
-// (Commented out for demonstration; not run unless needed)
-/*
-MinimapNodeBase node; // Reference is declared as the base type, but it might point to a derived object.
-
-// At runtime, this condition decides which type of node to create.
-// We're simulating the game deciding what kind of room was entered.
-bool isSpecialRoom = (position == new Vector2Int(2, 2)); // Arbitrary condition
-if (isSpecialRoom)
-{
-    node = new SpecialMinimapNode(); // Derived class
-}
-else
-{
-    node = new MinimapNodeBase(); // Base class
-}
-
-// Even though the reference is typed as the base class, 
-// the correct method is called thanks to dynamic binding.
-node.DisplayInfo(); // This demonstrates polymorphism: the same method call behaves differently 
-*/
-
     if (!minimapNodes.ContainsKey(position))
     {
         if (MiniMapNodePrefab == null)
@@ -140,8 +94,6 @@ node.DisplayInfo(); // This demonstrates polymorphism: the same method call beha
         MinimapNodePrototype clonedNode = prototype.Clone(nodePosition, minimapParent);
         minimapNodes[position] = clonedNode.gameObject;
     }
-
-    
 }
 
 
