@@ -22,6 +22,6 @@ public class GameOverHandler : MonoBehaviour
     {
         Debug.Log("[GameOverHandler] Player died. Loading Game Over scene...");
         SceneManager.LoadScene(3);// Assumes Scene 3 is the Game Over scene
-        SoundFXManager.Instance.PlaySound("PlayerDeath"); // Play player death sound
+        SoundFXManager.Instance.PlaySound("PlayerDeath"); // Play player death sounds
     }
 }
