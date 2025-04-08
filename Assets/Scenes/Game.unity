@@ -2571,7 +2571,7 @@ GameObject:
   - component: {fileID: 692788994}
   - component: {fileID: 692788997}
   m_Layer: 5
-  m_Name: Quit Button
+  m_Name: Quit_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4034,7 +4034,7 @@ GameObject:
   - component: {fileID: 1461080973}
   - component: {fileID: 1461080976}
   m_Layer: 5
-  m_Name: MainMenu Button
+  m_Name: Menu_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4475,7 +4475,7 @@ GameObject:
   - component: {fileID: 1616124132}
   - component: {fileID: 1616124135}
   m_Layer: 5
-  m_Name: Help Button
+  m_Name: Help_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5651,7 +5651,7 @@ GameObject:
   - component: {fileID: 2073359154}
   - component: {fileID: 2073359157}
   m_Layer: 5
-  m_Name: Resume Button
+  m_Name: Resume_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
