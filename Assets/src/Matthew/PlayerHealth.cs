@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public static int maxHealth = 5; //Start health, initialized to your current health
+    public int maxHealth = 5; //Start health, initialized to your current health
     private int health;
     public float invincibilityDuration = 1.5f; 
     private float invincibilityTimer = 0f; //Tracks DeltaTime between getting hurt and invincibilityDuration
@@ -58,10 +58,6 @@ public class PlayerHealth : MonoBehaviour
     //public library methods. Called on by anything 
     public int GetHealth(){
         return health;
-    }
-
-    public static int GetMaxHealth(){
-        return maxHealth;
     }
     public void SetHealth(int health){
         if(health <= 0){
