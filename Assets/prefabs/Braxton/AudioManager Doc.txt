@@ -1,0 +1,13 @@
+AudioManager Documentation:
+
+
+What this prefab contains:
+    - SoundFXManager -> Designed for playing quick sound effects on a specfic event
+    - MusicManager -> Designed for playing background music upon entering a scene
+
+
+How to use:
+    This prefab is designed to be placed in each scene of the game in order to provide both music and sound effect functionality.
+    It operates by searching through the Assets->Resources folder for audio clips to be added to AudioSource objects.
+    After the creation of AudioSource objects with clips from the resources folder, users can play clips, change volume, loop clips, and assign a mixer
+    Each Sub-manager has a mixer that can be assigned to it through the Unity editor. This allows for granular control of the audio levels of each audio clip relative of each other.

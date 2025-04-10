@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private bool isPhone;
-
+    private bool isMoving = false; // Track if the player is moving
 
     public bool fastDash = false;
 
@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextDashTime && moveDirection != Vector2.zero)
         {
+            SoundFXManager.Instance.PlaySound("Playerdash"); // Play dash sound effect
             Dash();
         }
 
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
             FlipSprite();
         }
         Debug.Log("Horizontal: " + joystick.Horizontal + " | Vertical: " + joystick.Vertical);
-
+        PlayFootStepSound(); // Call the footstep sound function
     }
 
     public void MovePlayer()
@@ -62,13 +63,13 @@ public class PlayerMovement : MonoBehaviour
         {
             // Use joystick input if on a phone
             moveDirection.x = joystick.Horizontal;
-            moveDirection.y = joystick.Vertical;
+            moveDirection.y = joystick.Vertical; 
         }
         else
         {
             // Use keyboard input if not on a phone
-            if (Input.GetKey(KeyCode.W)) moveDirection.y += 1;
-            if (Input.GetKey(KeyCode.S)) moveDirection.y -= 1;
+            if (Input.GetKey(KeyCode.W)) moveDirection.y += 1; 
+            if (Input.GetKey(KeyCode.S)) moveDirection.y -= 1; 
 
             if (Input.GetKey(KeyCode.D))
             {
@@ -170,5 +171,23 @@ public class PlayerMovement : MonoBehaviour
     void FlipSpriteLeft()
     {
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+    }
+
+    void PlayFootStepSound()
+    {
+        if(isMoving && rb.linearVelocity.magnitude < 0f) // Check if the player stops moving
+        {
+            return;
+        }
+        if(!isMoving && rb.linearVelocity.magnitude > 0f) // Check if the player is moving
+        {
+            SoundFXManager.Instance.PlaysoundwithLoop("Playermove"); // Play footstep sound
+            isMoving = true; // Set isMoving to true when the player starts moving
+        }
+        else if(isMoving && rb.linearVelocity.magnitude < 0.1f) // Check if the player stops moving
+        {
+            isMoving = false; // Reset isMoving when the player stops moving
+            SoundFXManager.Instance.StopSound("Playermove"); // Stop footstep sound
+        }
     }
 }

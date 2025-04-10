@@ -61,27 +61,18 @@ public class SoundFXManager : AudioManager
         AddAudioSource("PlayerShoot", "Playershoot");
         AddAudioSource("EnemyDeath", "Enemydeath");
         AddAudioSource("PlayerMelee", "Playermelee");
-        AddAudioSource("ButtonClick", "Buttonclick", audioMixerGroup);
+        AddAudioSource("Buttonclick", "Buttonclick", audioMixerGroup);
         AddAudioSource("ShoppingCart", "Shoppingcart", audioMixerGroup);
         AddAudioSource("EnemyHit", "Enemyhit");
         AddAudioSource("EnemyShoot", "Enemyshoot");
         AddAudioSource("EnemyReload", "Enemyreload", audioMixerGroup);
         AddAudioSource("PlayerDeath", "Playerdeath");
+        AddAudioSource("Playerdash", "Playerdash");
+        AddAudioSource("Playermove", "Playermove");
 
         Debug.Log("soundFXSources initialized successfully.");
     }
 
-    // Play a specific sound effect
-    public void PlaySoundEffect(string soundKey)
-    {
-        PlaySound(soundKey);
-    }
-
-    // Stop a specific sound effect
-    public void StopSoundEffect(string soundKey)
-    {
-        StopSound(soundKey);
-    }
 
     public void PlayShoppingCartIfMeleeEnemies(List<Enemy> enemies)
     {
@@ -106,13 +97,12 @@ public class SoundFXManager : AudioManager
     {
         foreach (Enemy e in enemies)
         {
-
             if (e.enemyType == 0) // Check if there are no melee enemies left
             {
                 return; // Exit the method if there are still melee enemies
             }
         }
-        StopSoundEffect("ShoppingCart"); // Stop the sound if no melee enemies are present
+        StopSound("ShoppingCart"); // Stop the sound if no melee enemies are present
     }
 
     
@@ -121,6 +111,20 @@ public class SoundFXManager : AudioManager
         yield return new WaitForSeconds(delay);
         PlaySound(soundKey);
     }
+
+    public void PlaysoundwithLoop(string soundKey)
+    {
+        if (audioSources.TryGetValue(soundKey, out var audioSource))
+        {
+            audioSource.loop = true; // Set the loop property
+            PlaySound(soundKey); // Play the sound
+        }
+        else
+        {
+            Debug.LogWarning($"Sound key '{soundKey}' not found in AudioManager!");
+        }
+    }
+
 }
 
 

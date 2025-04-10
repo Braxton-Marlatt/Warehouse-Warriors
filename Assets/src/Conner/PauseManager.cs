@@ -21,7 +21,7 @@ public class PauseManager : MonoBehaviour
     {
         if (pauseMenu == null)
         {
-            Debug.LogError("PauseManager ERROR: pauseMenu is not assigned!");
+            Debug.LogError("pauseMenu is not assigned!");
         }
 
         if (isPaused)
@@ -34,7 +34,7 @@ public class PauseManager : MonoBehaviour
             pauseMenu.SetActive(false);
         }
     }
-
+    //Checks for ESC key to pause the game
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -60,7 +60,7 @@ public class PauseManager : MonoBehaviour
         isPaused = true;
         StartCoroutine(PreventImmediateInput());
     }
-
+    //Waits 0.1 second before accepting input after pressing pause/play 
     private IEnumerator PreventImmediateInput()
     {
         yield return new WaitForSecondsRealtime(0.1f);

@@ -11,7 +11,7 @@ public class changeScene : MonoBehaviour
 
     public void loadHelpMenu()
     {
-        HelpMenuTracker.source = "start";
+        HelpMenuTracker.source = "start"; // tells back button from help where to return to
         SceneManager.LoadScene(2); // HelpMenu
     }
 

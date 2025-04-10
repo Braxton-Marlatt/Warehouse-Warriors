@@ -14,8 +14,8 @@ public class MenuStressTest
     [UnitySetUp]
     public IEnumerator SetUp()
     {
-        if (SceneManager.GetActiveScene().name != "TestScene")
-            SceneManager.LoadScene("TestScene");
+        if (SceneManager.GetActiveScene().name != "Game")
+            SceneManager.LoadScene("Game");
         yield return new WaitForSecondsRealtime(0.5f);
 
         pauseManager = GameObject.FindFirstObjectByType<PauseManager>();
