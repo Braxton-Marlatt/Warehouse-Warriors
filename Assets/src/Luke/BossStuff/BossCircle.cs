@@ -1,65 +1,37 @@
 using UnityEngine;
+using System.Collections;
 
-public class BossCircularAttack : MonoBehaviour
+public class BossCircleShooter : MonoBehaviour
 {
-    public int numberOfBullets = 12;
-    public float bulletSpeed = 5f;
-    public int bulletDamage = 1;
-    public GameObject bulletPrefab;
     public Transform firePoint;
-    public float attackCooldown = 4f;
+    public GameObject bulletPrefab;
+    public int bulletDamage = 1;
+    public float bulletSpeed = 5f;
+    public float timeBetweenBullets = 0.1f;
 
-    private float nextAttackTime;
-    private Transform player;
-
-    void Start()
+    public void TriggerBurst()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        StartCoroutine(ShootBurst());
     }
 
-    void Update()
+    private IEnumerator ShootBurst()
     {
-        if (Time.time > nextAttackTime)
+        int bullets = 12;
+        float angleStep = 360f / bullets;
+        float currentAngle = 0;
+
+        for (int i = 0; i < bullets; i++)
         {
-            ShootCircular();
-            nextAttackTime = Time.time + attackCooldown;
-        }
-    }
-
-    public void ShootCircular()
-    {
-        if (bulletPrefab == null) return;
-
-        float angleStep = 360f / numberOfBullets;
-        float angle = 0f;
-
-        for (int i = 0; i < numberOfBullets; i++)
-        {
-            Vector2 bulletDir = Quaternion.Euler(0, 0, angle) * Vector2.up;
+            Vector2 dir = Quaternion.Euler(0, 0, currentAngle) * Vector2.up;
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.linearVelocity = bulletDir * bulletSpeed;
-            }
+            rb.linearVelocity = dir * bulletSpeed;
 
             Bullet bulletComponent = bullet.GetComponent<Bullet>();
-            if (bulletComponent != null)
-            {
-                bulletComponent.damage = bulletDamage;
-            }
+            if (bulletComponent) bulletComponent.damage = bulletDamage;
 
-            angle += angleStep;
-            PlayShootingSounds();
+            currentAngle += angleStep;
+            yield return new WaitForSeconds(timeBetweenBullets);
         }
-    }
-
-    private void PlayShootingSounds()
-    {
-        SoundFXManager.Instance.PlaySound("EnemyShoot");
-        SoundFXManager.Instance.StartCoroutine(
-            SoundFXManager.Instance.PlaySoundWithDelay("EnemyReload", 0.1f)
-        );
     }
 }
