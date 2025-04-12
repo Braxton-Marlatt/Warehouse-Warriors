@@ -2852,7 +2852,7 @@ MonoBehaviour:
   player: {fileID: 2026110227}
   cameraReference: {fileID: 481025194}
   spawnPrefab: {fileID: 5342122984518619755, guid: 3222670e4bd3bc345aeff842d45c3034, type: 3}
-  bossRoomPrefab: {fileID: 6862938851634696689, guid: d6b869beb310447fe91bd858f8de764a, type: 3}
+  bossRoomPrefab: {fileID: 6862938851634696689, guid: 4d8f36cdb2282424aa646fc8da2de2e3, type: 3}
   shopRoomPrefab: {fileID: 6862938851634696689, guid: 33f9e1f2a20e944f4b1ee92f7d652f36, type: 3}
   roomPrefabs:
   - {fileID: 6862938851634696689, guid: f2521520990934652a2f0524b9f416dc, type: 3}
