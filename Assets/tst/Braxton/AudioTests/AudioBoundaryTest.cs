@@ -100,11 +100,11 @@ public class AudioBoundaryTest: MonoBehaviour
 
         // Play the sound
         SoundFXManager.Instance.PlaySound(soundKey);
-        Assert.IsTrue(SoundFXManager.Instance.isPlaying(soundKey), $"Sound '{soundKey}' is not playing.");
+        Assert.IsTrue(SoundFXManager.Instance.IsPlaying(soundKey), $"Sound '{soundKey}' is not playing.");
 
         // Stop the sound
         SoundFXManager.Instance.StopSound(soundKey);
-        Assert.IsFalse(SoundFXManager.Instance.isPlaying(soundKey), $"Sound '{soundKey}' did not stop.");
+        Assert.IsFalse(SoundFXManager.Instance.IsPlaying(soundKey), $"Sound '{soundKey}' did not stop.");
 
         yield return null;
     }
@@ -116,11 +116,11 @@ public class AudioBoundaryTest: MonoBehaviour
 
         // Play the sound
         MusicManager.Instance.PlaySound(soundKey);
-        Assert.IsTrue(MusicManager.Instance.isPlaying(soundKey), $"Sound '{soundKey}' is not playing.");
+        Assert.IsTrue(MusicManager.Instance.IsPlaying(soundKey), $"Sound '{soundKey}' is not playing.");
 
         // Stop the sound
         MusicManager.Instance.StopSound(soundKey);
-        Assert.IsFalse(MusicManager.Instance.isPlaying(soundKey), $"Sound '{soundKey}' did not stop.");
+        Assert.IsFalse(MusicManager.Instance.IsPlaying(soundKey), $"Sound '{soundKey}' did not stop.");
 
         yield return null;
     }
@@ -132,18 +132,18 @@ public class AudioBoundaryTest: MonoBehaviour
         SceneManager.LoadScene("Start_Menu");
         yield return new WaitForSeconds(1.0f); // Wait for the scene to load
         string mainMenuMusicKey = "WeBringTheBoom";
-        Assert.IsTrue(MusicManager.Instance.isPlaying(mainMenuMusicKey), "Main menu music is not playing.");
+        Assert.IsTrue(MusicManager.Instance.IsPlaying(mainMenuMusicKey), "Main menu music is not playing.");
 
         // Simulate transitioning to the game scene
         SceneManager.LoadScene("Game");
         yield return new WaitForSeconds(1.0f); // Wait for the scene to load
 
         // Ensure the main menu music has stopped
-        Assert.IsFalse(MusicManager.Instance.isPlaying("Webringtheboom"), "Main menu music is still playing in the game scene.");
+        Assert.IsFalse(MusicManager.Instance.IsPlaying("Webringtheboom"), "Main menu music is still playing in the game scene.");
 
         // Ensure the game music is playing
         string gameMusicKey = "GameMusic";
-        Assert.IsTrue(MusicManager.Instance.isPlaying(gameMusicKey), "Game music is not playing.");
+        Assert.IsTrue(MusicManager.Instance.IsPlaying(gameMusicKey), "Game music is not playing.");
     }
     [UnityTest]
     public IEnumerator GameMusicStopsInMainMenuTest()
@@ -152,18 +152,18 @@ public class AudioBoundaryTest: MonoBehaviour
         SceneManager.LoadScene("Game");
         yield return new WaitForSeconds(1.0f); // Wait for the scene to load
         string gameMusicKey = "GameMusic";
-        Assert.IsTrue(MusicManager.Instance.isPlaying(gameMusicKey), "Game music is not playing.");
+        Assert.IsTrue(MusicManager.Instance.IsPlaying(gameMusicKey), "Game music is not playing.");
 
         // Simulate transitioning back to the main menu scene
         SceneManager.LoadScene("Start_Menu");
         yield return new WaitForSeconds(1.0f); // Wait for the scene to load
 
         // Ensure the game music has stopped
-        Assert.IsFalse(MusicManager.Instance.isPlaying(gameMusicKey), "Game music is still playing in the main menu scene.");
+        Assert.IsFalse(MusicManager.Instance.IsPlaying(gameMusicKey), "Game music is still playing in the main menu scene.");
 
         // Ensure the main menu music is playing
         string mainMenuMusicKey = "WeBringTheBoom";
-        Assert.IsTrue(MusicManager.Instance.isPlaying(mainMenuMusicKey), "Main menu music is not playing.");
+        Assert.IsTrue(MusicManager.Instance.IsPlaying(mainMenuMusicKey), "Main menu music is not playing.");
     }
 
     [UnityTest]
@@ -175,10 +175,10 @@ public class AudioBoundaryTest: MonoBehaviour
         for (int i = 0; i < 50; i++) // Repeat 50 times
         {
             SoundFXManager.Instance.PlaySound(soundKey);
-            Assert.IsTrue(SoundFXManager.Instance.isPlaying(soundKey), $"Sound '{soundKey}' is not playing on iteration {i}.");
+            Assert.IsTrue(SoundFXManager.Instance.IsPlaying(soundKey), $"Sound '{soundKey}' is not playing on iteration {i}.");
 
             SoundFXManager.Instance.StopSound(soundKey);
-            Assert.IsFalse(SoundFXManager.Instance.isPlaying(soundKey), $"Sound '{soundKey}' did not stop on iteration {i}.");
+            Assert.IsFalse(SoundFXManager.Instance.IsPlaying(soundKey), $"Sound '{soundKey}' did not stop on iteration {i}.");
         }
 
         yield return null;
@@ -209,8 +209,8 @@ public class AudioBoundaryTest: MonoBehaviour
         SoundFXManager.Instance.PlaySound(soundKey2);
 
         // Assert that both sounds are playing
-        Assert.IsTrue(SoundFXManager.Instance.isPlaying(soundKey1), $"Sound '{soundKey1}' is not playing.");
-        Assert.IsTrue(SoundFXManager.Instance.isPlaying(soundKey2), $"Sound '{soundKey2}' is not playing.");
+        Assert.IsTrue(SoundFXManager.Instance.IsPlaying(soundKey1), $"Sound '{soundKey1}' is not playing.");
+        Assert.IsTrue(SoundFXManager.Instance.IsPlaying(soundKey2), $"Sound '{soundKey2}' is not playing.");
 
         yield return null;
     }
