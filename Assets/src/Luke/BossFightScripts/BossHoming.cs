@@ -1,3 +1,5 @@
+// Description: This script is responsible for the boss's homing bullet attack.
+
 using UnityEngine;
 
 public class BossHomingShooter : MonoBehaviour
@@ -8,7 +10,7 @@ public class BossHomingShooter : MonoBehaviour
     public float bulletSpeed = 5f;
     public float rotationSpeed = 200f;
 
-    public void ShootHoming()
+    public void ShootHoming() // Function to shoot a homing bullet
     {
         GameObject bullet = Instantiate(homingBulletPrefab, firePoint.position, Quaternion.identity);
         HomingBullet homingComponent = bullet.GetComponent<HomingBullet>();

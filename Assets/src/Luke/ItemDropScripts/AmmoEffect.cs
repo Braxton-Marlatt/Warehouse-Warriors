@@ -1,3 +1,5 @@
+// Description: This script defines an AmmoEffect class that implements the IPickupEffect interface.
+
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewAmmoEffect", menuName = "Pickup Effects/Ammo")]

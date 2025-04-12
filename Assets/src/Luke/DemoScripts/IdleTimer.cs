@@ -1,3 +1,5 @@
+// Description: This script tracks user inactivity and loads a video scene after a specified duration of inactivity.
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

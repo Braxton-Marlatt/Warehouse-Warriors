@@ -1,3 +1,5 @@
+// Description: This script handles the heart pickup functionality in the game.
+
 using UnityEngine;
 
 public class HeartPickup : MonoBehaviour

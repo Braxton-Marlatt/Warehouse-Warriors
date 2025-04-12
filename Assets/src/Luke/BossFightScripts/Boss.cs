@@ -1,3 +1,5 @@
+// Script to control the boss behavior in the game
+
 using UnityEngine;
 
 public class Boss : Enemy
@@ -27,11 +29,11 @@ public class Boss : Enemy
         {
             if (useCircleAttack)
             {
-                HandleCircleShoot();
+                HandleCircleShoot();// Trigger circle shoot
             }
             else
             {
-                HandleHomingShoot();
+                HandleHomingShoot();// Trigger homing shoot
             }
 
             useCircleAttack = !useCircleAttack; // Toggle attack type

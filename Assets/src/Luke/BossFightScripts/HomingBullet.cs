@@ -1,14 +1,16 @@
+// Description: This script controls the behavior of a homing bullet in a 2D game. The bullet follows the player and deals damage upon collision.
+
 using UnityEngine;
 
 public class HomingBullet : MonoBehaviour
 {
-    private Transform target;
-    private float speed;
-    private float rotationSpeed;
-    private int damage;
-    private Rigidbody2D rb;
+    public Transform target;
+    public float speed;
+    public float rotationSpeed;
+    public int damage;
+    public Rigidbody2D rb;
 
-    public void Initialize(float speed, float rotationSpeed, int damage)
+    public virtual void Initialize(float speed, float rotationSpeed, int damage) // Function to initialize the bullet's speed, rotation speed, and damage
     {
         this.speed = speed;
         this.rotationSpeed = rotationSpeed;
@@ -17,7 +19,7 @@ public class HomingBullet : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    void FixedUpdate()
+    void Update() // Update is called once per frame
     {
         if (!target) return;
 
@@ -28,7 +30,7 @@ public class HomingBullet : MonoBehaviour
         rb.linearVelocity = transform.up * speed;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other) // Function to handle collision with other objects
     {
         if (other.CompareTag("Player"))
         {

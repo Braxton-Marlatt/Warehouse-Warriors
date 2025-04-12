@@ -1,3 +1,5 @@
+// Description: Handles the enemy death event and spawns loot based on defined probabilities.
+
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -15,7 +17,9 @@ public class EnemyDeathHandler : MonoBehaviour
     private void OnEnable() => EnemyHealth.OnEnemyDeath += HandleEnemyDeath;
     private void OnDisable() => EnemyHealth.OnEnemyDeath -= HandleEnemyDeath;
 
-    private void HandleEnemyDeath(EnemyHealth enemyHealth, Enemy enemy)
+
+    // In C#, the virtual keyword marks a method in a base class as overridable, allowing subclasses to provide their own implementation.
+    protected virtual void HandleEnemyDeath(EnemyHealth enemyHealth, Enemy enemy)
     {
         float totalWeight = 0;
         foreach (var loot in lootDrops) totalWeight += loot.dropProbability;

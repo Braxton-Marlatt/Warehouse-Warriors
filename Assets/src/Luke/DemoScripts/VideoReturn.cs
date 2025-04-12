@@ -1,3 +1,6 @@
+// Description: This script handles the video playback and allows the user to return to the main menu when any key is pressed or mouse is moved.
+
+
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;

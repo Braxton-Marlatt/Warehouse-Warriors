@@ -1,3 +1,5 @@
+// Description: This script defines a health effect for a pickup item in Unity.
+
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewHealthEffect", menuName = "Pickup Effects/Health")]
