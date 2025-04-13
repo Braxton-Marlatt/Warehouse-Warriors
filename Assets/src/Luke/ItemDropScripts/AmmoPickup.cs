@@ -1,3 +1,5 @@
+// Description: This script handles the ammo pickup functionality in the game.
+
 using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour

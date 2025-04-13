@@ -129,6 +129,17 @@ public abstract class AudioManager : MonoBehaviour
         return 0f; // Default value if not found
     }
 
-    // Add an audio source to the dictionary
+    public bool IsPlaying(string soundKey)
+    {
+        if (audioSources.TryGetValue(soundKey, out var audioSource))
+        {
+            return audioSource.isPlaying;
+        }
+        else
+        {
+            Debug.LogWarning($"Sound key '{soundKey}' not found in AudioManager!");
+            return false;
+        }
+    }
 
 }

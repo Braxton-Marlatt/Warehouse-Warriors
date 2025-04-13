@@ -1,3 +1,5 @@
+// Description: Picks up coins in the game. When the player collides with a coin, it applies the coin effect and destroys the coin object.
+
 using UnityEngine;
 
 public class CoinPickup : MonoBehaviour

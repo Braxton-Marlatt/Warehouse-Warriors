@@ -1,3 +1,5 @@
+// Description: This script defines a CoinEffect class that implements the IPickupEffect interface.
+
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewCoinEffect", menuName = "Pickup Effects/Coin")]
