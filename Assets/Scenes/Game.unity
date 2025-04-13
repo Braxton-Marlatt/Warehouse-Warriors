@@ -5531,8 +5531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32afc65c32b7c0145823048b52ef3371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinManager: {fileID: 0}
-  coinText: {fileID: 0}
+  coinManager: {fileID: 2026110240}
+  coinText: {fileID: 15796384}
 --- !u!1001 &2028771255
 PrefabInstance:
   m_ObjectHideFlags: 0
