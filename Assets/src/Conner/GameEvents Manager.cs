@@ -15,6 +15,7 @@ public class GameEvents//Super Class
     {
         Debug.Log("[GameEvents] PlayerDied event triggered.");
         OnPlayerDeath?.Invoke(); // Safely invoke the event only if there are listeners
+        //Loads Scene 3 
     }
 }
 
@@ -22,7 +23,7 @@ public class GameEventsSubClass : GameEvents //Sub-class
 {
     // Call this method to trigger the OnPlayerDeath event
 
-    //public override void PlayerDied() - Override - Indicates that the method is replacing a virtual method in the base class.
+    //public override void PlayerDied() //- //Override - Indicates that the method is replacing a virtual method in the base class.
     //{
     //    Debug.Log("** PlayerDied function overridden **");
     //    SceneManager.LoadScene(2); //Loads help menu
