@@ -9,6 +9,8 @@ public class MusicManager : AudioManager
     private static MusicManager _instance;
     private IAudioSourceFactory musicSourceFactory = new AudioSourceFactory();
 
+    // This allows other classes to access the instance of MusicManager
+    // while ensuring that only one instance exists (singleton pattern).
     public static MusicManager Instance
     {
         get
@@ -25,10 +27,9 @@ public class MusicManager : AudioManager
         }
     }
     
-
     // Dictionary to hold audio sources
-
     [SerializeField] private AudioMixerGroup audioMixerGroup;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -48,6 +49,32 @@ public class MusicManager : AudioManager
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    public override void PlaySound(string soundKey)
+    {
+        if (audioSources.TryGetValue(soundKey, out var audioSource))
+        {
+            if (audioSource != null)
+            {
+                if (audioSource.clip == null)
+                {
+                    Debug.LogError($"Audio clip for key '{soundKey}' is not assigned!");
+                    return;
+                }
+
+                Debug.Log($"Playing sound for key '{soundKey}' with volume {audioSource.volume}");
+                audioSource.loop = true; // Ensure music loops
+                audioSource.Play();
+            }
+            else
+            {
+                Debug.LogError($"AudioSource for key '{soundKey}' is null!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"Sound key '{soundKey}' not found in AudioManager!");
+        }
+    }
     // Initialize the music sources dictionary
     private void InitializeMusicSources()
     {
@@ -102,30 +129,4 @@ public class MusicManager : AudioManager
         }
     }
 
-    public override void PlaySound(string soundKey)
-    {
-        if (audioSources.TryGetValue(soundKey, out var audioSource))
-        {
-            if (audioSource != null)
-            {
-                if (audioSource.clip == null)
-                {
-                    Debug.LogError($"Audio clip for key '{soundKey}' is not assigned!");
-                    return;
-                }
-
-                Debug.Log($"Playing sound for key '{soundKey}' with volume {audioSource.volume}");
-                audioSource.loop = true; // Ensure music loops
-                audioSource.Play();
-            }
-            else
-            {
-                Debug.LogError($"AudioSource for key '{soundKey}' is null!");
-            }
-        }
-        else
-        {
-            Debug.LogWarning($"Sound key '{soundKey}' not found in AudioManager!");
-        }
-    }
 }
