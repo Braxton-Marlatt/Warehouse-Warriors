@@ -9,7 +9,9 @@ public class SoundFXManager : AudioManager
     private static SoundFXManager _instance;
     private IAudioSourceFactory soundFXSourceFactory = new AudioSourceFactory();
     [SerializeField] public AudioMixerGroup audioMixerGroup; // Reference to the AudioMixerGroup
-    // Public property to access the instance
+    
+    // This allows other classes to access the instance of SoundFXManager
+    // while ensuring that only one instance exists (singleton pattern).
     public static SoundFXManager Instance
     {
         get
