@@ -5086,7 +5086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootData:
     lootDrops:
-    - pickupPrefab: {fileID: 788221117799952726, guid: fba8c0b8ccbeb1d4e835efde911e2219, type: 3}
+    - pickupPrefab: {fileID: 3671018789564351125, guid: 0eb55d64df6f49743b6a8d46552243fa, type: 3}
       dropProbability: 0.5
     - pickupPrefab: {fileID: 1764613264757857428, guid: 89e790ef6f1a06d4e853f35abab07a07, type: 3}
       dropProbability: 0.5
