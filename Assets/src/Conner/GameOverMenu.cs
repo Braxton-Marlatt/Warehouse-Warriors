@@ -16,13 +16,20 @@ public class GameOverMenu : MonoBehaviour
     // Called by the Main Menu button
     public void LoadMainMenu()
     {
-        PauseManager.instance.mainMenu();//Singleton Used here
+       // PauseManager.instance.mainMenu();//Singleton Used here
+        SceneManager.LoadScene(0); // Game scene
+
     }
 
 
     // Called by the Quit button
     public void QuitGame()
     {
-        PauseManager.instance.quitGame();//Singleton Used here
+        //PauseManager.instance.quitGame();//Singleton Used here
+        #if UNITY_EDITOR
+                EditorApplication.ExitPlaymode();
+        #else
+                Application.Quit();
+        #endif
     }
 }

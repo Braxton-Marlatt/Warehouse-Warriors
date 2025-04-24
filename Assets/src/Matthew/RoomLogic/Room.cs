@@ -101,6 +101,7 @@ public class Room : MonoBehaviour
             foreach(Enemy n in enemies){
                 n.Despawn();
             }
+            RoomManager.Instance.CheckWinCondition();
         }
     }
  

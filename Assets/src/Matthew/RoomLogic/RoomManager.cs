@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 
 public class RoomManager : MonoBehaviour
@@ -40,6 +42,11 @@ public class RoomManager : MonoBehaviour
     {
         InitializeAllRooms();
     }
+
+    // void Update()
+    // {
+    //     CheckWinCondition();
+    // }
 
     /**
     Logic (on start):
@@ -271,4 +278,16 @@ public class RoomManager : MonoBehaviour
             currentRoom.westRoom = null;
         }
     }
+
+    public void CheckWinCondition(){
+        foreach (var kvp in roomMap)
+        {
+            Room r = kvp.Value;
+            if (!r.hasComplete) return;
+        }
+        Debug.Log("You win!");
+        SceneManager.LoadScene("WinScene");
+    }
+
+
 }
