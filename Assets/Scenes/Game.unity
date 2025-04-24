@@ -2866,7 +2866,7 @@ MonoBehaviour:
   - {fileID: 6862938851634696689, guid: 5a7fee24d0f1d4ab0b1b6becc76332db, type: 3}
   - {fileID: 6862938851634696689, guid: 829c2d702cb88459994d1710cbca0155, type: 3}
   - {fileID: 6862938851634696689, guid: 4d8f36cdb2282424aa646fc8da2de2e3, type: 3}
-  spawnedRooms: 1
+  spawnedRooms: 12
 --- !u!1 &845190182
 GameObject:
   m_ObjectHideFlags: 0
