@@ -98,17 +98,20 @@ public class MusicManager : AudioManager
         PlayMusicForScene(scene.name);
     }
 
-    // Play music based on the scene name
     private void PlayMusicForScene(string sceneName)
     {
+        // Stop all currently playing music
         StopAllMusic();
 
+        // Play music based on the scene name
         if (sceneName == "Start_Menu")
         {
+            Debug.Log("Playing Start_Menu music.");
             PlaySound("WeBringTheBoom");
         }
         else if (sceneName == "Game")
         {
+            Debug.Log("Playing Game music.");
             PlaySound("GameMusic");
         }
         else
@@ -117,16 +120,15 @@ public class MusicManager : AudioManager
         }
     }
 
-    // Stop all currently playing music
     private void StopAllMusic()
     {
         foreach (var audioSource in audioSources.Values)
         {
-            if (audioSource.isPlaying)
+            if (audioSource != null && audioSource.isPlaying)
             {
+                Debug.Log($"Stopping music: {audioSource.clip.name}");
                 audioSource.Stop();
             }
         }
     }
-
 }
